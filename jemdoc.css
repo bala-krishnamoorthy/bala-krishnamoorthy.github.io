@@ -23,9 +23,9 @@ body {
     background: #ffffff;
     border: 0px solid #dddddd;
     padding-top: 1.0em;
-    padding-left: 4px;
-    padding-right: 6px;
-    font-size: 16px;
+    padding-left: 0em;
+    padding-right: 1px;
+    font-size: 15px;
     font-weight: bold;
     width: auto;
     white-space: nowrap;
@@ -59,7 +59,7 @@ tt {
 
 pre, tt {
 	font-size: 100%;
-	font-family: courier;
+	font-family: Helvetica;
 }
 
 a, a > tt {
