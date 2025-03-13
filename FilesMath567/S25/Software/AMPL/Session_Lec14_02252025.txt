@@ -1,0 +1,113 @@
+# AMPL Session from Lecture 14 (02/25/2025)
+#
+# Branch-and-bound example: binary knapsack problem
+
+# LP relaxation of original problem - S0
+
+ampl: reset; model BBex.txt; solve; display x;
+Gurobi 10.0.0: optimal solution; objective 39.5
+1 simplex iterations
+x [*] :=
+1  1
+2  1
+3  0.5
+4  0
+;
+
+
+# S1: S0 + x3=0
+
+ampl: reset; model BBex.txt; solve; display x;
+Gurobi 10.0.0: optimal solution; objective 36.71428571
+1 simplex iterations
+x [*] :=
+1  1
+2  1
+3  0
+4  0.571429
+;
+
+# S2: S0 + x3=1
+
+ampl: reset; model BBex.txt; solve; display x;
+Gurobi 10.0.0: optimal solution; objective 38.6
+0 simplex iterations
+x [*] :=
+1  0.8
+2  0
+3  1
+4  0
+;
+
+# S3: S1 + x4=0
+
+ampl: reset; model BBex.txt; solve; display x;
+Gurobi 10.0.0: optimal solution; objective 27
+0 simplex iterations
+x [*] :=
+1  1
+2  1
+3  0
+4  0
+;
+
+# S4: S1 + x4=1
+
+ampl: reset; model BBex.txt; solve; display x;
+Gurobi 10.0.0: optimal solution; objective 34
+1 simplex iterations
+x [*] :=
+1  1
+2  0
+3  0
+4  1
+;
+
+# S5: S2 + x1=0
+
+ampl: reset; model BBex.txt; solve; display x;
+Gurobi 10.0.0: optimal solution; objective 37.42857143
+0 simplex iterations
+x [*] :=
+1  0
+2  1
+3  1
+4  0.142857
+;
+
+# S6: S2 + x1=1
+
+ampl: reset; model BBex.txt; solve; display x;
+presolve: constraint c cannot hold:
+	body <= -1 cannot be >= 0; difference = -1
+x [*] :=
+1  1
+2  0
+3  1
+4  0
+;
+
+# S7: S5 + x4=0
+
+ampl: reset; model BBex.txt; solve; display x;
+Gurobi 10.0.0: optimal solution; objective 35
+0 simplex iterations
+x [*] :=
+1  0
+2  1
+3  1
+4  0
+;
+
+# S8: S5 + x4=1
+
+ampl: reset; model BBex.txt; solve; display x;
+presolve, variable x[2]:
+	impossible deduced bounds: lower = 0, upper = -1
+x [*] :=
+1  0
+2  0
+3  1
+4  1
+;
+

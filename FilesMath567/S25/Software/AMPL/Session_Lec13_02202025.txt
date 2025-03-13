@@ -1,0 +1,66 @@
+# AMPL Session from Lecture 13 (02/20/2025)
+
+ampl: reset; model Knap.mod.txt;
+
+# Instead of declaring the data in a data file, we can read in the
+# numbers from a text file. We first set the problem size n.
+
+ampl: let n := 50;
+
+ampl: read {j in 1..n} a[j] < CoeffKnap.txt;
+
+ampl: display a;
+a [*] :=
+ 1   847    9  5926   17 11103   25 15304   33 20405   41 24665   49 29740
+ 2  1708   10  6777   18 11899   26 16125   34 20343   42 25491   50 29722
+ 3  1688   11  6814   19 11873   27 16977   35 21204   43 25475
+ 4  2538   12  7643   20 12736   28 17833   36 22039   44 26294
+ 5  3385   13  8537   21 13575   29 18655   37 22955   45 26297
+ 6  4217   14  8439   22 13614   30 18671   38 23752   46 27205
+ 7  5102   15  9308   23 14434   31 19525   39 23721   47 28052
+ 8  5981   16 10166   24 15307   32 19497   40 24646   48 28848
+;
+
+# We continue to read b' and b from the same file
+
+ampl: read bp < CoeffKnap.txt;
+ampl: read b < CoeffKnap.txt;
+
+# It is a good practice to close the file after reading all numbers
+# you want to read from the same.
+
+ampl: close CoeffKnap.txt;
+
+# Let's check the knapsack feasibility constraint(s):
+
+ampl: expand KnapFeas;
+subject to KnapFeas:
+	123439 <= 847*x[1] + 1708*x[2] + 1688*x[3] + 2538*x[4] + 3385*x[5] + 
+	4217*x[6] + 5102*x[7] + 5981*x[8] + 5926*x[9] + 6777*x[10] + 6814*x[11]
+	 + 7643*x[12] + 8537*x[13] + 8439*x[14] + 9308*x[15] + 10166*x[16] + 
+	11103*x[17] + 11899*x[18] + 11873*x[19] + 12736*x[20] + 13575*x[21] + 
+	13614*x[22] + 14434*x[23] + 15307*x[24] + 15304*x[25] + 16125*x[26] + 
+	16977*x[27] + 17833*x[28] + 18655*x[29] + 18671*x[30] + 19525*x[31] + 
+	19497*x[32] + 20405*x[33] + 20343*x[34] + 21204*x[35] + 22039*x[36] + 
+	22955*x[37] + 23752*x[38] + 23721*x[39] + 24646*x[40] + 24665*x[41] + 
+	25491*x[42] + 25475*x[43] + 26294*x[44] + 26297*x[45] + 27205*x[46] + 
+	28052*x[47] + 28848*x[48] + 29740*x[49] + 29722*x[50] <= 123632;
+
+ampl: option solver gurobi;
+ampl: option gurobi_options 'tech:timing=1';
+ampl: solve;
+Gurobi 10.0.0: tech:timing=1
+NL model read time = 0.000209s
+NL model conversion time = 0.000369s
+Setup time = 0.002854s
+Solution time = 0.331277s
+Output time = 0.001066s
+Gurobi 10.0.0: infeasible problem
+10574 simplex iterations
+12091 branching nodes
+
+suffix dunbdd OUT;
+Objective = find a feasible point.
+ampl: 
+
+# Gurobi takes 12K+ BnB nodes to solve this "small" problem!

@@ -1,0 +1,11 @@
+param n;
+
+param a {1..n};
+param bp;
+param b;
+
+var x {1..n} binary;
+
+subject to KnapFeas: bp <= sum {j in 1..n} a[j]*x[j] <= b;
+
+
