@@ -1,0 +1,41 @@
+# AMPL Session from Lecture 28 (04/22/2025)
+#
+# Cascade knapsack problem (CKP) example
+
+ampl: option solver gurobi;
+ampl: reset; model Width2_4CKP.mod;
+ampl: reset; model Width2_4CKP.mod; data iwidth2_4ckp_n12.dat;
+ampl: expand knapfeas1;
+
+subject to knapfeas1:
+	9309 <= 723*x[1] + 799*x[2] + 875*x[3] + 981*x[4] + 1285*x[5] + 
+	1361*x[6] + 1467*x[7] + 1587*x[8] + 1847*x[9] + 1953*x[10] + 2029*x[11]
+	 + 2116*x[12] <= 9312;
+
+ampl: solve;
+Gurobi 10.0.0: infeasible problem
+464 simplex iterations
+337 branching nodes
+
+suffix dunbdd OUT;
+ampl: reset; model Width2_4CKP.mod; data iwidth2_4ckp_n12.dat;solve;
+Gurobi 10.0.0: infeasible problem
+779 simplex iterations
+539 branching nodes
+
+suffix dunbdd OUT;
+Objective = find a feasible point.
+ampl: reset; model Width2_4CKP.mod; data iwidth2_4ckp_n12.dat;solve;
+Gurobi 10.0.0: infeasible problem
+0 simplex iterations
+
+suffix dunbdd OUT;
+Objective = find a feasible point.
+ampl: reset; model Width2_4CKP.mod; data iwidth2_4ckp_n12.dat;solve;
+Gurobi 10.0.0: infeasible problem
+779 simplex iterations
+539 branching nodes
+
+suffix dunbdd OUT;
+Objective = find a feasible point.
+ampl: 
