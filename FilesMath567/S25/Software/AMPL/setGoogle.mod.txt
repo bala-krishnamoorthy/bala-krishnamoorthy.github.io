@@ -1,0 +1,37 @@
+# Model file for the Google sum problem using a set for the letters
+
+set L := {"W","D","O","T","G","L","E","C","M"};
+
+# var x{i in 1..9, j in 0..9} binary;
+var x{i in L, j in 0..9} binary; 
+
+# So, x['D',3]=1 means second letter (D) is equal to digit '3'
+
+minimize objective: 0;
+
+subject to Subtraction
+: 
+ 100000*sum{j in 0..9}(x["W",j]*j) #w
++ 10000*sum{j in 0..9}(x["W",j]*j) #w
++  1000*sum{j in 0..9}(x["W",j]*j) #w
++   100*sum{j in 0..9}(x["D",j]*j) #d
++    10*sum{j in 0..9}(x["O",j]*j) #o
++       sum{j in 0..9}(x["T",j]*j) #t
+
+-100000*sum{j in 0..9}(x["G",j]*j) #g
+- 10000*sum{j in 0..9}(x["O",j]*j) #o
+-  1000*sum{j in 0..9}(x["O",j]*j) #o
+-   100*sum{j in 0..9}(x["G",j]*j) #g
+-    10*sum{j in 0..9}(x["L",j]*j) #l
+-     1*sum{j in 0..9}(x["E",j]*j) #e
+=
+ 100000*sum{j in 0..9}(x["D",j]*j) #d
++ 10000*sum{j in 0..9}(x["O",j]*j) #o
++  1000*sum{j in 0..9}(x["T",j]*j) #t
++   100*sum{j in 0..9}(x["C",j]*j) #c
++    10*sum{j in 0..9}(x["O",j]*j) #o
++     1*sum{j in 0..9}(x["M",j]*j) #m
+;
+
+subject to assign1{i in L}: sum{j in 0..9} x[i,j]=1;
+subject to assign2{j in 0..9}: sum{i in L} x[i,j]<=1;

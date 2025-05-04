@@ -1,0 +1,34 @@
+# Model file for the Google sum problem
+
+var x{i in 1..9, j in 0..9} binary; 
+
+# So, x[2,3]=1 means second letter (D) is equal to digit '3'
+
+minimize objective: 0;
+
+subject to Subtraction
+: 
+ 100000*sum{j in 0..9}(x[1,j]*j) #w
++ 10000*sum{j in 0..9}(x[1,j]*j) #w
++  1000*sum{j in 0..9}(x[1,j]*j) #w
++   100*sum{j in 0..9}(x[2,j]*j) #d
++    10*sum{j in 0..9}(x[3,j]*j) #o
++       sum{j in 0..9}(x[4,j]*j) #t
+
+-100000*sum{j in 0..9}(x[5,j]*j) #g
+- 10000*sum{j in 0..9}(x[3,j]*j) #o
+-  1000*sum{j in 0..9}(x[3,j]*j) #o
+-   100*sum{j in 0..9}(x[5,j]*j) #g
+-    10*sum{j in 0..9}(x[6,j]*j) #l
+-     1*sum{j in 0..9}(x[7,j]*j) #e
+=
+ 100000*sum{j in 0..9}(x[2,j]*j) #d
++ 10000*sum{j in 0..9}(x[3,j]*j) #o
++  1000*sum{j in 0..9}(x[4,j]*j) #t
++   100*sum{j in 0..9}(x[8,j]*j) #c
++    10*sum{j in 0..9}(x[3,j]*j) #o
++     1*sum{j in 0..9}(x[9,j]*j) #m
+;
+
+subject to assign1{i in 1..9}: sum{j in 0..9}x[i,j]=1;
+subject to assign2{j in 0..9}: sum{i in 1..9}x[i,j]<=1;

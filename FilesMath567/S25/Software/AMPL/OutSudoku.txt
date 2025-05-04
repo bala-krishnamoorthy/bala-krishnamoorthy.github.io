@@ -1,0 +1,30 @@
+# Math 567, Spring 2025
+# AMPL session for Hw4 problem 5
+# Solution for websudoku Evil Puzzle 4,480,540,313
+# http://www.websudoku.com/?level=4&set_id=4480540313
+
+
+ampl: option solver gurobi;
+ampl: option gurobi_options 'tech:timing=1';
+ampl: reset; model Sudoku.mod.txt; data TestSudoku.dat.txt; solve;
+Gurobi 10.0.0: tech:timing=1
+NL model read time = 0.000501s
+NL model conversion time = 0.001509s
+Setup time = 0.005529s
+Solution time = 0.005071s
+Output time = 0.001944s
+Gurobi 10.0.0: optimal solution; objective 405
+5 simplex iterations
+1 branching nodes
+
+ampl: for {i in 1..N}{ for {j in 1..N} { for {k in 1..N}{ if x[i,j,k]==1 then printf "%2d ",k; }}; printf "\n"};
+ 7  9  6  2  3  8  5  1  4 
+ 1  2  5  3  9  7  8  4  6 
+ 4  8  3  5  6  1  2  9  7 
+ 8  5  2  9  4  3  6  7  1 
+ 6  7  4  1  2  5  9  3  8 
+ 9  4  1  7  8  6  3  5  2 
+ 2  1  9  6  5  4  7  8  3 
+ 5  3  8  4  7  2  1  6  9 
+ 3  6  7  8  1  9  4  2  5 
+ampl: 

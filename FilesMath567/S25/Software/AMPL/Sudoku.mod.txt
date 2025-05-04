@@ -1,0 +1,19 @@
+# Model file for general (N x N) Sudoku puzzle, with N = n^2
+
+param n;	 # n=3 for the usual sudoku
+param N := n*n;  # N=9 for the usual sudoku
+
+param nFix;			     # number of squares fixed at start
+param FixIndex {1..nFix, 1..3};	     # List of (i,j,k) such that k is already fixed in square (i,j)
+
+var x {1..N, 1..N, 1..N} binary;	# x[i,j,k] = 1 if k is placed in square (i,j)
+
+maximize objective: sum {i in 1..N, j in 1..N, k in 1..N} i*x[i,j,k]; # dummy objective function
+
+subject to SqrHasOneNum      {i in 1..N, j in 1..N}: sum {k in 1..N} x[i,j,k] = 1;
+subject to RowHasEachNumOnce {i in 1..N, k in 1..N}: sum {j in 1..N} x[i,j,k] = 1;
+subject to ColHasEachNumOnce {j in 1..N, k in 1..N}: sum {i in 1..N} x[i,j,k] = 1;
+subject to GrdHasEachNumOnce {r in 0..n-1, k in 1..N}:
+	          sum {i in 1+n*r..1+n*r+n-1, j in 1+n*r..1+n*r+n-1} x[i,j,k] = 1;
+subject to SetFixedSquares   {i in 1..nFix}: 
+				 x[FixIndex[i,1],FixIndex[i,2],FixIndex[i,3]] = 1;

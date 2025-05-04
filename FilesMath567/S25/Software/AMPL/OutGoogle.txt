@@ -1,0 +1,55 @@
+# Math 567 Spring 2025
+# AMPL session for the Google problem
+
+
+ampl: option solver gurobi;
+ampl: option gurobi_options 'tech:timing=1';
+ampl: reset; model Google.mod.txt; solve;
+Gurobi 10.0.0: tech:timing=1
+NL model read time = 0.000216s
+NL model conversion time = 0.000601s
+Setup time = 0.002711s
+Solution time = 0.021432s
+Output time = 0.001389s
+Gurobi 10.0.0: optimal solution; objective 0
+225 simplex iterations
+1 branching nodes
+ampl: 
+ampl: for {i in 1..9, j in 0..9}{ if x[i,j]==1 then printf " %d %d\n",i,j; };
+ 1 7 # W
+ 2 5 # D
+ 3 8 # O
+ 4 9 # T
+ 5 1 # G
+ 6 0 # L
+ 7 6 # E
+ 8 4 # C
+ 9 3 # M
+
+ampl:
+
+## Model using set of letters 
+
+ampl: reset; model setGoogle.mod.txt; solve;
+Gurobi 10.0.0: tech:timing=1
+NL model read time = 0.000283s
+NL model conversion time = 0.000689s
+Setup time = 0.003573s
+Solution time = 0.024540s
+Output time = 0.001121s
+Gurobi 10.0.0: optimal solution; objective 0
+225 simplex iterations
+1 branching nodes
+ampl: 
+ampl: for {i in L, j in 0..9}{ if x[i,j]==1 then printf " %s %d\n",i,j; };
+ W 7
+ D 5
+ O 8
+ T 9
+ G 1
+ L 0
+ E 6
+ C 4
+ M 3
+ampl:
+
