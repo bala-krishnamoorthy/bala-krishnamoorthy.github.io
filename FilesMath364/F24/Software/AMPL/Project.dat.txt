@@ -1,0 +1,17 @@
+# Data file for the project from Ike Broflowski
+
+var u := 1;
+var Delta :=1;
+
+param Descript 	:= 40;  	#Number of Descriptors
+param ChemTrain := 90;		#Number of Chemicals in Training Set
+param ChemTest 	:= 10;		#Number of Chemicals in Test Set
+
+#Reading input from External Data text.
+read {i in 1..ChemTrain, j in 1..Descript+1} DataTrain[i,j] <TrainingSet.txt;	
+	close TrainingSet.txt;
+read {i in 1..ChemTest, j in 1..Descript+1} DataTest[i,j] <TestSet.txt;
+	close TestSet.txt;
+read {i in 1..ChemTest} YTest[i] <Actual_y_TestSet.txt;
+	close Actual_y_TestSet.txt;
+

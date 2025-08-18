@@ -1,0 +1,22 @@
+# Data file for the Farmer Jones LP using number of crops
+
+param n := 2; # 1==corn, 2==wheat
+
+param Yield :=
+1  10
+2 25;
+
+param LaborHrs :=
+1   4
+2 10;
+
+param Price :=
+1   3
+2  4;
+
+param LandAvlbl := 7;
+param TotalLaborHrs := 40;
+
+param MinCrop :=
+1   30
+2   0;

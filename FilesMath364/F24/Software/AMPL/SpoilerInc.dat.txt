@@ -1,0 +1,26 @@
+# Data for Spoiler Inc. RotFast LP (Problem 4 from Homework 3)
+
+param n_Quart := 4;
+
+param Demand :=
+1 30
+2 28
+3 40
+4 35 ;
+
+set   LaborTypes := RT OT;	   # regular time, over time
+
+param Cost :=
+RT 50
+OT 70 ;
+
+param MaxUnits :=
+RT  25
+OT   0; # or, could set it as sum of demands = 113, here
+
+param SpoilFrac := 0.15;
+param RotFrac	:= 0.08;
+
+param StoreCost := 12;
+
+param StartInventory := 12;

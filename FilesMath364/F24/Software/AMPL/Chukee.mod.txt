@@ -1,0 +1,13 @@
+param nToys; # set to # toys, 2 in our case
+
+param nOps; # set to # operations, 2 in our case
+
+param DataNums {1..nToys, 1..nOps}; # matrix of coeff inverses
+
+param Profit {1..nToys};
+
+var x {1..nToys} >= 0;
+
+maximize Total_Profit: sum {i in 1..nToys} Profit[i]*x[i];
+
+subject to OpsLimit {j in 1..nOps}: sum {i in 1..nToys} (1/DataNums[i,j])*x[i] <= 1;

@@ -1,0 +1,16 @@
+# NYPD staffing problem (Problem 1 from Homework 3)
+
+param n_Shift; 						# n=6 shifts
+param Demand {1..n_Shift};				# Demand for each shift 
+param consec_Cost;					# cost per hour for consecutive shifts
+param noncon_Cost;					# cost per hour for non-consecutive shifts
+param Hours_per_Shift;					# 4 hrs per shift
+
+var x {i in 1..n_Shift-1, j in i+1..n_Shift} >= 0; 	# # workers in shifts i and j (for j > i, i=1,..,n-1)
+
+minimize Total_Cost: 2*Hours_per_Shift*consec_Cost*(sum {i in 1..n_Shift-1} x[i,i+1]) +
+		     2*Hours_per_Shift*noncon_Cost*(sum {i in 1..n_Shift-2, j in i+2..n_Shift} x[i,j]);
+
+s.t. Meet_Demand {k in 1..n_Shift}: sum{i in 1..n_Shift, j in i+1..n_Shift} ( if i=k || j=k then 1 else 0)*x[i,j] >= Demand[k];
+
+

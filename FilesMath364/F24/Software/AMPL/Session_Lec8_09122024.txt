@@ -1,0 +1,197 @@
+## AMPL Session from Lecture 8, 09/12/2024
+
+## Some additional comments have been added afterward for 
+## increased readability.
+
+ampl: option solver gubori;  # that's a typo! Should be gurobi!!
+      	     	    	     # ampl would've thrown an error when
+			     # asked to solve...
+
+ampl: option solver gurobi;
+ampl: model farmerJ.mod.txt;
+ampl: data farmerJ.dat.txt;
+
+## The files farmerJ.mod.txt and farmerJ.dat.txt are the versions that
+## were written up live in class. On the web page, the cleaned up
+## versions titled FarmerJones.mod.txt and FarmerJones.dat.txt are
+## posted.
+
+
+ampl: reset;
+## 'reset' clears out both model and data from the ampl session
+   
+
+ampl: model farmerJ.mod.txt; data farmerJ.dat.txt;
+
+## The 'expand' command writes out, i.e., expands, the objective
+## function or constraints
+
+ampl: expand Total_Revenue;
+maximize Total_Revenue:
+	30*x['corn'] + 100*x['wheat'];
+
+## You could expand multiple constraints together.
+
+ampl: expand Land_Available, LaborHrsLimits, MinCropLimits;
+subject to Land_Available:
+	x['corn'] + x['wheat'] <= 7;
+
+subject to LaborHrsLimits:
+	4*x['corn'] + 10*x['wheat'] <= 40;
+
+subject to MinCropLimits['corn']:
+	10*x['corn'] >= 30;
+
+subject to MinCropLimits['wheat']:
+	25*x['wheat'] >= 0;
+
+
+ampl: solve;
+Gurobi 10.0.0: optimal solution; objective 370
+2 simplex iterations
+
+## 'display' can be used to print the values of any variables after
+## solving the problem
+
+ampl: display x;
+x [*] :=
+ corn  3
+wheat  2.8
+;
+
+## 'display'ing a constraint lists it's dual or shadow price - more on
+## this topic later on.
+
+ampl: display LaborHrsLimits;
+LaborHrsLimits = 10
+
+ampl: display Total_Revenue;
+Total_Revenue = 370
+
+ampl: reset; model n_farmerJ.mod.txt;
+ampl: reset; model n_farmerJ.mod.txt; data n_farmerJ.dat.txt;
+ampl: solve; display x;
+Gurobi 10.0.0: optimal solution; objective 370
+2 simplex iterations
+x [*] :=
+1  3
+2  2.8
+;
+
+ampl: display MinCrop;
+MinCrop [*] :=
+1  30
+2   0
+;
+
+ampl: display MinCrop[2];
+MinCrop[2] = 0
+
+## We could use the 'let' command to reassign one (or more) parameter
+## values. This is a convenient way to make such small changes without
+## 'reset'-ing the whole data file.
+
+ampl: let MinCrop[2] := 10;
+ampl: display MinCrop;
+MinCrop [*] :=
+1  30
+2  10
+;
+
+ampl: solve; display x;
+Gurobi 10.0.0: optimal solution; objective 370
+0 simplex iterations
+x [*] :=
+1  3
+2  2.8
+;
+
+ampl: let MinCrop[2] := 60;
+ampl: solve; display x;
+Gurobi 10.0.0: optimal solution; objective 370
+0 simplex iterations
+x [*] :=
+1  3
+2  2.8
+;
+
+## Since Jones is already making 25*2.8 = 70 bushels of wheat, the
+## optimal solution remains the same. But now let's try to set the
+## minimnum corn requirement up to 40 bushels/week.
+
+ampl: let MinCrop[1] := 40;
+ampl: solve; display x;
+Solution determined by presolve;
+objective Total_Revenue = 360.
+x [*] :=
+1  4
+2  2.4
+;
+
+## To make 40 bushels of corn, Jones has to farm corn in 4 acres, and
+## hence the total revenue decreases to 360 since he cannot grow as
+## much wheat as before any more.
+
+ampl: reset;
+
+## Again, Myinv.mod/dat.txt were created in real time in class. The
+## cleaner versions (InvProb.mod/dat.txt) are posted on the course web
+## page.
+
+ampl: reset; model Myinv.mod.txt;
+ampl: reset; model Myinv.mod.txt; data Myinv.dat.txt;
+ampl: solve; 
+Gurobi 10.0.0: unbounded problem
+2 simplex iterations
+
+suffix unbdd OUT;
+ampl: reset; model Myinv.mod.txt; data Myinv.dat.txt; solve;
+Gurobi 10.0.0: unbounded problem
+2 simplex iterations
+
+suffix unbdd OUT;
+ampl: 
+ampl: 
+ampl: expand NetCost;
+minimize NetCost:
+	5*x[1] + 8*x[2] + 7*x[3] + 4*x[4] + 2*s[1] + 2*s[2] + 2*s[3] - 6*s[4];
+
+ampl: expand InvBalance;
+subject to InvBalance[1]:
+	-x[1] - s[0] + s[1] = -50;
+
+subject to InvBalance[2]:
+	-x[2] - s[1] + s[2] = -65;
+
+subject to InvBalance[3]:
+	-x[3] - s[2] + s[3] = -100;
+
+subject to InvBalance[4]:
+	-x[4] - s[3] + s[4] = -70;
+
+
+## As it turned out, I made a mistake in setting the ProdCost values
+## in the data file: they should've been [5 8 4 7], and not [5 8 7 4]
+## as seen above in the expression for NetCost. With the costs set
+## wrongly as above, note that we could make infinitely many units of
+## the commodity in month 4 at a cost of $4 each, and sell them all
+## for $6 at the end of that month to become infinitely rich!
+
+## Fixing that error makes the problem solve correctly.
+
+ampl: reset; model Myinv.mod.txt; data Myinv.dat.txt; solve;
+Gurobi 10.0.0: optimal solution; objective 1525
+0 simplex iterations
+ampl: reset; model Myinv.mod.txt; data Myinv.dat.txt; solve;
+Gurobi 10.0.0: optimal solution; objective 1525
+0 simplex iterations
+ampl: display x, s;
+:    x    s     :=
+0    .     0
+1   115   65
+2     0    0
+3   170   70
+4     0    0
+;
+
+ampl: 

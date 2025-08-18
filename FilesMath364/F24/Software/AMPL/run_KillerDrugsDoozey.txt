@@ -1,0 +1,36 @@
+ampl: reset; model KillerDrugsDoozey.mod.txt; data KillerDrugsDoozey.dat.txt; 
+ampl: expand TotalCost, Meet_DailyDemand, Meet_MinWeight, Use_MinChem, Use_MaxChem;
+minimize TotalCost:
+	9*x[1] + 12*x[2] + 17*x[3] + 8*x[4];
+
+subject to Meet_DailyDemand:
+	x[1] + x[2] + x[3] + x[4] = 900;
+
+subject to Meet_MinWeight['A']:
+	0.04*x[1] + 0.07*x[2] + 0.14*x[3] + 0.04*x[4] >= 72;
+
+subject to Meet_MinWeight['B']:
+	0.08*x[1] + 0.11*x[2] + 0.09*x[3] + 0.05*x[4] >= 90;
+
+subject to Meet_MinWeight['C']:
+	0.03*x[1] + 0.09*x[2] + 0.12*x[3] + 0.11*x[4] >= 63;
+
+subject to Use_MinChem[3]:
+	x[3] >= 200;
+
+subject to Use_MaxChem[4]:
+	x[4] <= 500;
+
+ampl: solve; display x;
+Gurobi 10.0.0: optimal solution; objective 11300
+2 simplex iterations
+x [*] :=
+1  166.667
+2  533.333
+3  200
+4    0
+;
+
+# Interpretation: Killer Drugs mixes Chemicals 1, 2, and 3 in the
+# propotions specified above at a minimum total of $11,300 to meet the
+# daily demand of 900 lbs of Doozey.

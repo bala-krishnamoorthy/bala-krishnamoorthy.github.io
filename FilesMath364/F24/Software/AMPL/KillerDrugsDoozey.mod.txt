@@ -1,0 +1,25 @@
+# Killer Drugs Doozey problem (Problem 2 from Homework 3)
+
+param nChem;			        # # chemicals, = 4
+set Ingreds;			        # active ingredients: A, B, C
+param DailyDemand;		
+param MinWeight {Ingreds};	        # min weight of each ingredient required in 1 lb 
+param Compos {1..nChem, Ingreds};	# composition of ingerdients in each chemical (by weight)
+param Cost {1..nChem};			# cost per pound of each chemical
+param MinChem {1..nChem};		# min weight of each chemical to be used
+param MaxChem {1..nChem};		# max weight of each chemical to be used
+
+var x {1..nChem} >= 0;			# pounds of each chemical used
+
+minimize TotalCost: sum {j in 1..nChem} Cost[j]*x[j];
+
+s.t. Meet_DailyDemand: sum {j in 1..nChem} x[j] = DailyDemand;
+s.t. Meet_MinWeight {i in Ingreds}: sum {j in 1..nChem} Compos[j,i]*x[j] >= MinWeight[i]*DailyDemand;
+s.t. Use_MinChem {j in 1..nChem: MinChem[j] > 0}: x[j] >= MinChem[j];
+s.t. Use_MaxChem {j in 1..nChem: MaxChem[j] > 0}: x[j] <= MaxChem[j];
+
+# We write the Use_MinChem and Use_MaxChem constraints only when a
+# nontrivial (> 0) lower of upper bound, respectively, is specified!
+
+
+

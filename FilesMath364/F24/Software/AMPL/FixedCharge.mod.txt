@@ -1,0 +1,17 @@
+param n; # # products
+
+param Profit {1..n};		
+param RawMatlPerUnit {1..n};
+param TotalRawMatl;
+param FixedCharge {1..n};
+
+param M {i in 1..n} := TotalRawMatl/RawMatlPerUnit[i];
+
+var x {1..n} >= 0; # # units of product i
+var y {1..n} binary;
+#var y {1..n} >= 0, <= 1; #, integer;
+
+maximize NetProfit: sum {i in 1..n} (Profit[i]*x[i] - FixedCharge[i]*y[i]);
+
+s.t. MaxRawMatl: sum {i in 1..n} RawMatlPerUnit[i]*x[i] <= TotalRawMatl;
+s.t. ForcingCnstr {i in 1..n}: x[i] <= M[i]*y[i];

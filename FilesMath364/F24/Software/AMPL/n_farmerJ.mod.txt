@@ -1,0 +1,18 @@
+param n; # number of crops;
+param Yield {j in 1..n};
+param LaborHrs {1..n};    # labor hrs req. per acre of each Crop
+param Price {1..n};	   # price in $/bu for each crop
+
+param LandAvlbl;
+param TotalLaborHrs;
+
+param MinCrop {1..n};	   # min crop req. in bu/wk, 0 for wheat
+
+var x {j in 1..n} >= 0;
+
+maximize Total_Revenue: sum {j in 1..n} Price[j]*Yield[j]*x[j];
+
+subject to Land_Available: sum {i in 1..n} x[i] <= LandAvlbl;
+subject to LaborHrsLimits: sum {j in 1..n} LaborHrs[j]*x[j] <= TotalLaborHrs;
+subject to MinCropLimits {j in 1..n}: Yield[j]*x[j] >= MinCrop[j];
+# repeating the MinCropLimits constraint for each crop

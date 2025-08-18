@@ -1,0 +1,16 @@
+param n := 4;
+
+param Demand :=
+1  50
+2  65
+3 100
+4  70;
+
+param ProdCost  :=
+1  5
+2  8
+3  7
+4  4;
+
+param StoreCost := 2;
+param SellPrice := 6; 

@@ -1,0 +1,24 @@
+ampl: reset; model GaseousChemicals.mod.txt; data GaseousChemicals.dat.txt; 
+ampl: expand Total_Cost, Meet_Demand;
+minimize Total_Cost:
+	4*x['proc1'] + x['proc2'];
+
+subject to Meet_Demand['A']:
+	3*x['proc1'] + x['proc2'] >= 10;
+
+subject to Meet_Demand['B']:
+	x['proc1'] + x['proc2'] >= 5;
+
+subject to Meet_Demand['C']:
+	x['proc1'] >= 3;
+
+ampl: solve; display x;
+Gurobi 10.0.0: optimal solution; objective 14
+1 simplex iterations
+x [*] :=
+proc1  3
+proc2  2
+;
+
+# Interpretation: Gaseuos Chemicals should run process 1 for 3 hrs
+# and Process 2 for 2 hours, for a minimum total cost of $14.

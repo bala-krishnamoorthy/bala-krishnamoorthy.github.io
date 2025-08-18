@@ -1,0 +1,79 @@
+## AMPL Session from Lecture 23, 11/05/2024
+
+
+
+ampl: option solver gurobi;
+
+% We solve the dual LP of the Farmer Jones LP directly
+ampl: reset; model Dual_FarmerJones.txt; solve; display y1,y2,y3;
+Gurobi 10.0.0: optimal solution; objective 370
+4 simplex iterations
+y1 = 0
+y2 = 10
+y3 = -10
+
+% Ha! We had the original version. Let's change the coefficient of x2
+% in the obj fn to 25 as being considered now.
+
+ampl: reset; model Dual_FarmerJones.txt; solve; display y1,y2,y3;
+Gurobi 10.0.0: optimal solution; objective 210
+2 simplex iterations
+y1 = 30
+y2 = 0
+y3 = 0
+
+ampl: reset; model Dual_FarmerJones.txt; solve; display y1,y2,y3;
+Gurobi 10.0.0: optimal solution; objective 210
+2 simplex iterations
+y1 = 30
+y2 = 0
+y3 = 0
+
+% We had scaled the (min corn) constraint by 10. Let's go back to the
+% original version (10x1 >= 30), and solve the dual LP again.
+
+ampl: reset; model Dual_FarmerJones.txt; solve; display y1,y2,y3;
+Gurobi 10.0.0: optimal solution; objective 370
+2 simplex iterations
+y1 = 0
+y2 = 10
+y3 = -1
+
+% We get y3=-1, exactly as read off from the optimal primal tableau
+
+% we use "display <ConstraintName>;" to display the corresponding
+% optimal dual solution (after solving the primal LP)
+
+ampl: reset; model FarmerJones.mod.txt; data FarmerJones.dat.txt; solve;
+Gurobi 10.0.0: optimal solution; objective 370
+2 simplex iterations
+ampl: display x;
+x [*] :=
+ corn  3
+wheat  2.8
+;
+
+ampl: display Land_Available, Labor_Hrs_Limit, Min_Crop_Limit;
+Land_Available = 0
+Labor_Hrs_Limit = 10
+
+Min_Crop_Limit [*] :=
+ corn  -1
+wheat   0
+;
+
+
+% Note the shadow price of Min_Corn is -1. Indeed, if we increase the
+% min_corn requirement from 30 to 31, the optimal revenue should go
+% down by (-1)*1 = -1 dollar, as seen below
+
+ampl: reset; model FarmerJones.mod.txt; data FarmerJones.dat.txt; solve; 
+Gurobi 10.0.0: optimal solution; objective 369
+2 simplex iterations
+ampl: display x;
+x [*] :=
+ corn  3.1
+wheat  2.76
+;
+
+ampl: 

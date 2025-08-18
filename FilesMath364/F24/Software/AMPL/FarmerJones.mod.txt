@@ -1,0 +1,29 @@
+# Model file for Farmer Jones LP using a set of crops
+# 
+# The LP is 
+#      max Z = 30 x1 + 100 x2        (total revenue) 
+#      s.t        x1 +     x2 <= 7   (land available) 
+#               4 x1 +  10 x2 <= 40  (labor hrs) 
+#              10 x1          >= 30  (min corn)
+#                 x1, x2      >= 0   (non-negativity)
+
+set Crops; # corn, wheat, etc.
+
+param Yield {j in Crops};   # Yield[j] is the yield per acre of crop j
+param LaborHrs {Crops};     # {j in Crops} or {Crops} work equally; 
+param SellPrice {Crops};    # {j in Crops} for emphasis
+param MinCrop {j in Crops}; # MinCrop['corn'] = 30, for instance
+
+param Land;                 # Total land available in acres
+param TotalLaborHrs;
+
+var x {j in Crops} >= 0; # x[j] = # acres of crop j
+
+maximize Total_Revenue:  sum {j in Crops} SellPrice[j]*Yield[j]*x[j];
+
+subject to Land_Available: sum {j in Crops} x[j] <= Land;
+subject to Labor_Hrs_Limit: sum {j in Crops} LaborHrs[j]*x[j] <= TotalLaborHrs;
+subject to Min_Crop_Limit {j in Crops}: Yield[j]*x[j] >= MinCrop[j];
+
+# the index set being before the ":" means the constraint is repeated
+# for each j, i.e., for each Crop.

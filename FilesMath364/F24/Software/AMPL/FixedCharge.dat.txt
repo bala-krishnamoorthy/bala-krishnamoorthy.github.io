@@ -1,0 +1,15 @@
+param n := 2;
+
+param Profit :=
+1  4
+2  5;
+
+param RawMatlPerUnit :=
+1  3
+2  6;
+
+param TotalRawMatl := 120;
+
+param FixedCharge :=
+1 10
+2 20;

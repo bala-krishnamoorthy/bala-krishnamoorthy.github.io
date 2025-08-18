@@ -1,0 +1,111 @@
+%% Math 364: Tableau simplex method in Matlab
+%% Matlab session from Lecture 18 on 10/17/2024
+%%
+%% Comments added at "% " for increased readability
+
+%% We consider the following min-LP in standard form from Lecture 13,
+%% solved using the big-M method in class (by hand calculations):
+%%
+%% min  z = 2x1 + 3x2 + Ma1
+%% s.t.     2x1 +  x2 +  a1 - e1      = 4
+%% 	    -x1 +  x2 	         + s2 = 1
+%% 	    all vars >= 0
+
+
+% We can set M as number that is substantially large compared to the
+% numbers in the given LP. In this instance, setting M = 10,000 works
+% well. Choosing such a round number also makes it easier to figure
+% the exact expressions for terms involving M, e.g., 19998 = 2*M-2.
+
+>> M = 10000;
+
+% We set the tableau as an (m+1)x(n+2) matrix with Row-0 at the top
+% followed by the m rows for the constraints. The first, i.e.,
+% leftmost column corresponds to z and is always the first unit vector
+% in (m+1) dimensions. We then have the n columns corresponding to the
+% n variables followed by the rhs column at the right end.
+
+>> T = [1 -2 -3 0 0 -M 0; 0 2 1 -1 0 1 4; 0 -1 1 0 1 0 1]
+T =
+           1          -2          -3           0           0      -10000           0
+           0           2           1          -1           0           1           4
+           0          -1           1           0           1           0           1
+
+>> [m,n] = size(T)
+m =
+     3
+n =
+     7
+
+% We do the first ERO to convert the tableau to canonical form
+% R0 + M*R1
+
+>> T(1,:)
+ans =
+           1          -2          -3           0           0      -10000           0
+>> T(1,:) + M*T(2,:)
+ans =
+           1       19998        9997      -10000           0           0       40000
+
+
+>> T(1,:) = T(1,:) + M*T(2,:)
+T =
+           1       19998        9997      -10000           0           0       40000
+           0           2           1          -1           0           1           4
+           0          -1           1           0           1           0           1
+
+
+% This is the canonical starting tableau. We now pivot x1 into the basis
+
+>> T(2,:)/T(2,2)
+ans =
+         0    1.0000    0.5000   -0.5000         0    0.5000    2.0000
+
+% We can gave the numbers displayed in rational format:
+>> format rat
+
+>> T(2,:)/T(2,2)
+ans =
+       0              1              1/2           -1/2            0              1/2            2       
+
+>> T(2,:) = T(2,:)/T(2,2)
+T =
+       1          19998           9997         -10000              0              0          40000       
+       0              1              1/2           -1/2            0              1/2            2       
+       0             -1              1              0              1              0              1       
+
+
+% We now do the two replacement EROs to make x1 canonical in Row-1,
+% i.e., R2+R1 and R0-(2M-2)*R1.
+
+>> T(3,:)+T(2,:)
+ans =
+       0              0              3/2           -1/2            1              1/2            3       
+>> T(3,:) = T(3,:)+T(2,:)
+T =
+       1          19998           9997         -10000              0              0          40000       
+       0              1              1/2           -1/2            0              1/2            2       
+       0              0              3/2           -1/2            1              1/2            3
+       
+>> T(1,:) - (2*M-2)*T(2,:)
+ans =
+       1              0             -2             -1              0          -9999              4       
+>> T(1,:) = T(1,:) - (2*M-2)*T(2,:)
+T =
+       1              0             -2             -1              0          -9999              4       
+       0              1              1/2           -1/2            0              1/2            2       
+       0              0              3/2           -1/2            1              1/2            3
+
+% This tableau is optimal (all numbers under vars in Row-0 are <= 0).
+
+
+% We can read off the inverse of the basis matrix (B^{-1}) from under
+% the slack and artificial variable columns in the correct
+% order---here, we read off the columns under a1 followed by that
+% under s2, since a1 is canonical in Row1 and s2 in Row2 in the
+% starting canonical tableau.
+
+>> Binv = [0 1/2;1 1/2]
+Binv =
+       0              1/2     
+       1              1/2     

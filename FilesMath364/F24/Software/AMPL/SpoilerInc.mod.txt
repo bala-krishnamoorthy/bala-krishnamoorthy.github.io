@@ -1,0 +1,21 @@
+# Spoiler Inc. RotFast LP (Problem 4 from Homework 3)
+
+param n_Quart; 	       	  	   # # quarters = 4
+param Demand {1..n_Quart};	   # Demand for RotFast in each quarter
+set   LaborTypes;		   # regular and over time
+param Cost {LaborTypes};	   # unit production cost for each labor type
+param MaxUnits {LaborTypes};	   # upper bound on # units made using each labor type in each quarter
+param SpoilFrac;		   # fraction (percentage) of spoilage from new production
+param RotFrac;			   # fraction (percentage) that rots
+param StoreCost;		   # storage cost
+param StartInventory;		   # # units available at start
+
+var x {1..n_Quart, LaborTypes} >= 0;
+var s {0..n_Quart} >= 0;
+
+minimize TotalCost: sum {i in 1..n_Quart, j in LaborTypes} Cost[j]*x[i,j] + StoreCost*(1-RotFrac)*(sum {i in 1..n_Quart} s[i]);
+
+s.t. Starting_Inventory: s[0] = StartInventory;
+s.t. NoUnitsAtEnd: s[n_Quart] = 0;
+s.t. RegTimeLimit {i in 1..n_Quart, j in LaborTypes: MaxUnits[j] > 0}: x[i,j] <= MaxUnits[j];
+s.t. Balance {i in 1..n_Quart} : (1-RotFrac)*s[i-1] + (1-SpoilFrac)*(sum {j in LaborTypes} x[i,j]) = Demand[i] + s[i];

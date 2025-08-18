@@ -1,0 +1,29 @@
+# Model file for Farmer Jones LP using number of crops
+
+# AMPL model file for the Farmer Jones problem
+# The LP is 
+#      max Z = 30 x1 + 100 x2        (total revenue) 
+#      s.t        x1 +     x2 <= 7   (land available) 
+#               4 x1 +  10 x2 <= 40  (labor hrs) 
+#              10 x1          >= 30  (min corn)
+#                 x1, x2      >= 0   (non-negativity)
+
+param n; # n=2, 1==>corn, 2==>wheat
+
+param Yield {j in 1..n};    # Yield[j] is the yield per acre of crop j
+param LaborHrs {1..n};      # {j in 1..n} or {1..n} work equally; 
+param SellPrice {1..n};  
+param MinCrop {j in 1..n};  # MinCrop[1] = 30, for instance
+
+param Land;                 # Total land available in acres
+param TotalLaborHrs;
+
+var x {1..n} >= 0; # x[j] = # acres of crop j
+
+maximize Total_Revenue:  sum {j in 1..n} SellPrice[j]*Yield[j]*x[j];
+
+subject to Land_Available: sum {j in 1..n} x[j] <= Land;
+subject to Labor_Hrs_Limit: sum {j in 1..n} LaborHrs[j]*x[j] <= TotalLaborHrs;
+
+subject to Min_Crop_Limit {j in 1..n}: Yield[j]*x[j] >= MinCrop[j];
+

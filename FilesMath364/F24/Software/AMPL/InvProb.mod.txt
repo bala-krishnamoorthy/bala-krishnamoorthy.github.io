@@ -1,0 +1,27 @@
+# Inventory planning LP from Lectures 6, 7
+
+# min z = 5 x1 + 8 x2 + 4 x3 + 7 x4 + 2 (s1+s2+s3) - 6 s4 (net cost)
+#
+# s.t. s1 = x1    -  50 (inventory month 1)
+#      s2 = x2+s1 -  65 (inventory month 2)
+#      s3 = x3+s2 - 100 (inventory month 3)
+#      s4 = x4+s3 -  70 (inventory month 4)
+#      all vars >= 0    (non-negativity)
+
+param n;    	     	# No. of months
+param Demand {1..n};
+param Cost   {1..n};
+param Store_Cost;	# same storage cost for each month
+param Price;		# selling price (at end of month n)
+
+var x {1..n} >= 0;	# x[j] = # units produced in month j
+var s {0..n} >= 0;	# s[j] = inventory at end of month j
+      	     		# s[0] = starting inventory; set to 0.
+
+
+minimize Net_Cost: sum {k in 1..n} Cost[k]*x[k] + Store_Cost*(sum {j in 0..n-1} s[j])
+	 	       	     	   		- Price*s[n];
+
+subject to inventory_balance {i in 1..n}: s[i-1] + x[i] = Demand[i] + s[i];
+
+subject to set_initial_inventory: s[0] = 0;

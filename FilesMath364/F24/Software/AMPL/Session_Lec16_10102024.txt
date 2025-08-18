@@ -1,0 +1,58 @@
+## AMPL Session from Lecture 16, 10/10/2024
+
+ampl: option solver gurobi;
+ampl: reset; model Chukee.mod.txt;
+ampl: reset; model Chukee.mod.txt; data Chukee.dat.txt;
+ampl: display DataNums;
+DataNums :=
+1 1   1500
+1 2    800
+2 1   1200
+2 2    700
+;
+
+# Testing what the error message will be when DataNums is not set
+# correctly...
+
+
+ampl: reset; model Chukee.mod.txt; data Chukee.dat.txt;
+
+Chukee.dat.txt, line 7 (offset 144):
+	expected ; . or number
+context:  2		  1200	700  >>> ; <<< 
+ampl: reset; model Chukee.mod.txt; data Chukee.dat.txt;
+
+Chukee.dat.txt, line 7 (offset 143):
+	expected ; . or number
+context:  1200	700  >>> ; <<< 
+
+ampl: reset; model Chukee.mod.txt; data Chukee.dat.txt;
+ampl: expand Total_Profit, OpsLimit;
+maximize Total_Profit:
+	4*x[1] + 3*x[2];
+
+subject to OpsLimit[1]:
+	0.000666667*x[1] + 0.000833333*x[2] <= 1;
+
+subject to OpsLimit[2]:
+	0.00125*x[1] + 0.00142857*x[2] <= 1;
+
+ampl: solve; display x;
+Gurobi 10.0.0: optimal solution; objective 3200
+2 simplex iterations
+x [*] :=
+1  800
+2    0
+;
+
+# Solving the LP directly (instead of splitting into model and data
+# files)
+
+ampl: reset; model ChukeeLP.txt;
+ampl: reset; model ChukeeLP.txt; solve; display x1,x2;
+Gurobi 10.0.0: optimal solution; objective 3200
+2 simplex iterations
+x1 = 800
+x2 = 0
+
+ampl: 

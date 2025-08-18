@@ -1,0 +1,92 @@
+# AMPL Session from Lecture 26, Nov 14, 2024
+
+ampl: option solver gurobi;
+ampl: reset; model FixedCharge.mod.txt;
+ampl: reset; model FixedCharge.mod.txt; data FixedCharge.dat.txt;
+ampl: expand NetProfit, MaxRawMatl, ForcingCnstr;
+maximize NetProfit:
+	2*x[1] + 5*x[2] - 10*y[1] - 20*y[2];
+
+subject to MaxRawMatl:
+	3*x[1] + 6*x[2] <= 120;
+
+subject to ForcingCnstr[1]:
+	x[1] - 40*y[1] <= 0;
+
+subject to ForcingCnstr[2]:
+	x[2] - 20*y[2] <= 0;
+
+ampl: solve; display x,y;
+Gurobi 10.0.0: optimal solution; objective 80
+1 simplex iterations
+1 branching nodes
+:   x    y    :=
+1    0   0
+2   20   1
+;
+
+# This happens to be too simple an MIP - Gurobi solves it in the root
+# node itself (as indicated by "1 branching nodes").
+
+ampl: expand NetProfit, MaxRawMatl, ForcingCnstr; solve; display x,y;
+maximize NetProfit:
+	2*x[1] + 5*x[2] - 10*y[1] - 20*y[2];
+
+subject to MaxRawMatl:
+	3*x[1] + 6*x[2] <= 120;
+
+subject to ForcingCnstr[1]:
+	x[1] - 40*y[1] <= 0;
+
+subject to ForcingCnstr[2]:
+	x[2] - 20*y[2] <= 0;
+
+Gurobi 10.0.0: optimal solution; objective 80
+0 simplex iterations
+1 branching nodes
+:   x    y    :=
+1    0   0
+2   20   1
+;
+
+# Relaxing the binary restrictions on y still gives the integer
+# optimal solution here, but that's just a lucky incident!
+
+ampl: reset; model FixedCharge.mod.txt; data FixedCharge.dat.txt; solve; display x,y;
+Gurobi 10.0.0: optimal solution; objective 80
+1 simplex iterations
+1 branching nodes
+:   x    y    :=
+1    0   0
+2   20   1
+;
+
+ampl: reset; model FixedCharge.mod.txt; data FixedCharge.dat.txt; solve; display x,y;
+Gurobi 10.0.0: optimal solution; objective 80
+0 simplex iterations
+:   x    y    :=
+1    0   0
+2   20   1
+;
+
+# Increasing the per unit profit for Product 1 to $6, which is >$5 for
+# Product 2, the optimal solution changes, but it still is too easy an
+# MIP to solve.
+
+ampl: reset; model FixedCharge.mod.txt; data FixedCharge.dat.txt; solve; display x,y;
+Gurobi 10.0.0: optimal solution; objective 230
+1 simplex iterations
+:   x    y    :=
+1   40   1
+2    0   0
+;
+
+ampl: reset; model FixedCharge.mod.txt; data FixedCharge.dat.txt; solve; display x,y;
+Gurobi 10.0.0: optimal solution; objective 150
+1 simplex iterations
+:   x    y    :=
+1   40   1
+2    0   0
+;
+
+ampl: 

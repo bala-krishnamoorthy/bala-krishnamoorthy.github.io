@@ -1,0 +1,23 @@
+# AMPL model file for Gaseous Chemicals LP (Problem 3 from Homework 2)
+#
+# min  z =  4 x1 + x2           (total cost)
+#
+#    s.t.   3 x1 + x2 >= 10  	(demand A)
+#    	      x1 + x2 >=  5  	(demand B)
+#   	      x1      >=  3  	(demand C)
+#             x1,  x2 >=  0     (non-negativity)
+
+
+set Procs;     	# set of processes (proc1, proc2)
+set Chems;  	# set of chemicals (A, B, C)
+
+param Yield {Procs, Chems}; 	       # yield of each chemical for each process
+param Cost{Procs};                     # cost for running an hour of each process
+param Demand{Chems};                   # demand for each chemical
+
+var   x {Procs} >= 0;                  # x_i = No. of hours of process i 
+
+minimize Total_Cost: sum {i in Procs} Cost[i]*x[i];
+
+s.t. Meet_Demand {j in Chems}: sum {i in Procs} Yield[i,j]*x[i] >= Demand[j];
+

@@ -1,0 +1,17 @@
+# Data file for Gaseous Chemicals LP (Problem 3 from Homework 2)
+
+set Procs := proc1 proc2;
+set Chems := A B C;
+
+param Yield: A  B  C:=
+proc1 	     3  1  1
+proc2	     1  1  0 ;
+
+param Cost := 
+proc1  4
+proc2  1 ;
+
+param Demand :=
+A  10
+B   5
+C   3;

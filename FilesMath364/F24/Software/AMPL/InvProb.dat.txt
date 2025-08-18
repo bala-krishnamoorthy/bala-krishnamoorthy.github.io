@@ -1,0 +1,19 @@
+# Data file for Inventory planning LP from Lecture 6
+
+param n := 4;    	     	# No. of months
+
+param Demand :=
+1  50
+2  65
+3 100
+4  70;
+
+param Cost :=
+1 5
+2 8
+3 4
+4 7 ;
+
+
+param Store_Cost := 2;		# same storage cost for each month
+param Price := 6;		# selling price (at end of month n)

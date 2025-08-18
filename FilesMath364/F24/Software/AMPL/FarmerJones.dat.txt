@@ -1,0 +1,22 @@
+# Data file for the Farmer Jones LP.
+
+set Crops := corn  wheat;
+
+param Yield :=
+corn  10
+wheat 25;
+
+param LaborHrs :=
+corn   4
+wheat 10;
+
+param SellPrice :=
+corn   3
+wheat  4;
+
+param Land := 7;
+param TotalLaborHrs := 40;
+
+param MinCrop :=
+corn   31
+wheat   0;

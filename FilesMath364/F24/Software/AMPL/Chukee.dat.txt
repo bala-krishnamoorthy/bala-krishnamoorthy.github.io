@@ -1,0 +1,11 @@
+param nToys := 2; # Dirty, Ugly
+
+param nOps := 2; # assembly, painting 
+
+param DataNums :    1    2  :=
+1     	          1500  800
+2		  1200	700 ;
+
+param Profit :=
+1  4
+2  3 ;

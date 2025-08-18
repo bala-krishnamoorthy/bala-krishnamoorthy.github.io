@@ -1,0 +1,71 @@
+%% Math 364: Sensitivity Analysis using matrix form 
+%% 	     of the tableau simplex method.
+%% Matlab session from Lecture 19 on 10/22/2024
+%%
+%% Comments added at "% " for increased readability
+
+% Farmer Jones LP with lowered c2
+% max  z =  30 x1 + 25 x2
+% s.t. 	       x1 +    x2 <=  7 (land avail)
+% 	     4 x1 + 10 x2 <= 40 (labr hrs)
+%	       x1      	  >=  3 (min corn) % scaled by 10
+%	       x1,     x2 >=  0 (non neg)
+
+% The optimal tableau has {e3, s2, x1} as the basic variables in that
+% order. So we can read off the basis matrix B from under these
+% columns in the starting tableau
+
+>> B = [0 0 1; 0 1 4; -1 0 1]
+B =
+     0     0     1
+     0     1     4
+    -1     0     1
+
+% Similarly, we find B^{-1} from under the columns of {s1, s2, a3} in
+% the optimal tableau. Note that these columns have the identity
+% matrix in the starting tableau.
+
+>> Binv = [1 0 -1;-4 1 0; 1 0 0]
+Binv =
+     1     0    -1
+    -4     1     0
+     1     0     0
+
+% Just to confirm that we have read off B^{-1} correctly, we check
+% B*B^{-1} and B^{-1}*B
+
+>> B*Binv
+ans =
+     1     0     0
+     0     1     0
+     0     0     1
+>> Binv*B
+ans =
+     1     0     0
+     0     1     0
+     0     0     1
+
+% We could also ask Matlab to invert B for us (to confirm)
+
+>> inv(B)
+ans =
+     1     0    -1
+    -4     1     0
+     1     0     0
+
+
+% The column of x2 in the starting tableau is set as vector a2:
+
+>> a2 = [1 10 0]'
+a2 =
+     1
+    10
+     0
+
+% B^{-1}*a2 gives the column of x2 in the optimal tableau:
+
+>> Binv*a2
+ans =
+     1
+     6
+     1

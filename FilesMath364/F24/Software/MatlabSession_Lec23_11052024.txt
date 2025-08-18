@@ -1,0 +1,109 @@
+%% Math 364: Sensitivity Analysis using matrix form 
+%% 	     of the tableau simplex method.
+%% Matlab session from Lecture 23 on 11/05/2024
+%%
+%% Comments added at "% " for increased readability
+
+% We find the optimal tabluea for the Farmer Jones LP directly using
+% the knowledge of the optimal basis
+%
+% Original Farmer Jones LP:
+% max  z =  30 x1 + 100x2
+% s.t. 	       x1 +    x2 <=  7 (land avail)
+% 	     4 x1 + 10 x2 <= 40 (labr hrs)
+%	     10x1      	  >= 30 (min corn) % **NOT** scaled by 10
+%	       x1,     x2 >=  0 (non neg)
+
+
+ 
+>> A = [ 1 1 1 0 0 0; 4 10 0 1 0 0; 10 0 0 0 -1 1]
+A =
+     1     1     1     0     0     0
+     4    10     0     1     0     0
+    10     0     0     0    -1     1
+>> b= [7 40 30]'
+b =
+     7
+    40
+    30
+
+% We can use M=10,000 for the big-M
+
+>> M = 10000; c = [30 100 0 0 0 -M]' 
+c =
+          30
+         100
+           0
+           0
+           0
+      -10000
+
+% x1, x2, s1 are basic in the optimal tableau
+
+>> basis = [1 2 3] 
+basis =
+     1     2     3
+>> cB = c(basis)
+cB =
+    30
+   100
+     0
+>> n = 6; m=3;
+>> cN = c(setdiff(1:n,basis))
+cN =
+           0
+           0
+      -10000
+
+% initialize the starting tableau
+
+>> T = [ [1 -c' 0]; [zeros(m,1) A b]]
+T =
+           1         -30        -100           0           0           0       10000           0
+           0           1           1           1           0           0           0           7
+           0           4          10           0           1           0           0          40
+           0          10           0           0           0          -1           1          30
+>> format rat
+
+% We find the basis matrix B, and use it to form the elementary matrix
+% whose inverse represents all EROs to convert T0 to the optimal
+% tableau.
+
+
+>> B = A(:,basis)
+B =
+       1              1              1       
+       4             10              0       
+      10              0              0
+      
+>> E = [1 -cB'; zeros(m,1) B]
+E =
+       1            -30           -100              0       
+       0              1              1              1       
+       0              4             10              0       
+       0             10              0              0
+
+% The elementary matrix is E^{-1}
+>> inv(E)
+ans =
+       1              0             10             -1       
+       0              0              0              1/10    
+       0              0              1/10          -1/25    
+       0              1             -1/10          -3/50    
+
+% Let's find the optimal tableau
+
+>> Topt = inv(E)*T
+Topt =
+       1              0              0              0             10              1           9999            370       
+       0              1              0              0              0             -1/10           1/10           3       
+       0              *              1              0              1/10           1/25          -1/25          14/5     
+       0              0              0              1             -1/10           3/50          -3/50           6/5
+
+% The "*" entry is essentially zero - it's listed as an extremely
+% small number close to zero due to numerical tolerances.
+
+>> Topt(3,2)
+ans =
+      -1/18014398509481984
+>> 

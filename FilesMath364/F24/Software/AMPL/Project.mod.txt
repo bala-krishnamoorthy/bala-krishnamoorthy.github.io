@@ -1,0 +1,31 @@
+# Model file for the project from Ike Broflowski
+
+param u;			#Bound for W values
+param Delta;			#Cutoff for what converts into a 1 or -1
+
+param Descript;  		#Number of Descriptors
+param ChemTrain;		#Number of Chemicals in Training Set
+param ChemTest;			#Number of Chemicals in Test Set
+
+var Mu;				#Forces the value of Epsilon to maximize
+var Epsilon {1..ChemTrain};		
+var W {0..Descript};
+
+#Data Input Parameters
+param DataTrain {1..ChemTrain, 1..Descript+1};	#Training Data
+param DataTest {1..ChemTest, 1..Descript+1};	#Test Data
+
+#Separating Data into X and Y matrices
+param XTrain {i in 1..ChemTrain, j in 1..Descript} = DataTrain[i,j+1]; 
+param XTest {i in 1..ChemTest, j in 1..Descript} = DataTest[i,j+1];
+param YTrain {i in 1..ChemTrain} = DataTrain[i,1];
+param YTest {i in 1..ChemTest};
+
+#---LP---
+
+maximize z: Mu;
+
+subject to LineFit {i in 1..ChemTrain} : 
+	YTrain[i]*(sum{j in 1..Descript}W[j]*XTrain[i,j]+W[0]) >= 1+Epsilon[i];
+subject to EpsilonMu {i in 1..ChemTrain}: Mu<=Epsilon[i];
+subject to WConstraint {i in 1..Descript+1}: -u <= W[i-1] <=u; 		#Upper and lower bounds for W

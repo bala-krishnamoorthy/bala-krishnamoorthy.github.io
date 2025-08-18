@@ -1,0 +1,38 @@
+# Run commands for the project from Ike Broflowski
+
+#This file loads the data and model, solves the model, and
+#then compares the data to the known values to provide an
+#accuracy value.
+
+
+reset; model Project.mod.txt; data Project.dat.txt; 
+printf "\n";
+solve;
+
+#Variables to Determine Accuracy of Sorting.
+var YTrainFinal {1..ChemTrain};
+var YTestFinal {1..ChemTest};
+var CorrectInTrainingSet;
+var CorrectInTestSet;
+
+#Applies the W-line Training Set and turns the result into 1 or -1.
+let {i in 1..ChemTrain} YTrainFinal[i] := 		
+	(if sum{j in 1..Descript} W[j]*XTrain[i,j]+W[0] >= Delta then 1 else -1);
+
+#Sum of Correct Results.
+let CorrectInTrainingSet := 
+	sum{i in 1..ChemTrain}(if YTrain[i]=YTrainFinal[i] then 1 else 0);
+
+printf "\n";
+printf "\n";
+display CorrectInTrainingSet;
+
+#Applies the W-line to Test Set and turns the result into 1 or -1.
+let {i in 1..ChemTest} YTestFinal[i] := 
+	(if sum{j in 1..Descript} W[j]*XTest[i,j]+W[0] >= Delta then 1 else -1);
+	
+#Sum of Correct Results.	
+let CorrectInTestSet :=
+	sum{i in 1..ChemTest}(if YTest[i]=YTestFinal[i] then 1 else 0);
+	
+display CorrectInTestSet;

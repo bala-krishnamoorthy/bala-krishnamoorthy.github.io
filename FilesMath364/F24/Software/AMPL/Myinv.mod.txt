@@ -1,0 +1,15 @@
+param n; # n = No of Months
+
+param Demand {1..n};
+param ProdCost {1..n};
+
+param StoreCost;
+param SellPrice; 
+
+var x {1..n} >= 0; # x[i] = # units produced in month i
+var s {0..n} >= 0;
+
+minimize NetCost: sum {i in 1..n} ProdCost[i]*x[i] + StoreCost*(sum {j in 1..n-1} s[j]) - SellPrice*s[n];
+
+subject to InvBalance {i in 1..n}: s[i] = x[i] + s[i-1] - Demand[i];
+subject to NoStartInv: s[0] = 0;

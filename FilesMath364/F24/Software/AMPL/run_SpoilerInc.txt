@@ -1,0 +1,66 @@
+ampl: reset; model SpoilerInc.mod.txt;data SpoilerInc.dat.txt; 
+ampl: expand TotalCost, Starting_Inventory, NoUnitsAtEnd, RegTimeLimit, Balance;
+minimize TotalCost:
+	50*x[1,'RT'] + 70*x[1,'OT'] + 50*x[2,'RT'] + 70*x[2,'OT'] + 
+	50*x[3,'RT'] + 70*x[3,'OT'] + 50*x[4,'RT'] + 70*x[4,'OT'] + 11.04*s[1]
+	 + 11.04*s[2] + 11.04*s[3] + 11.04*s[4];
+
+subject to Starting_Inventory:
+	s[0] = 12;
+
+subject to NoUnitsAtEnd:
+	s[4] = 0;
+
+subject to RegTimeLimit[1,'RT']:
+	x[1,'RT'] <= 25;
+
+subject to RegTimeLimit[2,'RT']:
+	x[2,'RT'] <= 25;
+
+subject to RegTimeLimit[3,'RT']:
+	x[3,'RT'] <= 25;
+
+subject to RegTimeLimit[4,'RT']:
+	x[4,'RT'] <= 25;
+
+subject to Balance[1]:
+	0.85*x[1,'RT'] + 0.85*x[1,'OT'] + 0.92*s[0] - s[1] = 30;
+
+subject to Balance[2]:
+	0.85*x[2,'RT'] + 0.85*x[2,'OT'] + 0.92*s[1] - s[2] = 28;
+
+subject to Balance[3]:
+	0.85*x[3,'RT'] + 0.85*x[3,'OT'] + 0.92*s[2] - s[3] = 40;
+
+subject to Balance[4]:
+	0.85*x[4,'RT'] + 0.85*x[4,'OT'] + 0.92*s[3] - s[4] = 35;
+
+ampl: solve; display x,s;
+Gurobi 10.0.0: optimal solution; objective 8084.133365
+6 simplex iterations
+x :=
+1 OT    0
+1 RT   25
+2 OT    5.46259
+2 RT   25
+3 OT   22.0588
+3 RT   25
+4 OT   16.1765
+4 RT   25
+;
+
+s [*] :=
+0  12
+1   2.29
+2   0
+3   0
+4   0
+;
+
+
+# Interpretation: The minimum total cost for Spoiler Inc. is $8084.13,
+# with the production schedule as shown above. Note that the total
+# cost to produce in regular time and store is 50 + 12, which is
+# smaller than the unit cost of production in over time. Hence the
+# regular time production is maxed out at the limit of 25 units in
+# each quarter.
