@@ -107,14 +107,39 @@
 	  <tr>
 	    <td> Aug 27 </td>
 	    <td align="left">
+	      <a  href="https://zachf3n.github.io/">Zach Fendler</a>, WSU
 	    </td>
 
 	    <td align="justify">
+	      Adapting depth to Relocalization
 	      <div data-role="" class="">
 		<div data-role="collapsible">
 		  <h4>Abstract (click to read)</h4>
 		  <p>
-
+		    Relocalization is the task of estimating a
+		    camera's six degrees of freedom (6-DoF) pose
+		    within a known map, a problem with key
+		    applications in robotics, AR, and autonomous
+		    systems. In this talk, I will present our work
+		    from the G-RIPS Sendai 2025 program in
+		    collaboration with Mitsubishi Electric, where we
+		    developed a novel RGB-D relocalization pipeline
+		    designed to be robust to illumination changes. Our
+		    approach combines global feature extraction using
+		    ResNet18 + NetVLAD on both RGB and depth
+		    modalities with a late-fusion strategy (Net-AF)
+		    and local matching via ASIFT and SuperPoint. Depth
+		    data is further projected into 3D point clouds for
+		    pose estimation using RANSAC and the Kabsch
+		    algorithm. We evaluated our pipeline on the
+		    Stanford 2D-3D-Semantics dataset, including
+		    illumination-augmented variants, and observed
+		    strong performance under well-lit conditions,
+		    while identifying key challenges under
+		    low-light conditions. I will discuss the lessons
+		    learned, the promise of multimodal fusion, and
+		    future directions such as dynamic fusion weighting
+		    and depth-aware feature learning.
 		  </p>
 
 		</div>
@@ -132,7 +157,7 @@
     <address><a 
     href="mailto:kbala@wsu.edu"></a></address>
     <!-- hhmts start -->
-    Last modified: Tue Aug 19 19:29:18 PDT 2025
+    Last modified: Tue Aug 26 19:29:18 PDT 2025
     <!-- hhmts end -->
 
   </body>
