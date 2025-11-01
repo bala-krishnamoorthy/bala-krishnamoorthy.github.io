@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <title>Executables</title>
+  </head>
+
+  <body>
+    <h1>Executables</h1>
+    <p> I. &nbsp;&nbsp; To score a PDB file, and to get the profile scores <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; and neighbor residues of each residue, use <B><i>GetProfile</i></B>. <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Details are given in the <a href="codes/Readme_GetProfile.txt">Readme</a>  file. <br> 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Here is a sample <a href="codes/profnew.txt">profile</a> output file for
+      <a href="codes/2ACY.pdb.txt">2ACY</a>.<br><br>
+      
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Download the appropriate executable as a binary file. The Readme file <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; should also be saved into the same directory where the executable file is saved <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color=red><b>without the <i>.txt</i> extension.</b></font> <br><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The default command looks like 
+    <pre> > GetProfile ../pdbs/1ERX.pdb A ../pdbs/profiles/profile_1ERX </pre>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The PDB file and the file to which the profile is to be written could be <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;located somewhere else in the machine. As long as the full path is given,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the codes should work fine. <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Please refer to the Readme file for details about additional options available.
+    <UL COMPACT>
+      <LI> To run in Linux, use <a href="codes/GetProfile_linux">GetProfile_linux</a> 
+	(compiled using g++ 3.2.2 in Linux 9).
+      <LI>  To run in Sun, use <a href="codes/GetProfile_sun">GetProfile_sun</a> 
+	(compiled using g++ 3.3 in SunOS 5.9).
+      <LI>To run in IRIX, use <a href="codes/GetProfile_irix">GetProfile_irix</a>
+	(compiled using g++ 3.3 in IRIX64).
+    </UL>
+  </p>
+    
+    <p> II. &nbsp; <A href="Mutate/welcome.html">Virtual mutagenesis</a><br></p>
+
+    <p> III. To generate a new table of log-likelihood ratios using <br> 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a list of PDB chains, use <i><b>GetPot</i></b>.<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Details are given in the <a href="codes/Readme_GetPot.txt">Readme</a>  file. <br><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Download the appropriate executable as a binary file. The Readme file <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; should also be saved into the same directory where the executable file is saved <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color=red><b>without the <i>.txt</i> extension.</b></font> <br><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The default command looks like 
+    <pre> > GetPot list_pdbs ../PotTables/Table4B_SC.dat </pre>
+
+    <UL COMPACT>
+      <LI> To run in Linux, use <a href="codes/GetPot_linux">GetPot_linux</a> <br>
+	(compiled using gcc version 3.3.3 (Red Hat Linux 3.3.3-7) Fedora Core 2).
+    </UL>
+    
+
+    <hr>
+    <address><a href="mailto:kbala@isis.or.unc.edu">Bala Krishnamoorthy</a></address>
+    <!-- Created: Mon Oct 27 02:38:02 EST 2003 -->
+    <!-- hhmts start -->
+Last modified: Tue Apr  3 16:59:34 PDT 2007
+<!-- hhmts end -->
+  </body>
+</html>

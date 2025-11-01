@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Scoring Function to Predict Solubility Mutagenesis</title>
+  </head>
+
+  <body>
+    <h1>Scoring Function to Predict Solubility Mutagenesis</h1>
+
+<font size=+1>
+ <p>
+ <!--<a href="Plain_OptSolMut.pdf">Paper</a> -->
+ <!--<a href="PredSolMut_R1.pdf">Paper</a> -->
+ <!--<a href="2066739965401277_article_done.pdf">Paper</a> -->
+ <a href="1748-7188-5-33.pdf">Paper</a>
+ (pdf) </font>
+ <br>
+<!-- &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; <font
+ size=-1><i>best viewed using <a
+ href="http://www.adobe.com/products/acrobat/readstep2.html">Acrobat
+ Reader</a></i></font><br>-->
+
+
+
+ <p>List of all mutations (ordered the same way as Table 1 in the
+ paper) - <a href="SolMut_Dataset.xls">SolMut_Dataset.xls</a><br>
+
+ Input files (with all 137 mutants) for use with the program: <a
+ href="input_mutpdbs.txt">input_mutpdbs.txt</a> &nbsp;&nbsp; <a
+ href="input_listmuts.txt">input_listmuts.txt</a><br><br>
+
+      
+ <a href="AddFile2_ConfMatrices.pdf">Confusion matrices<a/> for all predictions.<br><br> 
+
+ Cross validation across sequentially diverse folds, and average
+ hydrophobicity calculations: <a
+ href="SeqkfoldCV_AvgHydrophobicity.xls">SeqkfoldCV_AvgHydrophobicity.xls</a><br><br>
+
+ Script files to draw triangles in <a
+ href="http://www.ks.uiuc.edu/Research/vmd/">VMD<a/> for <a
+ href="http://www.pdb.org/pdb/files/1VQB.pdb">1VQB.pdb</a> and <a
+ href="http://www.pdb.org/pdb/files/2ACY.pdb">2ACY.pdb</a>: <a
+ href="1vqb_9A_triangles.txt">1vqb_9A_triangles.txt</a> &nbsp;&nbsp;
+ <a href="2acy_9A_triangles.txt">2acy_9A_triangles.txt</a><br> &nbsp;
+ &nbsp; (Load the PDB file into <a
+ href="http://www.ks.uiuc.edu/Research/vmd/">VMD<a/>, and then
+ <i>play</i> the corresponding script file.)<br>
+      
+
+ </p>
+
+
+<p>Excecutable programs <br>
+    <UL COMPACT>
+
+      <LI> Linux (compiled using gcc version 4.3.0 20080428 on Red Hat
+      4.3.0-8): <a
+      href="../codes/OptWtSolMutate.exe">OptWtSolMutate.exe</a>
+      </lI>
+
+      <LI> Mac (Mac OS X, version 10.5.6): <A
+      href="../codes/Mac_OptWtSolMutate.exe">Mac_OptWtSolMutate.exe</a>
+      </LI>
+
+      <LI> The following files should be present in the same directory
+	as the executable for the program to run:
+	<ul compact>
+
+	<li> <a
+	href="../codes/Table_Buried_3BPots.txt">Table_Buried_3BPots.txt</a>
+	- 1540 x 27 table of 3-body log-likelihood values</li>
+
+	<li> <a href="../codes/ListOfOptWts.txt">ListOfOptWts.txt</a>
+	- list of optimal weights (<i>w<sub>i</sub></i>) to be used
+	with the scoring function (from the LP running on the entire
+	dataset of mutants) .<br>
+
+	 &nbsp;&nbsp;&nbsp; Each line has the index of a triplet type,
+	 and the value. The index varies from 1 to 41580 (=1540 x
+	 27), while the value lies between 0 and 2.  <br>
+	 &nbsp;&nbsp;&nbsp; The weights of triplets not mentioned in
+	    this file are taken as 1 (default value).
+	  </li>
+
+	<li> <a
+	href="../codes/Readme_OptWtSolMutate.txt">Readme_OptWtSolMutate.txt</a>
+	- instructions for running the programs.</li>
+
+	 <li> Files mentioned in Readme: <A
+	 href="../codes/list_solmut.txt">list_solmut.txt</a> and <a
+	 href="../codes/input_mutate.txt">input_mutate.txt</a></li>
+	
+	<li><A href="../codes/ResidueMap.txt">ResidueMap.txt</a> -
+	maps of residues used in the scoring function.</li>
+	 </ul>
+
+      </LI>
+    </UL>
+
+  </p>
+
+
+    <hr>
+    <address><a href="mailto:bkrishna@stelias">Bala Krishnamoorthy</a></address>
+<!-- Created: Tue Apr  3 16:59:51 PDT 2007 -->
+<!-- hhmts start -->
+Last modified: Wed Oct  6 14:09:40 PDT 2010
+<!-- hhmts end -->
+  </body>
+</html>

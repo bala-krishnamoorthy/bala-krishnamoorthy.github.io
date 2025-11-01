@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Hierarchy of Delaunay Tessellation-based Scoring Functions</title>
+  </head>
+
+  <body>
+    <h1>Hierarchy of Delaunay Tessellation-based Scoring Functions</h1>
+
+ <a href="PSFB_HierarchyDelaunayPotentials.pdf">Paper draft</a><br>
+
+ <a href="DDScoreSummary_Sup2_HierDTPots.xls">Scores using various DT-based scoring functions</a> for all multiple decoys sets 
+from the <a href="http://dd.compbio.washington.edu/">Decoys 'R' Us</a> database.<br>
+
+ <!-- <a href="SolMutDataset_HierDTPots_Sup1.pdf">Solubility Mutagenesis data set</a><br>-->
+ Solubility Mutagenesis data set: 
+ &nbsp;&nbsp;&nbsp; Input files for use with the program 
+ <a href="../codes/SolMutate.exe">SolMutate.exe</a> : &nbsp;&nbsp;
+ <a href="List_SolMutants.txt">List_SolMutants.txt</a> &nbsp;&nbsp;
+ <a href="Input_SolMutants.txt">Input_SolMutants.txt</a>.<br>
+
+<p>Excecutable programs	(compiled using gcc version 4.3.0 20080428 (Red Hat 4.3.0-8)) <br> 
+(the corresponding table(s) of log-likelihood ratios is(are) provided for each executable.) <br>
+  <ul>
+    <li> Native/decoy discrimination scoring functions: &nbsp; <a 
+href="../codes/Readme_HierarchyDTPots.txt">Readme_HierarchyDTPots.txt</a></li>
+    <UL COMPACT>
+      <LI> <a href="../codes/TwoBNoBury.exe">TwoBNoBury.exe</a> 
+	   &nbsp;&nbsp; <a href="../codes/Table_2BPots.txt">Table_2BPots.txt</a></LI>         
+      <LI> <a href="../codes/Buried_TwoBPot.exe">Buried_TwoBPot.exe</a> 
+	   &nbsp;&nbsp; <a href="../codes/Table_Buried_2BPots.txt">Table_Buried_2BPots.txt</a></LI>         
+      <LI> <a href="../codes/ThreeBNoBury.exe">ThreeBNoBury.exe</a> 
+	   &nbsp;&nbsp; <a href="../codes/Table_3BPots.txt">Table_3BPots.txt</a></LI>
+      <LI> <a href="../codes/Buried_ThreeBPot.exe">Buried_ThreeBPot.exe</a> 
+	   &nbsp;&nbsp; <a href="../codes/Table_Buried_3BPots.txt">Table_Buried_3BPots.txt</a></LI>
+      <LI> <a href="../codes/FourBPot.exe">FourBPot.exe</a> 
+	   &nbsp;&nbsp; <a href="../codes/Table_4BPots.txt">Table_4BPots.txt</a>  
+           &nbsp;&nbsp; (see <a href="..">here</a> for details of original four-body pots)</LI>
+      <LI> <a href="../codes/Comb34BPot.exe">Comb34BPot.exe</a> 
+	   &nbsp;&nbsp; <a href="../codes/Table_Buried_3BPots.txt">Table_Buried_3BPots.txt</a>
+	   &nbsp;&nbsp; <a href="../codes/Table_4BPots.txt">Table_4BPots.txt</a></LI>
+    </UL>
+    <li> Programs to generate the tables of log-likelihood ratios: &nbsp; <A 
+href="../codes/Readme_GetTable.txt">Readme_GetTable.txt</a></li>
+    <UL COMPACT>
+      <LI> <a href="../codes/GetTable_2BPots.exe">GetTable_2BPots.exe</a></LI>
+      <LI> <a href="../codes/GetTable_Buried_2BPots.exe">GetTable_Buried_2BPots.exe</a></LI>
+
+      <LI> <a href="../codes/GetTables_3BPots.exe">GetTables_3BPots.exe</a> &nbsp; 
+           (generates both non-buried and buried 3-body tables) </LI>
+
+      <LI> <a href="../codes/GetTable_4BPots.exe">GetTable_4BPots.exe</a></LI>
+    </UL>
+    <li> Program for solublity mutagenesis: &nbsp; <a href="../codes/Readme_SolMutate.txt">Readme_SolMutate.txt</a></li>
+    <UL COMPACT>
+      <LI>  <a href="../codes/SolMutate.exe">SolMutate.exe</a> 
+	   &nbsp;&nbsp; <a href="../codes/Table_SolMut_3BPots.txt">Table_SolMut_3BPots.txt</a></LI>
+    </UL>
+  </ul>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The file <A href="../codes/ResidueMap.txt">ResidueMap.txt</a> 
+must be available in the working directory for running <b>all</b> the programs.
+  </p>
+
+
+    <hr>
+    <address><a href="../..">Bala Krishnamoorthy</a></address>
+<!-- Created: Tue Apr  3 16:59:51 PDT 2007 -->
+<!-- hhmts start -->
+Last modified: Thu Nov 6 10:50:33 PDT 2008
+<!-- hhmts end -->
+  </body>
+</html>

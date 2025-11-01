@@ -1,0 +1,129 @@
+Paper #	Article	Mutant #	Protein	PDB	Mutations	Solubility	Score	Correct (Y/N)?
+1	Improving protein solubility through rationally designed amino acid replacements	1	UMP-kinase 	2BND A	1 159 ASP	Increased	-3.75	N
+2	Amino Acid Contribution to Protein Solubility: Asp, Glu, and Ser Contribute more Favorably than the other Hydrophilic Amino Acids in RNase Sa	2	Rnase Sa(3K)	1RGG A	1 76 ASP	Increased	1.09	Y
+2	Amino Acid Contribution to Protein Solubility: Asp, Glu, and Ser Contribute more Favorably than the other Hydrophilic Amino Acids in RNase Sa	3	Rnase Sa	1RGG A	1 76 ARG	Increased	0.27	Y
+2	Amino Acid Contribution to Protein Solubility: Asp, Glu, and Ser Contribute more Favorably than the other Hydrophilic Amino Acids in RNase Sa	4	Rnase Sa	1RGG A	1 76 SER	Increased	2.23	Y
+2	Amino Acid Contribution to Protein Solubility: Asp, Glu, and Ser Contribute more Favorably than the other Hydrophilic Amino Acids in RNase Sa	5	Rnase Sa	1RGG A	1 76 GLU	Increased	2.42	Y
+2	Amino Acid Contribution to Protein Solubility: Asp, Glu, and Ser Contribute more Favorably than the other Hydrophilic Amino Acids in RNase Sa	6	Rnase Sa	1RGG A	1 76 LYS	Increased	0.37	Y
+2	Amino Acid Contribution to Protein Solubility: Asp, Glu, and Ser Contribute more Favorably than the other Hydrophilic Amino Acids in RNase Sa	7	Rnase Sa	1RGG A	1 76 GLY	Increased	0.28	Y
+2	Amino Acid Contribution to Protein Solubility: Asp, Glu, and Ser Contribute more Favorably than the other Hydrophilic Amino Acids in RNase Sa	8	Rnase Sa	1RGG A	1 76 ALA	Increased	1.49	Y
+2	Amino Acid Contribution to Protein Solubility: Asp, Glu, and Ser Contribute more Favorably than the other Hydrophilic Amino Acids in RNase Sa	9	Rnase Sa	1RGG A	1 76 HIS	Increased	-0.04	N
+2	Amino Acid Contribution to Protein Solubility: Asp, Glu, and Ser Contribute more Favorably than the other Hydrophilic Amino Acids in RNase Sa	10	Rnase Sa	1RGG A	1 76 ASN	Increased	0.15	Y
+2	Amino Acid Contribution to Protein Solubility: Asp, Glu, and Ser Contribute more Favorably than the other Hydrophilic Amino Acids in RNase Sa	11	Rnase Sa	1RGG A	1 76 PRO	Decreased	-1.19	Y
+2	Amino Acid Contribution to Protein Solubility: Asp, Glu, and Ser Contribute more Favorably than the other Hydrophilic Amino Acids in RNase Sa	12	Rnase Sa	1RGG A	1 76 CYS	Decreased	-0.36	Y
+2	Amino Acid Contribution to Protein Solubility: Asp, Glu, and Ser Contribute more Favorably than the other Hydrophilic Amino Acids in RNase Sa	13	Rnase Sa	1RGG A	1 76 MET	Decreased	-0.1	Y
+2	Amino Acid Contribution to Protein Solubility: Asp, Glu, and Ser Contribute more Favorably than the other Hydrophilic Amino Acids in RNase Sa	14	Rnase Sa	1RGG A	1 76 VAL	Decreased	-1.03	Y
+2	Amino Acid Contribution to Protein Solubility: Asp, Glu, and Ser Contribute more Favorably than the other Hydrophilic Amino Acids in RNase Sa	15	Rnase Sa	1RGG A	1 76 LEU	Decreased	-0.94	Y
+2	Amino Acid Contribution to Protein Solubility: Asp, Glu, and Ser Contribute more Favorably than the other Hydrophilic Amino Acids in RNase Sa	16	Rnase Sa	1RGG A	1 76 ILE	Decreased	-0.17	Y
+2	Amino Acid Contribution to Protein Solubility: Asp, Glu, and Ser Contribute more Favorably than the other Hydrophilic Amino Acids in RNase Sa	17	Rnase Sa	1RGG A	1 76 PHE	Decreased	0.59	N
+2	Amino Acid Contribution to Protein Solubility: Asp, Glu, and Ser Contribute more Favorably than the other Hydrophilic Amino Acids in RNase Sa	18	Rnase Sa	1RGG A	1 76 TRP	Decreased	0.84	N
+3	Mutagenesis of the central hydrophobic cluster in Ab42 Alzheimer’s peptide	19	A beta 42 (human beta-amyloid peptide)	1Z0Q A	1 19 ASP	Increased	13.05	Y
+3	Mutagenesis of the central hydrophobic cluster in Ab42 Alzheimer’s peptide	20	A beta 42 (human beta-amyloid peptide)	1Z0Q A	1 19 GLU	Increased	14.92	Y
+3	Mutagenesis of the central hydrophobic cluster in Ab42 Alzheimer’s peptide	21	A beta 42 (human beta-amyloid peptide)	1Z0Q A	1 19 ASN	Increased	9.08	Y
+3	Mutagenesis of the central hydrophobic cluster in Ab42 Alzheimer’s peptide	22	A beta 42 (human beta-amyloid peptide)	1Z0Q A	1 19 ARG	Increased	13.76	Y
+3	Mutagenesis of the central hydrophobic cluster in Ab42 Alzheimer’s peptide	23	A beta 42 (human beta-amyloid peptide)	1Z0Q A	1 19 GLN	Increased	17.93	Y
+3	Mutagenesis of the central hydrophobic cluster in Ab42 Alzheimer’s peptide	24	A beta 42 (human beta-amyloid peptide)	1Z0Q A	1 19 HIS	Increased	13.9	Y
+3	Mutagenesis of the central hydrophobic cluster in Ab42 Alzheimer’s peptide	25	A beta 42 (human beta-amyloid peptide)	1Z0Q A	1 19 THR	Increased	10.06	Y
+3	Mutagenesis of the central hydrophobic cluster in Ab42 Alzheimer’s peptide	26	A beta 42 (human beta-amyloid peptide)	1Z0Q A	1 19 GLY	Increased	13.38	Y
+3	Mutagenesis of the central hydrophobic cluster in Ab42 Alzheimer’s peptide	27	A beta 42 (human beta-amyloid peptide)	1Z0Q A	1 19 LYS	Increased	6.99	Y
+3	Mutagenesis of the central hydrophobic cluster in Ab42 Alzheimer’s peptide	28	A beta 42 (human beta-amyloid peptide)	1Z0Q A	1 19 PRO	Increased	13.29	Y
+3	Mutagenesis of the central hydrophobic cluster in Ab42 Alzheimer’s peptide	29	A beta 42 (human beta-amyloid peptide)	1Z0Q A	1 19 SER	Increased	20.89	Y
+3	Mutagenesis of the central hydrophobic cluster in Ab42 Alzheimer’s peptide	30	A beta 42 (human beta-amyloid peptide)	1Z0Q A	1 19 ALA	Increased	15.71	Y
+3	Mutagenesis of the central hydrophobic cluster in Ab42 Alzheimer’s peptide	31	A beta 42 (human beta-amyloid peptide)	1Z0Q A	1 19 CYS	Increased	12.34	Y
+3	Mutagenesis of the central hydrophobic cluster in Ab42 Alzheimer’s peptide	32	A beta 42 (human beta-amyloid peptide)	1Z0Q A	1 19 MET	Increased	12.25	Y
+3	Mutagenesis of the central hydrophobic cluster in Ab42 Alzheimer’s peptide	33	A beta 42 (human beta-amyloid peptide)	1Z0Q A	1 19 TRP	Increased	14.1	Y
+3	Mutagenesis of the central hydrophobic cluster in Ab42 Alzheimer’s peptide	34	A beta 42 (human beta-amyloid peptide)	1Z0Q A	1 19 TYR	Increased	12.44	Y
+3	Mutagenesis of the central hydrophobic cluster in Ab42 Alzheimer’s peptide	35	A beta 42 (human beta-amyloid peptide)	1Z0Q A	1 19 LEU	Increased	9.79	Y
+3	Mutagenesis of the central hydrophobic cluster in Ab42 Alzheimer’s peptide	36	A beta 42 (human beta-amyloid peptide)	1Z0Q A	1 19 VAL	Increased	6.15	Y
+3	Mutagenesis of the central hydrophobic cluster in Ab42 Alzheimer’s peptide	37	A beta 42 (human beta-amyloid peptide)	1Z0Q A	1 19 ILE	Decreased	12.76	N
+4	Effects of @6 Aromatic Amino Acids on Polymerization and Solubility of Recombinant Hemoglobins Made in Yeast	38	Hemoglobin	2D60 B	1 6 PHE	Increased	8.46	Y
+4	Effects of @6 Aromatic Amino Acids on Polymerization and Solubility of Recombinant Hemoglobins Made in Yeast	39	Hemoglobin	2D60 B	1 6 TRP	Increased	7.09	Y
+4	Effects of @6 Aromatic Amino Acids on Polymerization and Solubility of Recombinant Hemoglobins Made in Yeast	40	Hemoglobin	2D60 B	1 6 VAL	~ Same	-0.05	Y
+4	Effects of @6 Aromatic Amino Acids on Polymerization and Solubility of Recombinant Hemoglobins Made in Yeast	41	Hemoglobin	2D60 B	1 6 LEU	Decreased	6.46	N
+5	Genetic selection for protein solubility enabled by the folding quality control feature of the twin-arginine translocation pathway 	42	A beta 42 (human beta-amyloid peptide)	1Z0Q A	5 6 GLN 12 ALA 24 ALA 32 MET 36 GLY	Increased	73.03	Y
+5	Genetic selection for protein solubility enabled by the folding quality control feature of the twin-arginine translocation pathway 	43	A beta 42 (human beta-amyloid peptide)	1Z0Q A	3 12 ALA 32 THR 34 PRO	Increased	42.51	Y
+5	Genetic selection for protein solubility enabled by the folding quality control feature of the twin-arginine translocation pathway 	44	A beta 42 (human beta-amyloid peptide)	1Z0Q A	4 12 GLU 18 GLU 35 THR 41 ASN	Increased	18.79	Y
+5	Genetic selection for protein solubility enabled by the folding quality control feature of the twin-arginine translocation pathway 	45	A beta 42 (human beta-amyloid peptide)	1Z0Q A	2 19 SER 34 PRO	Increased	34.44	Y
+5	Genetic selection for protein solubility enabled by the folding quality control feature of the twin-arginine translocation pathway 	46	A beta 42 (human beta-amyloid peptide)	1Z0Q A	1 34 PRO	Increased	24.19	Y
+5	Genetic selection for protein solubility enabled by the folding quality control feature of the twin-arginine translocation pathway 	47	A beta 42 (human beta-amyloid peptide)	1Z0Q A	4 4 ILE 8 PRO 24 ALA 34 PRO	Increased	53.64	Y
+5	Genetic selection for protein solubility enabled by the folding quality control feature of the twin-arginine translocation pathway 	48	A beta 42 (human beta-amyloid peptide)	1Z0Q A	1 32 SER	Decreased	14.84	N
+6	Isolation of viral coat protein mutants with altered assembly and aggregation properties	49	MS2 Coat Protein (viral)	1MSC A	2 51 THR 96 THR	~ Same	-0.05	Y
+6	Isolation of viral coat protein mutants with altered assembly and aggregation properties	50	MS2 Coat Protein (viral)	1MSC A	2 26 THR 118 PHE	Decreased	-7.97	Y
+6	Isolation of viral coat protein mutants with altered assembly and aggregation properties	51	MS2 Coat Protein (viral)	1MSC A	1 27 SER	Decreased	-4.38	Y
+6	Isolation of viral coat protein mutants with altered assembly and aggregation properties	52	MS2 Coat Protein (viral)	1MSC A	1 107 THR	Decreased	-7.9	Y
+6	Isolation of viral coat protein mutants with altered assembly and aggregation properties	53	MS2 Coat Protein (viral)	1MSC A	4 24 SER 46 ARG 96 VAL 116 SER	Decreased	-37.41	Y
+6	Isolation of viral coat protein mutants with altered assembly and aggregation properties	54	MS2 Coat Protein (viral)	1MSC A	1 109 LEU	Decreased	-24.95	Y
+6	Isolation of viral coat protein mutants with altered assembly and aggregation properties	55	MS2 Coat Protein (viral)	1MSC A	2 48 ALA 109 HIS	Decreased	-16.16	Y
+6	Isolation of viral coat protein mutants with altered assembly and aggregation properties	56	MS2 Coat Protein (viral)	1MSC A	1 104 VAL	Decreased	-12.85	Y
+6	Isolation of viral coat protein mutants with altered assembly and aggregation properties	57	MS2 Coat Protein (viral)	1MSC A	7 12 ASP 34 GLY 52 PRO 92 MET 101 ARG 109 LEU 120 THR	Decreased	-60.6	Y
+6	Isolation of viral coat protein mutants with altered assembly and aggregation properties	58	MS2 Coat Protein (viral)	1MSC A	5 21 SER 24 ASP 40 ARG 46 TYR 79 ALA	Decreased	-51.15	Y
+6	Isolation of viral coat protein mutants with altered assembly and aggregation properties	59	MS2 Coat Protein (viral)	1MSC A	5 6 LEU 12 ASP 33 THR 56 CYS 95 LEU	Decreased	-55.95	Y
+6	Isolation of viral coat protein mutants with altered assembly and aggregation properties	60	MS2 Coat Protein (viral)	1MSC A	9 15 ASN 24 SER 29 ALA 32 CYS 45 SER 60 THR 98 TYR 104 ASN 126 PRO	Decreased	-121.41	Y
+6	Isolation of viral coat protein mutants with altered assembly and aggregation properties	61	MS2 Coat Protein (viral)	1MSC A	4 61 GLU 103 PHE 106 ARG 129 HIS	Decreased	-40.66	Y
+6	Isolation of viral coat protein mutants with altered assembly and aggregation properties	62	MS2 Coat Protein (viral)	1MSC A	3 4 SER 32 ARG 50 ARG	Decreased	-51.81	Y
+7	Improved solubility of TEV protease by directed evolution	63	TEV Protease (tobacco etch virus) (NOTE S219N MUTATION)	1LVM A	 3 17 SER 68 ASP 77 VAL	Increased	60.11	Y
+7	Improved solubility of TEV protease by directed evolution	64	TEV Protease (tobacco etch virus) (NOTE S219N MUTATION)	1LVM A	2 17 SER  80 SER	Increased	65.58	Y
+8	Understanding the relationship between the primary structure of proteins and its propensity to be soluble on overexpression in Escherichia coli.	65	Human HIV type 1 integrase	1BIZ A	1 131 ALA	Increased	-2.12	N
+8	Understanding the relationship between the primary structure of proteins and its propensity to be soluble on overexpression in Escherichia coli.	66	Human HIV type 1 integrase	1BIZ A	1 165 LYS	Increased	-0.23	N
+8	Understanding the relationship between the primary structure of proteins and its propensity to be soluble on overexpression in Escherichia coli.	67	Chimera of human liver cytosolic & mitochondrial isozymes of aldehyde dehydrogenase 	1NZX A	1 104 THR	Increased	-9.96	N
+8	Understanding the relationship between the primary structure of proteins and its propensity to be soluble on overexpression in Escherichia coli.	68	Chimera of human liver cytosolic & mitochondrial isozymes of aldehyde dehydrogenase 	1NZX A	1 203 HIS	Increased	10.24	Y
+8	Understanding the relationship between the primary structure of proteins and its propensity to be soluble on overexpression in Escherichia coli.	69	Colicin A	1COL A	1 140 PHE	Increased	-3.89	N
+8	Understanding the relationship between the primary structure of proteins and its propensity to be soluble on overexpression in Escherichia coli.	70	Chimera of human liver cytosolic & mitochondrial isozymes of aldehyde dehydrogenase 	1NZX A	1 19 TYR	Decreased	6.91	N
+8	Understanding the relationship between the primary structure of proteins and its propensity to be soluble on overexpression in Escherichia coli.	71	Human galactokinase	1WUU A	1 28 THR	Decreased	-23.88	Y
+8	Understanding the relationship between the primary structure of proteins and its propensity to be soluble on overexpression in Escherichia coli.	72	Human galactokinase	1WUU A	1 32 MET	Decreased	-17.18	Y
+8	Understanding the relationship between the primary structure of proteins and its propensity to be soluble on overexpression in Escherichia coli.	73	Human galactokinase	1WUU A	1 36 ARG	Decreased	-56.06	Y
+8	Understanding the relationship between the primary structure of proteins and its propensity to be soluble on overexpression in Escherichia coli.	74	Human galactokinase	1WUU A	1 288 MET	Decreased	-17.21	Y
+8	Understanding the relationship between the primary structure of proteins and its propensity to be soluble on overexpression in Escherichia coli.	75	Human galactokinase	1WUU A	1 384 PRO	Decreased	-15.56	Y
+8	Understanding the relationship between the primary structure of proteins and its propensity to be soluble on overexpression in Escherichia coli.	76	Basic fibroblast growth factor	1FGA A	1 70 SER	Decreased	-5.58	Y
+8	Understanding the relationship between the primary structure of proteins and its propensity to be soluble on overexpression in Escherichia coli.	77	Basic fibroblast growth factor	1FGA A	1 26 SER	Decreased	-3.87	Y
+8	Understanding the relationship between the primary structure of proteins and its propensity to be soluble on overexpression in Escherichia coli.	78	Basic fibroblast growth factor	1FGA A	1 93 SER	Decreased	4.69	N
+8	Understanding the relationship between the primary structure of proteins and its propensity to be soluble on overexpression in Escherichia coli.	79	Colicin A	1COL A	1 140 LYS	Decreased	-3.89	Y
+8	Understanding the relationship between the primary structure of proteins and its propensity to be soluble on overexpression in Escherichia coli.	80	Colicin A	1COL A	1 140 LEU	Decreased	-3.89	Y
+8	Understanding the relationship between the primary structure of proteins and its propensity to be soluble on overexpression in Escherichia coli.	81	Colicin A	1COL A	1 140 CYS	Decreased	-3.89	Y
+8	Understanding the relationship between the primary structure of proteins and its propensity to be soluble on overexpression in Escherichia coli.	82	Colicin A	1COL A	2 86 PHE 140 PHE	Decreased	-85.07	Y
+8	Understanding the relationship between the primary structure of proteins and its propensity to be soluble on overexpression in Escherichia coli.	83	Colicin A	1COL A	2 130 PHE 140 PHE	Decreased	-93.79	Y
+8	Understanding the relationship between the primary structure of proteins and its propensity to be soluble on overexpression in Escherichia coli.	84	Galactokinase	1WUU A	1 28 LYS	Decreased	-32.85	Y
+8	Understanding the relationship between the primary structure of proteins and its propensity to be soluble on overexpression in Escherichia coli.	85	Galactokinase	1WUU A	1 44 TYR	Decreased	-9.2	Y
+8	Understanding the relationship between the primary structure of proteins and its propensity to be soluble on overexpression in Escherichia coli.	86	Colicin A	1COL A	3 86 PHE 130 PHE 140 PHE	Decreased	-182.75	Y
+8	Understanding the relationship between the primary structure of proteins and its propensity to be soluble on overexpression in Escherichia coli.	87	Galactokinase	1WUU A	1 68 CYS	Decreased	3.15	N
+8	Understanding the relationship between the primary structure of proteins and its propensity to be soluble on overexpression in Escherichia coli.	88	Galactokinase	1WUU A	1 346 SER	Decreased	-9.59	Y
+8	Understanding the relationship between the primary structure of proteins and its propensity to be soluble on overexpression in Escherichia coli.	89	Galactokinase	1WUU A	1 349 SER	Decreased	-7.4	Y
+8	Understanding the relationship between the primary structure of proteins and its propensity to be soluble on overexpression in Escherichia coli.	90	Galactokinase	1WUU A	1 198 VAL	Decreased	6.63	N
+9	Amino Acid Substitutions affecting protein solubility	91	Human alpha-1 proteinase inhibitor	8API A	2 351 GLU 358 ARG	Increased	-28.89	N
+9	Amino Acid Substitutions affecting protein solubility	92	Human Interleukin 1 Beta	9ILB A	1 97 ARG	Increased	-4.52	N
+9	Amino Acid Substitutions affecting protein solubility	93	Colicin A	1COL A	2 113 PHE 140 LYS	Increased	49.58	Y
+9	Amino Acid Substitutions affecting protein solubility	94	Colicin A	1COL A	2 113 PHE 140 LEU	Increased	48.16	Y
+9	Amino Acid Substitutions affecting protein solubility	95	Colicin A	1COL A	2 113 PHE 140 CYS	Increased	36.91	Y
+9	Amino Acid Substitutions affecting protein solubility	96	FOP	2D68 A	1 63 MET	Decreased	-2.82	Y
+9	Amino Acid Substitutions affecting protein solubility	97	FOP	2D68 A	1 104 MET	Decreased	2.73	N
+9	Amino Acid Substitutions affecting protein solubility	98	FOP	2D68 A	1 90 ALA	Decreased	-29.35	Y
+9	Amino Acid Substitutions affecting protein solubility	99	FOP	2D68 A	1 87 MET	Decreased	-2.77	Y
+9	Amino Acid Substitutions affecting protein solubility	100	FOP	2D68 A	2 90 ALA 97 ALA	Decreased	-46.62	Y
+9	Amino Acid Substitutions affecting protein solubility	101	FOP	2D68 A	1 127 MET	Decreased	-9.57	Y
+9	Amino Acid Substitutions affecting protein solubility	102	FOP	2D68 A	1 74 PHE	Decreased	-2.2	Y
+9	Amino Acid Substitutions affecting protein solubility	103	FOP	2D68 A	1 97 ALA	Decreased	-17.26	Y
+9	Amino Acid Substitutions affecting protein solubility	104	FOP	2D68 A	1 69 MET	Decreased	-7.14	Y
+9	Amino Acid Substitutions affecting protein solubility	105	Human alpha-1 proteinase inhibitor	8API A	2 345 LEU 358 ARG	Decreased	7.04	N
+9	Amino Acid Substitutions affecting protein solubility	106	Human alpha-1 proteinase inhibitor	8API A	1 358 LEU	Decreased	16.62	N
+9	Amino Acid Substitutions affecting protein solubility	107	Human Interleukin 1 Beta	9ILB A	1 97 GLY	Decreased	0.53	N
+9	Amino Acid Substitutions affecting protein solubility	108	Human Interleukin 1 Beta	9ILB A	1 97 VAL	Decreased	0.45	N
+9	Amino Acid Substitutions affecting protein solubility	109	Colicin A	1COL A	1 140 LYS	Decreased	-3.89	Y
+9	Amino Acid Substitutions affecting protein solubility	110	Colicin A	1COL A	1 140 LEU	Decreased	-3.89	Y
+9	Amino Acid Substitutions affecting protein solubility	111	Colicin A	1COL A	1 140 CYS	Decreased	-3.89	Y
+9	Amino Acid Substitutions affecting protein solubility	112	Human Interleukin 1 Beta	9ILB A	1 10 ASN	Decreased	-54.98	Y
+9	Amino Acid Substitutions affecting protein solubility	113	Human Interleukin 1 Beta	9ILB A	1 10 ASP	Decreased	-63.68	Y
+9	Amino Acid Substitutions affecting protein solubility	114	Human Interleukin 1 Beta	9ILB A	1 10 THR	Decreased	-53.97	Y
+10	A simple dual selection for functionally active mutants of Plasmodium falciparum dihydrofolate reductase with improved solubility	115	Plasmodium falciparum dihydrofolate reductase	1J3I A	2 35 GLN 37 ARG	Increased	58.2	Y
+10	A simple dual selection for functionally active mutants of Plasmodium falciparum dihydrofolate reductase with improved solubility	116	Plasmodium falciparum dihydrofolate reductase	1J3I A	2 35 LEU 37 THR	Increased	49.46	Y
+10	A simple dual selection for functionally active mutants of Plasmodium falciparum dihydrofolate reductase with improved solubility	117	Plasmodium falciparum dihydrofolate reductase	1J3I A	2 35 GLY 37 LEU	Increased	46.63	Y
+10	A simple dual selection for functionally active mutants of Plasmodium falciparum dihydrofolate reductase with improved solubility	118	Plasmodium falciparum dihydrofolate reductase	1J3I A	2 35 LEU 37 ARG	Increased	67.17	Y
+10	A simple dual selection for functionally active mutants of Plasmodium falciparum dihydrofolate reductase with improved solubility	119	Plasmodium falciparum dihydrofolate reductase	1J3I A	1 27 GLU	Increased	-4.06	N
+11	A simple in vivo assay for increased protein solubility	120	HIV integrase	1BIZ A	1 185 PHE	Decreased	-7.57	Y
+11	A simple in vivo assay for increased protein solubility	121	HIV integrase	1BIZ A	1 185 ILE	Decreased	-8.95	Y
+11	A simple in vivo assay for increased protein solubility	122	HIV integrase	1BIZ A	1 185 VAL	Decreased	-10.64	Y
+11	A simple in vivo assay for increased protein solubility	123	HIV integrase	1BIZ A	1 185 LEU	Decreased	-5.61	Y
+11	A simple in vivo assay for increased protein solubility	124	HIV integrase	1BIZ A	1 185 ASN	Decreased	-3.67	Y
+11	A simple in vivo assay for increased protein solubility	125	HIV integrase	1BIZ A	1 185 ASP	Decreased	-5.21	Y
+12	Purification, crystallization and preliminary X-ray diffraction analysis of the phage T4 vertex protein gp24 and its mutant forms	126	GP24	1YUE A	2 89 ALA 90 ALA	Decreased	-2.46	Y
+13	Functional glycan-free adhesion domain of human cell surface receptor CD58: design, production and NMR studies	127	CD58	1CI5 A	6 21 VAL 85 THR 1 PHE 9 VAL 58 VAL 93 LEU	Decreased	-7.77	Y
+14	Protein solubility and folding monitored in vivo by structural complementation of a genetic marker protein	128	Maltose Binding Protein	1JW4 A	2 32 ASP 33 PRO	Decreased	-1.58	Y

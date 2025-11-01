@@ -1,0 +1,238 @@
+Ref #	PDB	Mutation(s)	Change in Stability/activity (experimental)	Prediction
+
+1	1AZU	3ALA/26ALA	Decreased Stability	-4.46
+1	1AZU	3ALA/26ILE	Decreased Stability	-3.19
+1	1AZU	3ALA/25ARG/26ALA/27ARG	Decreased Stability	-5.25
+2	1CSQ	66LEU/67PRO	Increased Stability	0.34
+2	1CSQ	2ILE/3SER/46GLN/64LEU/66LEU/67PRO	Increased Stability	0.6
+2	1CSQ	46LEU/66LEU/67HIS	Increased Stability	0.58
+2	1CSQ	2TYR/3ARG/46LEU	Increased Stability	0.66
+2	1CSQ	2TYR/3ILE/46GLN/64LEU/66LEU/67PRO	Increased Stability	0.99
+3	1DE3	4PHE	Decreased Stability	2.89
+3	1DE3	51PHE	Decreased Stability	0.92
+3	1DE3	4PHE/51PHE	Decreased Stability	3.21
+4	1DZE	113GLN	Decreased Stability	-0.26
+4	1DZE	113GLN/116GLN	Decreased Stability	-0.7
+4	1DZE	113GLN/116GLN/120GLN	Decreased Stability	-1.02
+4	1DZE	113GLN/116GLN/120GLN/124GLN	Decreased Stability	-1.71
+4	1DZE	113GLN/116GLN/117ASP/120GLN/124GLN	Decreased Stability	-6.73
+5	1FJM	124ASP	Increased Stability	-0.22
+5	1FJM	248ASN	Increased Stability	-6.4
+5	1FJM	96ALA	Increased Stability	-0.3
+5	1FJM	221SER	Increased Stability	0.78
+5	1FJM	95ALA	Increased Stability	0.17
+5	1FJM	208ALA	Increased Stability	-0.23
+6	1FK1	45ALA	Increased Stability	3.46
+6	1FK1	46ALA	Decreased Stability	2.33
+6	1FK1	72LEU	Increased Stability	5.83
+7	1GNH	114ALA	Decreased Stability	-0.37
+7	1GNH	175ALA	Increased Stability	1.42
+8	1HXH	12ALA	Decreased Stability	-0.49
+8	1HXH	87ALA	Increased Stability	5.93
+8	1HXH	138ALA	Increased Stability	0.03
+9	1L22	83H	Decreased Activity	2.34
+9	1L22	147H	Decreased Activity	2.56
+9	1L22	136H	Decreased Stability	-2.08
+9	1L22	138H	Decreased Stability	-7.94
+9	1L22	139H	Decreased Stability	-2.86
+9	1L22	140H	Decreased Stability	-1.41
+9	1L22	141H	Decreased Stability	-1.66
+9	1L22	142H	Decreased Stability	-0.39
+9	1L22	143H	Decreased Stability	-0.63
+9	1L22	144H	Decreased Stability	-1.25
+9	1L22	145H	Decreased Stability	-1.46
+9	1L22	146H	Decreased Stability	-2.14
+9	1L22	148H	Decreased Stability	0.29
+9	1L22	149H	Decreased Stability	-3.25
+9	1L22	150H	Decreased Stability	-4.26
+9	1L22	151H	Decreased Stability	-1.34
+9	1L22	152H	Decreased Stability	-0.11
+9	1L22	153H	Decreased Stability	-8.63
+9	1L22	154H	Decreased Stability	-0.11
+9	1L22	155H	Decreased Stability	-0.83
+9	1L22	82H	Decreased Stability	-0.48
+9	1L22	84H	Decreased Stability	-5.35
+9	1L22	85H	Decreased Stability	1.36
+9	1L22	86H	Decreased Stability	-2.64
+9	1L22	87H	Decreased Stability	-3.78
+9	1L22	88H	Decreased Stability	-3.92
+9	1L22	89H	Decreased Stability	-1.34
+9	1L22	91H	Decreased Stability	-3.96
+9	1L22	92H	Decreased Stability	0.52
+10	1LZ1	2GLY	Decreased Stability	-0.67
+10	1LZ1	2ALA	Decreased Stability	-0.51
+10	1LZ1	2ILE	Increased Stability	0.58
+10	1LZ1	2LEU	Decreased Stability	-0.08
+10	1LZ1	2MET	Decreased Stability	-0.15
+10	1LZ1	2PHE	Decreased Stability	-2.3
+10	1LZ1	2SER	Decreased Stability	-0.65
+10	1LZ1	2TYR	Decreased Stability	-1.04
+10	1LZ1	2ASP	Decreased Stability	-1.26
+10	1LZ1	2ASN	Decreased Stability	-0.82
+10	1LZ1	2ARG	Decreased Stability	-2.29
+10	1LZ1	74GLY	Decreased Stability	-0.46
+10	1LZ1	74ALA	Decreased Stability	-0.44
+10	1LZ1	74ILE	Increased Stability	-0.78
+10	1LZ1	74LEU	Increased Stability	-0.21
+10	1LZ1	74MET	Increased Stability	-0.42
+10	1LZ1	74PHE	Decreased Stability	0.43
+10	1LZ1	74SER	Decreased Stability	-0.66
+10	1LZ1	74TYR	Decreased Stability	-0.27
+10	1LZ1	74ASP	Decreased Stability	-1.75
+10	1LZ1	74ASN	Decreased Stability	-0.96
+10	1LZ1	74ARG	Decreased Stability	-1.34
+10	1LZ1	110GLY	Increased Stability	0.01
+10	1LZ1	110ALA	Increased Stability	0.6
+10	1LZ1	110ILE	Increased Stability	0.04
+10	1LZ1	110LEU	Increased Stability	-0.33
+10	1LZ1	110MET	Increased Stability	-0.46
+10	1LZ1	110PHE	Decreased Stability	0.47
+10	1LZ1	110TYR	Decreased Stability	0.22
+10	1LZ1	110ASP	Increased Stability	0.75
+10	1LZ1	110ASN	Increased Stability	0.06
+10	1LZ1	110ARG	Increased Stability	1.79
+11	1LZ1	1MET	Decreased Stability	0.92
+11	1LZ1	1ALA	Decreased Stability	0.82
+12	1MAC	101PHE	Increased Stability	-1.04
+12	1MAC	101TYR	Increased Stability	0.26
+12	1MAC	103ASP	Increased Stability	-0.12
+12	1MAC	103GLN	Increased Stability	1.37
+12	1MAC	105ASN	Increased Stability	1.86
+12	1MAC	105LYS	Increased Stability	1.28
+12	1MAC	107ASP	Increased Stability	0.51
+13	1MAE	76ASN	Increased Stability	0.93
+13	1MAE	122ALA	Increased Stability	0.44
+13	1MAE	122CYS	Increased Stability	6.6
+13	1MAE	119PHE	Decreased Stability	-2.62
+13	1MAE	119GLU	Increased Stability	-9.85
+13	1MAE	119LYS	Increased Stability	-5.89
+14	1OGS	370SER	Increased Stability	2.28
+14	1OGS	394LEU	Increased Stability	-1.12
+14	1OGS	463CYS	Increased Stability	-1.16
+14	1OGS	496HIS	Increased Stability	0.22
+15	1OX7	23LEU/140LEU/108ILE	Increased Stability	1.85
+15	1OX7	23LEU/140LEU	Increased Stability	1.85
+15	1OX7	23LEU	Increased Stability	-0.65
+15	1OX7	140LEU	Increased Stability	2.21
+15	1OX7	10THR	Increased Stability	0.8
+15	1OX7	67GLU	Increased Stability	-4.46
+15	1OX7	69LEU	Increased Stability	3.34
+16	1PDA	26HIS	Increased Stability	2.38
+16	1PDA	31THR	Decreased Stability	-0.49
+16	1PDA	34LYS	Decreased Stability	-9.48
+16	1PDA	93PHE	Decreased Stability	0.42
+16	1PDA	116THR	Decreased Stability	-10.14
+16	1PDA	116TRP	Decreased Stability	-2.63
+16	1PDA	116GLN	Decreased Stability	-13.43
+16	1PDA	149LEU	Decreased Stability	2.48
+16	1PDA	167TRP	Increased Stability	-2.49
+16	1PDA	173TRP	Increased Stability	2
+16	1PDA	177ARG	Decreased Stability	-3.8
+16	1PDA	201TRP	Decreased Stability	0.63
+16	1PDA	223LYS	Decreased Stability	-1.63
+16	1PDA	247PHE	Decreased Stability	2.62
+16	1PDA	250LYS	Decreased Stability	-3.11
+16	1PDA	252THR	Decreased Stability	-1.03
+16	1PDA	256ASN	Decreased Stability	0.24
+17	1PV7	79ALA	Decreased Stability	2.61
+17	1PV7	83ALA	Decreased Stability	-2.93
+17	1PV7	87ALA	Decreased Stability	-4.82
+17	1PV7	96ALA	Decreased Stability	1.72
+17	1PV7	90ALA	Decreased Stability	-2.11
+17	1PV7	91ALA	Decreased Stability	-3.79
+17	1PV7	93ALA	Decreased Stability	-0.38
+18	1QO9	327CYS/375CYS	Decreased Stability	7.77
+18	1QO9	354CYS/456CYS	Increased Stability	1.36
+18	1QO9	369CYS/476CYS	Increased Stability	1.82
+18	1QO9	452CYS/533CYS	Increased Stability	1.51
+18	1QO9	464CYS/543CYS	Increased Stability	2.82
+19	1SBT	41ALA/50PHE/73LEU/206TRP/217LYS/218SER/221CYS/271GLU	Increased Stability	2.39
+19	1SBT	2LYS/3CYS/5SER/43ASN/50PHE/73LEU/206CYS/217LYS/218SER/271GLU	Increased Stability	2.57
+20	1SBT	271GLU	Decreased Stability	-0.1
+20	1SBT	51LYS	Decreased Stability	-3.37
+20	1SBT	164ARG	Decreased Stability	-2.44
+21	2AAS	35SER	Decreased Stability	-1.04
+21	2AAS	35ALA	Decreased Stability	-1.53
+21	2AAS	46TYR	Decreased Stability	-0.85
+21	2AAS	31ALA/33SER	Decreased Stability	8.74
+21	2AAS	35SER/46TYR	Decreased Stability	-1.08
+21	2AAS	35ALA/46TYR	Decreased Stability	-1.21
+21	2AAS	31ALA/33SER/46TYR	Decreased Stability	7.64
+22	2ALX	212TRP	Decreased Stability	-1.62
+22	2ALX	234ASN	Decreased Stability	-5.41
+23	6GSS	57ALA	Decreased Stability	2.54
+23	6GSS	98ALA	Decreased Stability	1.07
+23	6GSS	152ALA	Decreased Stability	5.17
+24	1B2X	14ALA	Decreased Stability	-3.07
+24	1B2X	51VAL	Decreased Stability	-0.28
+24	1B2X	76ALA	Decreased Stability	-2.22
+24	1B2X	76VAL	Decreased Stability	0.46
+24	1B2X	88ALA	Decreased Stability	-4.83
+24	1B2X	88VAL	Decreased Stability	-1.29
+24	1B2X	89VAL	Decreased Stability	-0.79
+24	1B2X	96ALA	Decreased Stability	-2.55
+24	1B2X	96VAL	Decreased Stability	-1.05
+24	2CI2	39VAL	Decreased Stability	-0.46
+24	2CI2	48ALA	Decreased Stability	-1.99
+24	2CI2	48VAL	Decreased Stability	-0.44
+24	2CI2	48ALA/76VAL	Decreased Stability	-2.18
+24	2CI2	66ALA	Decreased Stability	-2.44
+24	2CI2	68ALA	Decreased Stability	-2.66
+24	2CI2	70ALA	Decreased Stability	-1.87
+24	2CI2	76VAL	Decreased Stability	-0.19
+24	2CI2	76ALA	Decreased Stability	-2.14
+24	1EY0	141ALA	Decreased Stability	0.25
+24	1EY0	99ALA	Decreased Stability	-4.18
+24	1EY0	74ALA	Decreased Stability	-3.33
+24	1EY0	72VAL	Decreased Stability	-0.19
+24	1EY0	34ALA	Decreased Stability	-4.19
+24	1EY0	66ALA	Decreased Stability	-3.76
+24	1EY0	23ALA	Decreased Stability	-4.55
+24	1EY0	25ALA	Decreased Stability	-4.35
+24	1EY0	92VAL	Decreased Stability	-1.32
+24	1EY0	92ALA	Decreased Stability	-6.1
+24	1EY0	36ALA	Decreased Stability	-1.97
+24	1EY0	72VAL/113ALA	Decreased Stability	0
+24	1EY0	72VAL/85ALA	Decreased Stability	-0.64
+24	1EY0	66LEU	Decreased Stability	0.33
+24	1EY0	23PHE	Decreased Stability	-0.15
+24	1EY0	117GLY/124LEU/128ALA	Increased Stability	5.04
+24	1EY0	41ILE/117GLY/124LEU/128ALA	Increased Stability	6.7
+24	1EY0	33VAL/41ILE/117GLY/124LEU/128 ALA	Increased Stability	7.71
+24	1EY0	41ILE/59ALA/117GLY/124LEU/128ALA	Increased Stability	7.68
+24	1IGV	6VAL	Decreased Stability	0.01
+24	1IGV	23ALA	Decreased Stability	-3.45
+24	1IGV	28ALA	Decreased Stability	-5.02
+24	1IGV	61ALA	Decreased Stability	-1.57
+24	1IGV	66TRP	Decreased Stability	-2.94
+24	1IGV	66ALA	Decreased Stability	-4.48
+24	1IGV	70LEU	Decreased Stability	1.69
+24	1IGV	73VAL	Decreased Stability	-0.29
+24	1IGV	10ALA	Decreased Stability	-1.9
+24	1L63	1 46 ALA	Decreased Stability	-4.05
+24	1L63	1 71 ALA	Decreased Stability	0.78
+24	1L63	1 71 ILE	Decreased Stability	-2.23
+24	1L63	1 71 MET	Decreased Stability	-0.95
+24	1L63	1 71 VAL	Decreased Stability	-5.17
+24	1L63	1 71 ALA	Decreased Stability	-3.13
+24	1L63	1 71 PHE	Decreased Stability	-3.7
+24	1L63	1 99 ALA	Decreased Stability	-6.6
+24	1L63	1 100 ALA	Decreased Stability	-0.48
+24	1L63	1 118 ALA	Decreased Stability	-0.87
+24	1L63	1 121 ALA	Decreased Stability	-3.03
+24	1L63	1 13 ALA	Decreased Stability	0.31
+24	1L63	1 153 VAL	Decreased Stability	-0.53
+24	1L63	1 153 MET	Decreased Stability	-5.04
+24	1L63	1 153 LEU	Decreased Stability	-3.61
+24	1L63	1 153 ILE	Decreased Stability	-4.05
+24	1L63	1 153 ALA	Decreased Stability	-1.71
+24	1L63	1 17 ALA	Decreased Stability	-4.13
+24	1L63	1 27 ALA	Decreased Stability	-2.28
+24	1L63	1 50 ALA	Decreased Stability	-1.81
+24	1L63	1 58 ALA	Decreased Stability	-2.15
+24	1L63	1 78 ALA	Decreased Stability	-2.32
+24	1L63	1 87 ALA	Decreased Stability	-2.48
+24	1L63	1 103 ALA	Decreased Stability	-2.68
+24	1L63	1 111 ALA	Decreased Stability	-2.75
+24	1L63	1 67 ALA	Decreased Stability	-3.23
+24	1L63	1 104 ALA	Decreased Stability	-2.74
