@@ -1,0 +1,60 @@
+# Trying for a 4-CKP with iwidth(p1)=2, iwidth(p2|p1)=2, iwidth(p3|p1p2)=0
+# Using p1,p2,r from iwidth2_3ckp_n12.dat, along with new p3
+# Last modified on 10/19/2015
+
+param n  := 12;
+
+param k1 := 12;
+param k2 := 16;
+param k3 := 20;
+
+param M3 :=  11; 
+param M2 :=  97; 
+param M1 := 572;
+
+param b3p := 227; # 224;
+param b3  := 227;
+
+
+param: p1 p2  r  p3 :=
+     1     1     1   -1   5
+     2     1     2    0   3
+     3     1     3    1   1
+     4     1     4   -1   2
+     5     2     1    0   4
+     6     2     2    1   2
+     7     2     3   -1   3
+     8     2     4    0   5
+     9     3     1    1   3
+    10     3     2   -1   4
+    11     3     3    0   2
+    12	   3	 4    1   1;
+
+
+param pst :=
+ 1   67
+ 2   74
+ 3   81
+ 4   91
+ 5  119
+ 6  126
+ 7  136
+ 8  147
+ 9  171
+10  181
+11  188
+12  196;
+
+# subject to knapfeas1: 
+#  9309 <=  723*x[1] +  799*x[2]  +  875*x[3]  +  981*x[4]  +
+#  	   1285*x[5] + 1361*x[6]  + 1467*x[7]  + 1587*x[8]  +
+#	   1847*x[9] + 1953*x[10] + 2029*x[11] + 2116*x[12] <= 9312;
+
+# With b3p,b3 = 224,227, branching on pst kills the problem at the root node:
+# max(pst) = 862.9829868, min(pst) = 862.0359168;
+# width(pst) = 0.94707, iwidth(pst) = 0.
+
+# Also with b3p = b3 = 227 (b1p = b1 = 9312), the instance reported in
+# the paper, branching on pst kills the problem at the root node :-(.
+# max(pst) = 862.9829868, min(pst) = 862.3137996;
+# width(pst) = 0.669187, iwidth(pst) = 0.

@@ -1,0 +1,54 @@
+# Trying for a 3-CKP with iwidth(p1)=2, iwidth(p2|p1)=0
+# Using p1,p2,r from v0_iwidth2_3ckp_n12.dat
+# Numbers identical to those in iwidth(1/3)_3ckp_n12.dat *EXCEPT FOR M1*
+# iwith/M1:  2/62, 1/66, 3/48
+# Using b1(p) = b2(p) + (k1+1)M1 now.
+# Last modified on 10/27/2015
+
+param n  := 12;
+
+param k1 := 12;
+param k2 := 17;
+
+param M2 :=  10; 
+param M1 :=  62; # 61 earlier !!
+
+param b2p := 175;
+param b2  := 175;
+
+
+param: p1 p2  r :=
+     1     1     1   -1
+     2     1     2    0
+     3     1     3    1
+     4     1     4   -1
+     5     2     1    0
+     6     2     2    1
+     7     2     3   -1
+     8     2     4    0
+     9     3     1    1 
+    10     3     2   -1
+    11     3     3    0
+    12	   3	 4    1 ;
+
+param pst :=
+ 1  26
+ 2  30
+ 3  34
+ 4  37
+ 5  49
+ 6  53
+ 7  56
+ 8  60
+ 9  72
+10  75
+11  79
+12  83;
+
+# subject to knapfeas1: 
+#	  71*x[1] +  82*x[2] +  93*x[3] + 101*x[4]  + 134*x[5]  + 145*x[6] +
+#	 153*x[7] + 164*x[8] + 197*x[9] + 205*x[10] + 216*x[11] + 227*x[12] = 981;
+
+# max(pst) = 358.9768519, min(pst) = 358.662037; width(pst)=0.315, iwidth(pst)=0.
+# So, branching on pst kills problem at root node!!
+# But width(pst*) = 0 for pst* = a1 here.

@@ -1,0 +1,69 @@
+# Model file for CKPs with a = p1 M1 + p2 M2 + r
+
+param n ;
+param k1;
+param k2;
+
+param i1; # index for fixing p1x, to k1+i1
+
+param p1 {j in 1..n};
+param p2 {j in 1..n};
+param r  {j in 1..n};
+
+param ind;
+param pst {j in 1..n}; # min-width direction
+
+param M1;
+param M2;
+
+param a2 {j in 1..n} := p2[j]*M2 +  r[j];
+param a1 {j in 1..n} := p1[j]*M1 + a2[j];
+
+param b2p;
+param b2;
+ param b1p  := b2p + (k1+1)*M1;
+ param b1   := b2  + (k1+1)*M1;
+# param b1p  := b2p + (k1+2)*M1; # Use this option for (KP3)
+# param b1   := b2  + (k1+2)*M1; # Use this option for (KP3)
+
+
+var x {j in 1..n} binary;
+#var x {j in 1..n} >= 0, <= 1;
+
+#maximize maxxi : x[ind];
+#minimize minxi : x[ind];
+
+#maximize maxpstx : sum {j in 1..n} pst[j]*x[j];
+#minimize minpstx : sum {j in 1..n} pst[j]*x[j];
+
+#maximize maxp1x : sum {j in 1..n} p1[j]*x[j];
+#minimize minp1x : sum {j in 1..n} p1[j]*x[j];
+#maximize maxp2x : sum {j in 1..n} p2[j]*x[j];
+#minimize minp2x : sum {j in 1..n} p2[j]*x[j];
+
+#maximize maxrx : sum {j in 1..n} r[j]*x[j];
+#minimize minrx : sum {j in 1..n} r[j]*x[j];
+#maximize maxa2x : sum {j in 1..n} a2[j]*x[j];
+#minimize mina2x : sum {j in 1..n} a2[j]*x[j];
+#maximize maxa1x : sum {j in 1..n} a1[j]*x[j];
+#minimize mina1x : sum {j in 1..n} a1[j]*x[j];
+
+#maximize sumx : sum {j in 1..n} x[j];
+#minimize minsumx : sum {j in 1..n} x[j];
+
+subject to knapfeas1 :  b1p  <= sum {j in 1..n}  a1[j]*x[j]   <= b1;
+
+#subject to limeq_p1x:  k1+1 <= sum {j in 1..n} p1[j]*x[j] <= k1+3;
+#subject to limeq_p1x:  k1+1 <= sum {j in 1..n} p1[j]*x[j] <= k1+2;
+#subject to limeq_p1xi1:  sum {j in 1..n} p1[j]*x[j] = k1+i1;
+#subject to limeq_p1x1:  k1+1 <= sum {j in 1..n} p1[j]*x[j] <= k1+1;
+#subject to limeq_p1x2:  k1+2 <= sum {j in 1..n} p1[j]*x[j] <= k1+2;
+#subject to limeq_p1x3:  k1+3 <= sum {j in 1..n} p1[j]*x[j] <= k1+3;
+#subject to limub_p1x:  sum {j in 1..n} p1[j]*x[j] <= k1;
+#subject to limlb_p1x:  sum {j in 1..n} p1[j]*x[j] >= k1+2;
+#subject to limlb_p1x:  sum {j in 1..n} p1[j]*x[j] >= k1+3;
+#subject to limlb_p1x:  sum {j in 1..n} p1[j]*x[j] >= k1+4;
+
+#subject to limeq_p2x:  sum {j in 1..n} p2[j]*x[j] = 12;
+#subject to limub_p2x:  sum {j in 1..n} p2[j]*x[j] <= k2;
+#subject to limlb_p2x:  sum {j in 1..n} p2[j]*x[j] >= k2+1;

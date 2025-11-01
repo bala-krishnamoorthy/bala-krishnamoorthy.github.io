@@ -1,0 +1,12 @@
+ option csvdisplay_precision 0;
+ option display_precision 0;
+ option expand_precision 0;
+ option output_precision 0;
+ option print_precision 0;
+ option solution_precision 0;
+
+ option solver cplex;
+
+ option cplex_options 'mipgap = 0 mipdisplay=4 timing=1 integrality=0\
+ feasibility=1e-9  markowitz=0.99 optimality=1e-9 mipinterval=50000';
+
