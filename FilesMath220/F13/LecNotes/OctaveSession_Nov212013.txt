@@ -1,0 +1,69 @@
+%% Octave session from Lecture 28 on Thursday, Nov 21, 2013 
+%%
+%% Notice that there might be minor differences between Octave and
+%% Matlab, but the results of your calculations should be the same.
+
+octave:2> A = [0 0 .33; .18  0 0 ; 0 .71 .94]
+A =
+   0.00000   0.00000   0.33000
+   0.18000   0.00000   0.00000
+   0.00000   0.71000   0.94000
+
+% You can use the inbuilt function eig to find the eigenvalues and the
+% corresponding eigenvectors
+
+octave:3> help eig `eig' is a function from
+the file /usr/lib/octave/3.6.2/oct/i686-pc-cygwin/eig.oct
+
+ -- Loadable Function: LAMBDA = eig (A)
+ -- Loadable Function: LAMBDA = eig (A, B)
+ -- Loadable Function: [V, LAMBDA] = eig (A)
+ -- Loadable Function: [V, LAMBDA] = eig (A, B)
+     Compute the eigenvalues and eigenvectors of a matrix.
+
+     Eigenvalues are computed in a several step process which begins
+     with a Hessenberg decomposition, followed by a
+     Schur decomposition, from which the eigenvalues are apparent.  The
+     eigenvectors, when desired, are computed by further manipulations
+     of the Schur decomposition.
+
+     The eigenvalues returned by `eig' are not ordered.
+
+     See also: eigs, svd
+
+Additional help for built-in functions and operators is
+available in the on-line version of the manual.  Use the command
+`doc <topic>' to search the manual index.
+
+Help and information about Octave is also available on the WWW
+at http://www.octave.org and via the help@octave.org
+mailing list.
+
+octave:4> [V,L]=eig(A)
+V =
+   0.68209 + 0.00000i   0.68209 - 0.00000i   0.31754 + 0.00000i
+  -0.06241 - 0.58963i  -0.06241 + 0.58963i   0.05811 + 0.00000i
+  -0.04505 + 0.42562i  -0.04505 - 0.42562i   0.94646 + 0.00000i
+L =
+Diagonal Matrix
+  -0.02180 + 0.20592i                    0                    0
+                    0  -0.02180 - 0.20592i                    0
+                    0                    0   0.98359 + 0.00000i
+
+% We could extract the eigenvalues from the diagonal of L using the
+% command diag
+
+octave:5> Lambdas = diag(L)
+Lambdas =
+  -0.02180 + 0.20592i
+  -0.02180 - 0.20592i
+   0.98359 + 0.00000i
+
+% The absolute values of the eigenvalues are obtained using the
+% function abs
+
+octave:6> abs(Lambdas )
+ans =
+   0.20707
+   0.20707
+   0.98359
