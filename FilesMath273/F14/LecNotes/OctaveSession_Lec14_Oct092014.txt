@@ -1,0 +1,63 @@
+%% Math 273 - Section 2
+%% Octave session in Lecture 14, October 09, 2014.
+
+%% Additional comments are included using "% "
+
+octave:2> v0=25;T0=5;
+octave:3> W = 35.74 + 0.6215*T - 35.75*v^(0.16) + 0.4275*T*v^(0.16);
+error: `T' undefined near line 3 column 20
+
+% W evaluated using the original expression
+octave:3> v=v0; T=T0; W = 35.74 + 0.6215*T - 35.75*v^(0.16) + 0.4275*T*v^(0.16)
+W = -17.409
+
+% partial derivatives
+octave:4> W_v = -(35.75)*(0.16)*v^(0.16-1) + 0.4275*0.16*T*v^(0.16-1)
+W_v = -0.36004
+octave:5> W_T = 0.6215 + 0.4275*v^(0.16)
+W_T =  1.3370
+
+% The constant factor in L(v,T)
+octave:6> -17.409 - 0.36004*(-25) + 1.337*(-5)
+ans = -15.093
+
+% Notice that L(v0,T0) = W(v0,T0)
+octave:7> L = -15.093 - 0.36004*v + 1.337*T
+L = -17.409
+
+% second choice of v and T
+octave:8> v=24;T=6;
+octave:9> L = -15.093 - 0.36004*v + 1.337*T
+L = -15.712
+octave:10>  W = 35.74 + 0.6215*T - 35.75*v^(0.16) + 0.4275*T*v^(0.16)
+W = -15.710
+
+% Notice that the linearization is quite accurate here!
+
+% another point
+octave:11> v=27;T=2;
+octave:12> L = -15.093 - 0.36004*v + 1.337*T
+L = -22.140
+octave:13>  W = 35.74 + 0.6215*T - 35.75*v^(0.16) + 0.4275*T*v^(0.16)
+W = -22.143
+
+% Again, the linearization is very accurate.
+
+% third point
+octave:14> v=5;T=-10;
+octave:15> L = -15.093 - 0.36004*v + 1.337*T
+L = -30.263
+octave:16>  W = 35.74 + 0.6215*T - 35.75*v^(0.16) + 0.4275*T*v^(0.16)
+W = -22.256
+
+% Now, the linearization is way off from the correct value. Why?
+
+% It has nothing to do with the negative temperature. 
+% For instance, try a different point now.
+octave:17> v=5;T=20;
+octave:18> L = -15.093 - 0.36004*v + 1.337*T
+L =  9.8468
+octave:19>  W = 35.74 + 0.6215*T - 35.75*v^(0.16) + 0.4275*T*v^(0.16)
+W =  12.981
+octave:20>
+
