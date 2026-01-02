@@ -1,0 +1,135 @@
+%% Math 464 Linear Optimization (Spring 2023)
+%% Lecture 17, 03/07/2023
+
+%% Tableau simplex on the popular LP example
+
+>> LPExample
+
+%% This file collects all initializations for the LP example.
+%% It has the following commands:
+
+% A = [1 1 -1 0 0; 3 1 0 -1 0; 3 2 0 0 1];
+% b = [2 4 10]';
+% c = [2 1 0 0 0]';
+% [m,n]=size(A);
+% 
+% Bind = [1 3 4]; % == vertex B(10/3, 0) 
+% B = A(:,Bind); Binv = inv(B); cB = c(Bind);
+% cP = (c' - cB'*Binv*A)';
+% x = zeros(n,1); xB = Binv*b; x(Bind) = xB;
+
+%% We choose {x1,x3,x4} in the starting basis - we will talk about how
+%% to find a starting bfs in a general LP later on.
+
+%% We need the inverse of B here; we call inv(B) only once, though,
+%% right at the start.
+
+
+
+
+>> T = [ [-cB'*xB cP']; [xB Binv*A]]
+T =
+     -20/3            0             -1/3            0              0             -2/3     
+      10/3            1              2/3            0              0              1/3     
+       4/3            0             -1/3            1              0              1/3     
+       6              0              1              0              1              1       
+
+%% Since we start counting rows and columns in T at 0, but Matlab does
+%% so at 1, we need to be careful when indexing the rows and columns
+%% of T. In particular, we need to add 1 to the entering j and
+%% similarly modify the leaving l.
+
+>> j=6; % x5 enters
+
+%% min-ratio test:
+
+%% In this case, all 3 entries in the j-th column are > 0, and hence
+%% give candidates for the minimum ratio
+
+>> [theta,l] = min( T(2:m+1,1)./T(2:m+1,j) )
+theta =
+       4       
+l =
+       2
+
+%% We shift up l by 1
+>> l = l+1
+l =
+       3
+
+%% We do the pivoting operations - start with scaling the pivot row to
+%% get a 1 for the pivot element
+
+
+>> T(l,:) = T(l,:)/T(l,j)
+T =
+     -20/3            0             -1/3            0              0             -2/3     
+      10/3            1              2/3            0              0              1/3     
+       4              0             -1              3              0              1       
+       6              0              1              0              1              1       
+
+%% Now use replacement EROs to zero out the rest of the pivot column
+
+>> i=1; T(i,:) = T(i,:) - T(l,:)*T(i,j)
+T =
+      -4              0             -1              2              0              0       
+      10/3            1              2/3            0              0              1/3     
+       4              0             -1              3              0              1       
+       6              0              1              0              1              1       
+
+>> i=3; T(i,:) = T(i,:) - T(l,:)*T(i,j)
+T =
+      -4              0             -1              2              0              0       
+      10/3            1              2/3            0              0              1/3     
+       0              0              0              0              0              0       
+       6              0              1              0              1              1       
+
+
+%% Oopsie! It should've been i=2 and then i=4. We zeroed out the pivot
+%% by mistake! Best to start back at T...
+
+>> T = [ [-cB'*xB cP']; [xB Binv*A]]
+T =
+     -20/3            0             -1/3            0              0             -2/3     
+      10/3            1              2/3            0              0              1/3     
+       4/3            0             -1/3            1              0              1/3     
+       6              0              1              0              1              1       
+
+>> T(l,:) = T(l,:)/T(l,j)
+T =
+     -20/3            0             -1/3            0              0             -2/3     
+      10/3            1              2/3            0              0              1/3     
+       4              0             -1              3              0              1       
+       6              0              1              0              1              1       
+
+
+>> i=1; T(i,:) = T(i,:) - T(l,:)*T(i,j)
+T =
+      -4              0             -1              2              0              0       
+      10/3            1              2/3            0              0              1/3     
+       4              0             -1              3              0              1       
+       6              0              1              0              1              1       
+
+
+%% Now doing i=2 and i=4 correctly!
+
+>> i=2; T(i,:) = T(i,:) - T(l,:)*T(i,j)
+T =
+      -4              0             -1              2              0              0       
+       2              1              1             -1              0              0       
+       4              0             -1              3              0              1       
+       6              0              1              0              1              1       
+
+>> i=4; T(i,:) = T(i,:) - T(l,:)*T(i,j)
+T =
+      -4              0             -1              2              0              0       
+       2              1              1             -1              0              0       
+       4              0             -1              3              0              1       
+       2              0              2             -3              1              0       
+>> 
+
+
+%% Notice that we are now at the bfs corresponding to A(2,0)
+%% We'll finish the problem in the next lecture...
+
+

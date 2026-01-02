@@ -1,0 +1,442 @@
+%% Math 464 Spring 2023
+%% Handout for AMPL 
+\documentclass[12pt]{article}
+\usepackage{amsmath,enumerate,amssymb,color}
+\usepackage{bm}
+\usepackage[implicit=false]{hyperref}
+\usepackage{times}
+\usepackage[margin=0.8in]{geometry}
+
+\input{MyCommands_DOC}
+
+\pagestyle{myheadings}
+\markright{Math464 - AMPL Handout}
+
+\begin{document}
+
+\bcen
+{\Large {\bf Introduction to AMPL (Math 464, Spring 2023)}}
+\ecen
+%\vspace*{-0.1in}
+
+  \nin Details of how to download and start up the demo version of
+  AMPL are given in
+  \href{http://www.ampl.com}{http://www.ampl.com}. Download and
+  install AMPL in your PC (if you do not have a PC, you can submit
+  your models online at the above web page, but this procedure is
+  rather inconvenient). To solve problems using AMPL, you will also
+  need a solver, such as Cplex or Gurobi. Several solvers come with
+  the demo bundle of AMPL. Cplex is the preferred solver.
+
+  \nin The entire AMPL book is available as PDF documents from the
+  above web page. You are encouraged to read at least the first
+  chapter in detail.
+
+  \section{AMPL Basics}
+
+  \nin AMPL is a modeling language that allows the user to represent
+  optimization models in a compact and logical manner. The data (for
+  instance, demand for each month, amount of raw material available,
+  distance between cities etc.) is handled separately from the
+  optimization model itself (which consists of the decision variables,
+  objective function, and constraints). Thus the user need not alter
+  the original model each time a small change is made in the data. You
+  need to create a model file (for example FarmerJones.mod) and a data
+  file (FarmerJones.dat). The model file declares the {\em data
+    parameters}, the variables, objective function, and the
+  constraints in a symbolic fashion. All the numbers (actual data) are
+  provided in the data file.  Note the following points.
+  \bit
+    \item It is a good convention to name model files as {\texttt
+      something.mod}, and data files as {\texttt something.dat}
+      (although, AMPL will accept {\em any} name for the model and
+      data files).
+    \item Every declaration (of a parameter, variables, objective
+      function or a constraint) ends with a {\bf ;} (semi-colon). This
+      is true for both the model and the data file.
+    \item You can specify values for a parameter in the data file only
+      if the parameter is already declared in the model file.
+    \item Before solving problems, you need to specify the solver. We
+      will be using Cplex as the default solver, but you are welcome
+      to try other options. It is a good practice to start each AMPL
+      session by typing \ \texttt{option solver cplex;} at the
+      \texttt{ampl:} prompt.
+   \eit %\vspace*{-0.1in}
+
+   \subsection{Example: The Farmer Jones problem}
+
+   \nin \small (Taken from {\em Introduction to Mathematical
+     Programming} by Winston and Venkataramanan.) \normalsize
+   \\ \nin\underline{\hspace*{6.6in}} \\ \nin Farmer Jones must decide
+   how many acres of corn and wheat to plant this year. An acre of
+   wheat yields 25 bushels of wheat and requires 10 hours of labor per
+   week. An acre of corn yields 10 bushels of corn and requires 4
+   hours of labor per week. Wheat can be sold at \$4 per bushel, and
+   corn at \$3 per bushel. Seven acres of land and 40 hours of labor
+   per week are available. Government regulations require that at
+   least 30 bushels of corn need to be produced in each
+   week. Formulate and solve an LP which maximizes the total revenue
+   that Farmer Jones makes.\\ \underline{\hspace*{6.6in}}
+
+   \vspace*{0.1in} \nin The model and data files are given below. You
+   can use any text editor to create the model and data files. For
+   instance, {\bf Notepad} works well in Windows. You could use MS
+   Word, but make sure you save the files as {\em text only}
+   documents. {\bf Vi} or {\bf emacs} could be used in Unix/Linux
+   machines.
+
+   \clearpage
+
+   \nin \underline{Model file: FarmerJones.mod}
+\begin{verbatim}
+# AMPL model file for the Farmer Jones problem
+# The LP is 
+#      max Z = 30 x1 + 100 x2        (total revenue) 
+#      s.t        x1 +     x2 <= 7   (land available) 
+#               4 x1 +  10 x2 <= 40  (labor hrs) 
+#              10 x1          >= 30  (min corn)
+#                 x1, x2      >= 0   (non-negativity)
+
+set   Crops; 	              # corn, wheat
+param Yield    {j in Crops};  # yield per acre
+param Labor    {j in Crops};  # labor hrs per acre
+param Price    {j in Crops};  # selling price per bushel
+param Min_Crop {j in Crops};  # min levels of corn and wheat (bushels)
+param Max_Acres;  	      # total land available (acres)
+param Max_Hours;	      # total labor hrs available
+
+var x {j in Crops} >= 0; # x[corn]=acres of corn, x[wheat]=acres of wheat
+
+maximize total_revenue: sum {j in Crops} Price[j]*Yield[j]*x[j];
+
+subject to land_constraint:  sum {j in Crops} x[j] <= Max_Acres; 
+subject to labor_constraint: sum {j in Crops} Labor[j]*x[j] <= Max_Hours;
+subject to min_crop_constraint {j in Crops}: Yield[j]*x[j] >= Min_Crop[j];
+\end{verbatim}
+
+\nin \underline{Data file: FarmerJones.dat}
+\begin{verbatim}
+set Crops := corn wheat;
+
+param  Yield := 
+corn  10
+wheat 25;
+
+param  Labor :=
+corn   4
+wheat 10;
+
+param  Price :=
+corn   3
+wheat  4;
+
+param Min_Crop :=
+corn  30
+wheat  0;         # No minimum level specified for wheat
+
+param Max_Acres :=  7;
+param Max_Hours := 40;
+\end{verbatim}
+
+\clearpage
+  \nin\underline{{\bf More points to note:}}
+  \bit
+     \item Comments can be included using the symbol \#. Everything
+       after a \# in a line are ignored.
+     \item Symbolic {\em parameters} are declared for data, whose
+       actual values are specified in the data file. Any parameter is
+       declared using the keyword {\texttt param}.
+     \item Variables are declared using the keyword {\texttt var}.
+     \item The objective function starts with a {\texttt maximize} or
+       a {\texttt minimize}, followed by a name, and then a colon
+       ({\bf :}). The actual expression of the objective function then
+       follows.
+     \item Each (set of) constraint(s) begins with the keyword
+       {\texttt subject to} followed by a constraint name, possible
+       indexing, and then a colon ({\bf :}). The expression for the
+       constraint(s) follows.
+     \item Each constraint (set) and objective function must have a
+       unique name.
+     \item Non-negativity and other sign restrictions are declared
+       along with the variable declarations. If no sign restrictions
+       are provided, the variable(s) are considered {\em unrestricted
+         in sign (urs)}.
+   \eit
+
+
+   \subsection{Running AMPL, Output from AMPL session}
+
+   \nin To start an AMPL session in Windows, double-click on the
+   executable named {\texttt sw.exe}. A {\bf s}crollable {\bf w}indow
+   will open with the prompt {\texttt sw:}. Type {\texttt ampl} and
+   press enter to get the {\texttt ampl:} prompt. In Unix/Linux
+   machines, run the ampl executable to get the {\texttt ampl:}
+   pprompt. Alternatively, you could run AMPL in the Integrated
+   Development Environment (IDE). Here are the commands and output
+   from an AMPL session to solve the Farmer Jones LP.
+%
+\begin{verbatim}
+ampl: option solver cplex;
+ampl: model c:/WORK/Teaching ... FarmerJones.mod.txt; 
+ampl: data c:/WORK/Teaching ... FarmerJones.dat.txt; 
+      # directory listing shortened above for brevity
+ampl: expand labor_constraint;
+subject to labor_constraint:
+	4*x['corn'] + 10*x['wheat'] <= 40;
+
+ampl: expand min_crop_constraint;
+subject to min_crop_constraint['corn']:
+	10*x['corn'] >= 30;
+
+subject to min_crop_constraint['wheat']:
+	25*x['wheat'] >= 0;
+
+ampl: solve; display x;
+CPLEX 12.6.3.0: optimal solution; objective 370
+1 dual simplex iterations (1 in phase I)
+x [*] :=
+ corn  3
+wheat  2.8;
+\end{verbatim}
+
+   \nin If there is any error in the model file, AMPL will point it
+   out.  You will have to make the appropriate corrections in your
+   {\texttt .mod} file (model file) and save it. In order to re-read
+   the model file, you first need to give the command {\texttt reset;}
+   at the {\texttt ampl:} prompt. Then say {\texttt model
+     FarmerJones.mod;} again. If there was no error in the model file,
+   but there is an error in the data file, you could reset just the
+   data part by typing {\texttt reset data;}. This commands leaves the
+   model file in tact. The modified data file could then be read in
+   using the {\texttt data} command as before.
+
+   The command {\texttt display} can be used to display the value(s)
+   of a (set of) variables or the objective function. In the above LP,
+   if you give the command {\texttt display land\_constraint;} after
+   solving the LP, AMPL will display the value of the dual variable
+   corresponding to the constraint (which is $0$ in this case). The
+   command {\texttt expand} is used to display the actual expression
+   of a constraint or an objective function.
+
+   \subsection{Another Example: Inventory problem}
+   \nin \small (Taken from {\em Introduction to Mathematical
+     Programming} by Winston and Venkataramanan.)
+   \normalsize  \\
+
+   \vspace*{-0.3in}
+   \nin \underline{\hspace*{6.8in}} \\
+   A customer requires 50, 65, 100, and 70 units of a commodity during
+   the next four months (no backlogging is allowed). Production costs
+   are 5,8,4, and 7 dollars per unit during these months. The storage
+   cost from one month to the next is \$2 per unit (assessed on ending
+   inventory). Each unit at the end of month 4 could be sold at
+   \$6. Use LP to minimize the net cost incurred by the customer in
+   meeting the demands for the next four
+   months.\\
+
+   \vspace*{-0.3in}
+   \nin\underline{\hspace*{6.8in}}
+
+%\bigskip
+\nin \underline{Model file: InventoryModel\_Pr1\_Pg104.mod}
+\begin{verbatim}
+# AMPL model file for the inventory model 
+# min  z =  5 x1 + 8 x2 + 4 x3 + 7 x4 + 2 (s1+s2+s3) - 6 s4 (net cost)
+# s.t. s1 = x1     -  50  (inventory month 1)
+#   s2 = x2+s1  -  65  (inventory month 2)
+#   s3 = x3+s2  - 100  (inventory month 3)
+#   s4 = x4+s3  -  70  (inventory month 4)
+#   all vars >= 0      (non-negativity)
+
+param n;                      # No. of months
+param Demand   {i in 1..n};   # demand for each month
+param Cost     {i in 1..n};   # production cost for each month
+param Store_Cost;             # storage cost (same for each month)
+param Price;                  # selling price (at the end of month n)
+
+var   x {j in 1..n} >= 0;     # No. units made in month j
+var   s {j in 0..n} >= 0;     # inventory at the end of month j
+                     # s[0] - inventory at the start of month 1 = 0
+
+minimize net_cost:
+  sum {k in 1..n} Cost[k]*x[k] + Store_Cost*(sum{j in 0..n-1} s[j])
+                               - Price*s[n];
+
+subject to inventory_balance {i in 1..n}: s[i] = x[i] + s[i-1]
+                                                 - Demand[i];
+subject to set_initial_inventory: s[0] = 0;
+\end{verbatim}
+
+\nin \underline{Data file: InventoryModel\_Pr1\_Pg104.dat}
+\begin{verbatim}
+param n := 4;
+
+param Demand := 
+1   50
+2   65
+3  100
+4   70;
+
+param Cost :=
+1   5
+2   8
+3   4
+4   7;
+
+param Store_Cost := 2;
+
+param Price := 6;
+\end{verbatim}
+
+\nin Notice how all the inventory balance constraints are represented
+in a single line (under {\texttt inventory\_balance}). Here is the
+output from AMPL where the above LP is solved.
+
+\begin{verbatim}
+ampl
+ampl: option solver scplex;
+ampl: model InventoryModel_Pr1_Pg104.mod; 
+ampl: data InventoryModel_Pr1_Pg104.dat;
+ampl: solve; display x,s;
+CPLEX 12.6.3.0: optimal solution; objective 1525
+0 dual simplex iterations (0 in phase I)
+:    x    s     :=
+0    .     0
+1   115   65
+2     0    0
+3   170   70
+4     0    0 ;
+\end{verbatim}
+\end{document}
+
+
+
+\clearpage
+  \subsection{Third example: School assignment problem, and Scripting in AMPL}
+  \nin \small (BT-ILO Exercise 1.9 from Page 35, seen in
+  \href{http://www.math.wsu.edu/faculty/bkrishna/FilesMath464/S18/Homeworks/Hw2.pdf}{Homework
+    2}.) \normalsize
+  \medskip
+  \hrule
+
+  \medskip
+  \nin Consider a school district with $I$ neighborhoods, $J$ schools,
+  and $G$ grades at each school. School $j$ has capacity $C_{jg}$ for
+  grade $g$. The student population for grade $g$ in neighborhood $i$
+  is $S_{ig}$. Finally, the distance to school $j$ from neighborhood
+  $i$ is $d_{ij}$. Formulate an LP problem whose objective is to
+  assign all students to schools, while minimizing the total distance
+  traveled by all students.
+  \smallskip
+  \hrule
+
+  \medskip
+  \nin Here is an LP formulation for this problem, with the decision
+  variables $x_{ijg} = $ \# students from neighborhood $i$ assigned to
+  school $j$ in grade $g$, for $i \in I, j \in J, g \in G$.
+%
+  \[ \ba{llcll}
+  \min & \sum\limits_{i \in I} \sum\limits_{j \in J} \left( d_{ij} \sum\limits_{g \in G} x_{ijg}
+  \right) & & & \mbox{(total distance traveled)} \\
+  \st & \sum\limits_{i \in I} x_{ijg} & \leq & C_{jg},  \forall j \in J, g \in G  & \mbox{(max capacity of a school for a grade)} \\
+     & \sum\limits_{j \in J} x_{ijg} & = & S_{ig} & \forall i \in I, g \in G \mbox{(assign all students)} \\
+     & \mbox{ all } ~~~~x_{ijg} & \geq & 0 & \mbox{(non-negativity)}
+   \ea \]
+
+   \bigskip
+   \medskip
+   \nin Data for an instance of this problem is given in three files,
+   \href{http://www.math.wsu.edu/faculty/bkrishna/FilesMath464/S18/Software/AMPL/Capacities.txt}{\texttt{Capacities.txt}},
+   \href{http://www.math.wsu.edu/faculty/bkrishna/FilesMath464/S18/Software/AMPL/Populations.txt}{\texttt{Populations.txt}},
+   and
+   \href{http://www.math.wsu.edu/faculty/bkrishna/FilesMath464/S18/Software/AMPL/Distances.txt}{\texttt{Distances.txt}}
+   (all posted on the
+   \href{http://www.math.wsu.edu/faculty/bkrishna/Math464_S16.html}{course
+     web page}). This example illustrates the use of scripting in
+   AMPL. One need not always have the data presented in a data
+   file. In fact, the data is often available in formatted text or
+   tabular form, and we could upload the data directly into ampl after
+   the model is loaded. Further, we could save all the commands in a
+   text file, and run them as a script in one go rather than typing in
+   the commands one at a time at the \texttt{ampl:} prompt.
+
+   \bigskip
+   \nin \underline{Model file: SchoolAssignment.mod.txt}
+   
+\begin{verbatim}
+# School assignment problem (BT-ILO exercise 1.9)
+
+param n_I;	    # No. of neighborhoods
+param n_J;	    # No. of schools
+param n_G;	    # No. of grades
+
+param Cap {1..n_J, 1..n_G};	# capacity of school j for grade g
+param Pop {1..n_I, 1..n_G};	# population in neighborhood i in grade g
+param Dist{1..n_I, 1..n_J};	# distance from neighborhood i to school j
+
+var x {1..n_I, 1..n_J, 1..n_G} >= 0;
+
+minimize total_distance: sum {i in 1..n_I, j in 1..n_J} 
+	Dist[i,j]*( sum {g in 1..n_G} x[i,j,g] );
+
+subject to Max_Cap{j in 1..n_J,g in 1..n_G}: 
+                  sum{i in 1..n_I} x[i,j,g] <= Cap[j,g];
+subject to Assign_All{i in 1..n_I,g in 1..n_G}: 
+                  sum{j in 1..n_J} x[i,j,g] = Pop[i,g];
+\end{verbatim}
+
+%\clearpage
+\nin \underline{Script file: SchoolAssignment.run.txt}
+\begin{verbatim}
+model SchoolAssignment.mod.txt;
+
+let n_I :=  5;
+let n_J :=  6;
+let n_G	:= 10;
+
+read {j in 1..n_J, g in 1..n_G} Cap[j,g] < Capacities.txt;
+close Capacities.txt;
+read {i in 1..n_I, g in 1..n_G} Pop[i,g] < Populations.txt;
+close Populations.txt;
+read {i in 1..n_I, j in 1..n_J} Dist[i,j] < Distances.txt;
+close Distances.txt;
+
+solve;
+printf "\n\nSolution:\n";
+for {i in 1..n_I, j in 1..n_J, g in 1..n_G}{
+  if x[i,j,g] > 0 then
+    printf "%d,%d,%2d - %5.1f\n",i,j,g,x[i,j,g];
+};
+\end{verbatim}
+
+\nin Notice the commands for formatted output of the solution using a
+\texttt{for} loop and \texttt{if} condition to print only the non-zero
+$x_{ijg}$ values. Once you have started \texttt{ampl}, you can run the
+script by saying \texttt{commands SchoolAssignment.run.txt;} at the
+prompt. Presented here are the first few lines from the output
+generated. The full output is given in the file
+\href{http://www.math.wsu.edu/faculty/bkrishna/FilesMath464/S18/Software/SchoolAssignment.run.txt}{\texttt{SchoolAssignment.run.txt}}
+(available on the course web page).
+%
+\begin{verbatim}
+ampl: commands SchoolAssignment.run.txt;
+CPLEX 12.6.3.0: optimal solution; objective 13135.1
+89 dual simplex iterations (0 in phase I)
+
+Solution in the format i,j,g - x[i,j,g]:
+1,1, 1 - 103.0
+1,1, 2 -  76.0
+1,1, 3 - 146.0
+1,1, 4 -  59.0
+1,1, 5 -   3.0
+1,1, 6 -  53.0
+1,1, 7 -  35.0
+1,1, 8 - 147.0
+...
+\end{verbatim}
+
+
+%\vspace*{0.3in}
+\subsection*{For more}
+You should read the AMPL book to learn more about AMPL.  Several
+examples are available for free download from the AMPL web page.

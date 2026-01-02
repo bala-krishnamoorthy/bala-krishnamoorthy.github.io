@@ -1,0 +1,107 @@
+%% Math 464 Linear Optimization (Spring 2023)
+%% Lecture 20, 03/23/2023
+
+%% Full example using the big-M simplex method
+
+>> format compact
+>> format rat
+>> A = [ 1 3 -1 1 0 0 0; -2 -5 2 0 1 0 0; 0 1 0 0 0 -1 1]
+A =
+       1              3             -1              1              0              0              0       
+      -2             -5              2              0              1              0              0       
+       0              1              0              0              0             -1              1       
+>> b = [9 6 1]'
+b =
+       9       
+       6       
+       1       
+>> M = 10000;
+>> [m,n] = size(A)
+m =
+       3       
+n =
+       7       
+>> Bind = [4 5 7];
+>> c = [2 -3 -2 0 0 0 M]';
+>> cB = c(Bind)
+cB =
+       0       
+       0       
+   10000       
+>> Binv = eye(m);
+>> xB = Binv*b
+xB =
+       9       
+       6       
+       1       
+>> T = [ [-cB'*xB  (c'- cB'*Binv*A)]; [xB Binv*A]]
+T =
+  -10000              2         -10003             -2              0              0          10000              0       
+       9              1              3             -1              1              0              0              0       
+       6             -2             -5              2              0              1              0              0       
+       1              0              1              0              0              0             -1              1       
+>> [m,n] = size(T)
+m =
+       4       
+n =
+       8       
+
+>> Iter=1; j=3; inds = find(T(2:m,j) > 0); [theta, l] = min( T(inds+1,1)./T(inds+1,j) ); l=inds(l)+1; fprintf(1,'\nIter %d: theta = %3.3f, l = %d\n\n',Iter,theta,l);
+
+Iter 1: theta = 1.000, l = 4
+
+>> T(l,:) = T(l,:)/T(l,j); for i=setdiff(1:m,l); T(i,:) = T(i,:) - T(i,j)*T(l,j); end; T
+T =
+       3          10005              0          10001          10003          10003          20003          10003       
+       6             -2              0             -4             -2             -3             -3             -3       
+      11              3              0              7              5              6              5              5       
+       1              0              1              0              0              0             -1              1
+
+%% Oops! Made a mistake in the replacement EROs' command :-(! Let's reinitialize T first:
+
+
+>> T = [ -10000              2         -10003             -2              0              0          10000              0       
+       9              1              3             -1              1              0              0              0       
+       6             -2             -5              2              0              1              0              0       
+       1              0              1              0              0              0             -1              1  ]
+T =
+  -10000              2         -10003             -2              0              0          10000              0       
+       9              1              3             -1              1              0              0              0       
+       6             -2             -5              2              0              1              0              0       
+       1              0              1              0              0              0             -1              1       
+
+
+>> T(l,:) = T(l,:)/T(l,j); for i=setdiff(1:m,l); T(i,:) = T(i,:) - T(i,j)*T(l,:); end; T
+T =
+       3              2              0             -2              0              0             -3          10003       
+       6              1              0             -1              1              0              3             -3       
+      11             -2              0              2              0              1             -5              5       
+       1              0              1              0              0              0             -1              1       
+
+
+>> Iter=2; j=7; inds = find(T(2:m,j) > 0); [theta, l] = min( T(inds+1,1)./T(inds+1,j) ); l=inds(l)+1; fprintf(1,'\nIter %d: theta = %3.3f, l = %d\n\n',Iter,theta,l);
+
+Iter 2: theta = 2.000, l = 2
+
+>> T(l,:) = T(l,:)/T(l,j); for i=setdiff(1:m,l); T(i,:) = T(i,:) - T(i,j)*T(l,:); end; T
+T =
+       9              3              0             -3              1              0              0          10000       
+       2              1/3            0             -1/3            1/3            0              1             -1       
+      21             -1/3            0              1/3            5/3            1              0              0       
+       3              1/3            1             -1/3            1/3            0              0              0       
+
+>> Iter=3; j=4; inds = find(T(2:m,j) > 0); [theta, l] = min( T(inds+1,1)./T(inds+1,j) ); l=inds(l)+1; fprintf(1,'\nIter %d: theta = %3.3f, l = %d\n\n',Iter,theta,l);
+
+Iter 3: theta = 63.000, l = 3
+
+>> T(l,:) = T(l,:)/T(l,j); for i=setdiff(1:m,l); T(i,:) = T(i,:) - T(i,j)*T(l,:); end; T
+T =
+     198              0              0              0             16              9              0          10000       
+      23              0              0              0              2              1              1             -1       
+      63             -1              0              1              5              3              0              0       
+      24              0              1              0              2              1              0              0       
+
+
+%% We've an optimal tableau!
+
+

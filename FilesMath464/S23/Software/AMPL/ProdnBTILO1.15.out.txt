@@ -1,0 +1,18 @@
+# AMPL output for BT-ILO problem 1.15
+ampl: reset; model ProdnBTILO1.15.mod.txt; data ProdnBTILO1.15.dat.txt; solve; display x;
+CPLEX 20.1.0.0: optimal solution; objective 2808
+1 dual simplex iterations (1 in phase I)
+x [*] :=
+1  360
+2    0
+;
+
+ampl: drop NoOverTime; solve; display x, h;
+CPLEX 20.1.0.0: optimal solution; objective 4018
+1 simplex iterations (0 in phase I)
+x [*] :=
+1  560
+2    0
+;
+
+h = 50

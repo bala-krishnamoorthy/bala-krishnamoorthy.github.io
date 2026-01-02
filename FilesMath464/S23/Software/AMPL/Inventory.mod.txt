@@ -1,0 +1,20 @@
+# AMPL model file for the inventory model
+# BT-ILO Problem 1.10
+
+param n; # No. of months
+param Demand {1..n}; # demand for each month
+param Cost1; # production cost for each month
+param Cost2; # storage cost (same for each month)
+
+var x {0..n} >= 0;   # No. units made in month j, including dummy x[0] = 0
+var z {0..n-1} >= 0; # | x_{i+1} - x_i |
+var s {0..n} >= 0;   # inventory at the end of month j, including starting inventory
+
+
+minimize NetCost: sum {k in 1..n} Cost1*s[k] + Cost2*(sum {j in 0..n-1} z[j]);
+
+subject to AbsVal1 {j in 0..n-1}: z[j] >= x[j+1]-x[j];
+subject to AbsVal2 {j in 0..n-1}: z[j] >= x[j]-x[j+1];
+subject to flow_balance {i in 1..n}: s[i-1] + x[i] = Demand[i] + s[i];
+subject to InitInv:  s[0] = 0;       #initial inventory
+subject to initProd: x[0] = 0;	     #initial production

@@ -1,0 +1,236 @@
+%% Math 464 Linear Optimization (Spring 2023)
+%% Lecture 18, 03/09/2023
+
+%% Tableau simplex on popular LP example continued from Lecture 17;
+%% Cycling in simplex method
+
+%% We first repeat all commands from Lecture 17 to get to the end of
+%% Iteration 1
+
+>>  LPExample;
+ T = [ [-cB'*xB cP']; [xB Binv*A]];
+ j=6; % x5 enters;
+ [theta,l] = min( T(2:m+1,1)./T(2:m+1,j) );
+ l = l+1;
+ T(l,:) = T(l,:)/T(l,j);
+ i=1; T(i,:) = T(i,:) - T(l,:)*T(i,j);
+ i=3; T(i,:) = T(i,:) - T(l,:)*T(i,j);
+ T = [ [-cB'*xB cP']; [xB Binv*A]];
+ T(l,:) = T(l,:)/T(l,j);
+ i=1; T(i,:) = T(i,:) - T(l,:)*T(i,j);
+ i=2; T(i,:) = T(i,:) - T(l,:)*T(i,j);
+ i=4; T(i,:) = T(i,:) - T(l,:)*T(i,j);
+>> 
+>> T
+T =
+      -4              0             -1              2              0              0       
+       2              1              1             -1              0              0       
+       4              0             -1              3              0              1       
+       2              0              2             -3              1              0       
+
+>> % Iteration 2
+>> j=3; % x2 enters
+
+>> [theta,l] = min( T(2:m+1,1)./T(2:m+1,j) ); l=l+1;
+>> [theta,l]
+ans =
+      -4              3
+
+%% That was a mistake, as we **don't** want to take all a_j's for the
+%% min ratio test! We want to consider only the a_j > 0.
+
+>> inds = find (T(2:m+1,j) > 0)
+inds =
+       1       
+       3       
+>> [theta,l] = min( T(inds+1,1)./T(inds+1,j) )
+theta =
+       1       
+l =
+       2       
+
+%% We need to re-index l, and increase it by 1 to get to the tableau
+%% counting. Note that the 4th row of T was the argmin of min-ratio.
+
+
+>> l=inds(l)+1
+l =
+       4       
+>> T(l,:) = T(l,:)/T(l,j)
+T =
+      -4              0             -1              2              0              0       
+       2              1              1             -1              0              0       
+       4              0             -1              3              0              1       
+       1              0              1             -3/2            1/2            0       
+>> inds
+inds =
+       1       
+       3       
+>> i=1; T(i,:) = T(i,:)-T(i,j)*T(l,:)
+T =
+      -3              0              0              1/2            1/2            0       
+       2              1              1             -1              0              0       
+       4              0             -1              3              0              1       
+       1              0              1             -3/2            1/2            0       
+>> i=2; T(i,:) = T(i,:)-T(i,j)*T(l,:)
+T =
+      -3              0              0              1/2            1/2            0       
+       1              1              0              1/2           -1/2            0       
+       4              0             -1              3              0              1       
+       1              0              1             -3/2            1/2            0       
+>> i=3; T(i,:) = T(i,:)-T(i,j)*T(l,:)
+T =
+      -3              0              0              1/2            1/2            0       
+       1              1              0              1/2           -1/2            0       
+       5              0              0              3/2            1/2            1       
+       1              0              1             -3/2            1/2            0       
+>> % current tableau is optimal as all c'_j >= 0.
+>> -3
+ans =
+      -3       
+>> % optimal solution: x1=1, x2=1, x5=5, z* =3.
+
+
+>> %% Example of Cycling
+
+>>  T = [ 0 -3/4 20 -1/2 6 0 0 0; 0 1/4 -8 -1 9 1 0 0; 0 1/2 -12 -1/2 3 0 1 0; 1 0 0 1 6 0 0 1]
+T =
+       0             -3/4           20             -1/2            6              0              0              0       
+       0              1/4           -8             -1              9              1              0              0       
+       0              1/2          -12             -1/2            3              0              1              0       
+       1              0              0              1              6              0              0              1
+
+%% We now use m and n to denote the # rows & # cols of T now.
+>> [m,n] = size(T)
+m =
+       4       
+n =
+       8
+       
+
+%% Iteration 1
+
+>> j=2; % x1 enters c'_1 = -3/4 is < c'_3 = -1/2
+
+%% We find candidates for min ratio, and re-index l back to counting
+%% rows of T.
+
+>> inds = find( T(2:m,j) > 0) + 1
+inds =
+       2       
+       3       
+>> inds = find( T(2:m,j) > 0) + 1; [theta, l] = min( T(inds,1)./T(inds,j) )
+theta =
+       0       
+l =
+       1       
+>> inds = find( T(2:m,j) > 0) + 1; [theta, l] = min( T(inds,1)./T(inds,j) ); l=inds(l)
+l =
+       2
+
+
+%% This leaving var choice is consistent with the rule here, as l=2
+%%  corresponds to x5, while the other choice is x6 (and 5 < 6)
+
+>> inds = find( T(2:m,j) > 0) + 1; [theta, l] = min( T(inds,1)./T(inds,j) ); l=inds(l);
+>> T(l,:) = T(l,:)/T(l,j)
+T =
+       0             -3/4           20             -1/2            6              0              0              0       
+       0              1            -32             -4             36              4              0              0       
+       0              1/2          -12             -1/2            3              0              1              0       
+       1              0              0              1              6              0              0              1       
+>> T(l,:) = T(l,:)/T(l,j); for i=setdiff(1:m,l); T(i,:) = T(i,:) - T(i,j)*T(l,:);end; T
+T =
+       0              0             -4             -7/2           33              3              0              0       
+       0              1            -32             -4             36              4              0              0       
+       0              0              4              3/2          -15             -2              1              0       
+       1              0              0              1              6              0              0              1       
+
+%% Iteration 2
+>> j=3; %x2 enters
+
+>> inds = find( T(2:m,j) > 0)+1
+inds =
+       3       
+>> inds = find( T(2:m,j) > 0)+1; [theta, l] = min( T(inds,l)./T(inds,j) )
+theta =
+       0       
+l =
+       1       
+>> inds = find( T(2:m,j) > 0)+1; [theta, l] = min( T(inds,l)./T(inds,j) ); l=inds(l)
+l =
+       3       
+>> T(l,:) = T(l,:)/T(l,j); for i=setdiff(1:m,l); T(i,:) = T(i,:) - T(i,j)*T(l,:);end; T
+T =
+       0              0              0             -2             18              1              1              0       
+       0              1              0              8            -84            -12              8              0       
+       0              0              1              3/8          -15/4           -1/2            1/4            0       
+       1              0              0              1              6              0              0              1       
+
+
+%% Iteration 3
+>> j=4; %x3 enters
+>> inds = find( T(2:m,j) > 0)+1
+inds =
+       2       
+       3       
+       4       
+>> inds = find( T(2:m,j) > 0)+1; [theta, l] = min( T(inds,1)./T(inds,j) )
+theta =
+       0       
+l =
+       1       
+>> inds = find( T(2:m,j) > 0)+1; [theta, l] = min( T(inds,1)./T(inds,j) ); l=inds(l)
+l =
+       2       
+>> T(l,:) = T(l,:)/T(l,j); for i=setdiff(1:m,l); T(i,:) = T(i,:) - T(i,j)*T(l,:);end; T
+T =
+       0              1/4            0              0             -3             -2              3              0       
+       0              1/8            0              1            -21/2           -3/2            1              0       
+       0             -3/64           1              0              3/16           1/16          -1/8            0       
+       1             -1/8            0              0             33/2            3/2           -1              1       
+
+%% Iteration 4
+>> j=5; %x4 enters
+
+>> inds = find( T(2:m,j) > 0)+1; [theta, l] = min( T(inds,1)./T(inds,j) ); l=inds(l)
+l =
+       3       
+>> T(l,:) = T(l,:)/T(l,j); for i=setdiff(1:m,l); T(i,:) = T(i,:) - T(i,j)*T(l,:);end; T
+T =
+       0             -1/2           16              0              0             -1              1              0       
+       0             -5/2           56              1              0              2             -6              0       
+       0             -1/4           16/3            0              1              1/3           -2/3            0       
+       1              4            -88              0              0             -4             10              1       
+
+%% Iteration 5
+>> j=6; %x5 enters
+
+>> inds = find( T(2:m,j) > 0)+1; [theta, l] = min( T(inds,1)./T(inds,j) ); l=inds(l)
+l =
+       2       
+>> T(l,:) = T(l,:)/T(l,j); for i=setdiff(1:m,l); T(i,:) = T(i,:) - T(i,j)*T(l,:);end; T
+T =
+       0             -7/4           44              1/2            0              0             -2              0       
+       0             -5/4           28              1/2            0              1             -3              0       
+       0              1/6           -4             -1/6            1              0              1/3            0       
+       1             -1             24              2              0              0             -2              1       
+
+%% Iteration 6
+>> j=7; %x6 enters
+
+>> inds = find( T(2:m,j) > 0)+1; [theta, l] = min( T(inds,1)./T(inds,j) ); l=inds(l)
+l =
+       3       
+>> T(l,:) = T(l,:)/T(l,j); for i=setdiff(1:m,l); T(i,:) = T(i,:) - T(i,j)*T(l,:);end; T
+T =
+       0             -3/4           20             -1/2            6              0              0              0       
+       0              1/4           -8             -1              9              1              0              0       
+       0              1/2          -12             -1/2            3              0              1              0       
+       1              *              *              1              6              0              0              1       
+
+%% The two "*"'s in the last row are actually zeros.
+>> fprintf(1,'%15.15f   %15.15f\n', T(4,[2 3]));
+-0.000000000000000   0.000000000000007
+
+%% We're back at the starting tableau!

@@ -1,0 +1,17 @@
+# Data file for BT-ILO problem 1.15
+
+param n_Prod := 2;
+
+# we can specify all the parameters indexed by 1..n_Prod in one matrix:
+
+param:	ProdAssembly ProdTesting ProdRawMatl Value :=
+1	   0.250	0.125	     1.2       9
+2	   0.333	0.333        0.9       8  ;
+
+param AssemblyHours := 90;
+param TestingHours  := 80;
+
+param OverTimeCost :=  7;
+param MaxOverTime  := 50;
+
+

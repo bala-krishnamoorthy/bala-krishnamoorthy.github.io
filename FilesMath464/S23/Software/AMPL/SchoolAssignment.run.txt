@@ -1,0 +1,22 @@
+model SchoolAssignment.mod.txt;
+
+let n_I :=  5;
+let n_J :=  6;
+let n_G	:= 10;
+
+read {j in 1..n_J, g in 1..n_G} Cap[j,g] < Capacities.txt;
+close Capacities.txt;
+
+read {i in 1..n_I, g in 1..n_G} Pop[i,g] < Populations.txt;
+close Populations.txt;
+
+read {i in 1..n_I, j in 1..n_J} Dist[i,j] < Distances.txt;
+close Distances.txt;
+
+solve;
+
+printf "\n\nSolution in the format i,j,g - x[i,j,g]:\n";
+for {i in 1..n_I, j in 1..n_J, g in 1..n_G}{
+  if x[i,j,g] > 0 then
+    printf "%d,%d,%2d - %5.1f\n",i,j,g,x[i,j,g];
+};

@@ -1,0 +1,25 @@
+# Model file for BT-ILO problem 1.15
+
+param n_Prod;	 # No. product types
+param ProdAssembly {1..n_Prod};	# assembly hrs per product
+param ProdTesting {1..n_Prod};	# testing hrs per product
+param ProdRawMatl {1..n_Prod};  # raw materials per product
+param Value {1..n_Prod};	# value for each product
+param AssemblyHours;
+param TestingHours;
+
+var x {1..n_Prod} >= 0;	# x[j] = # of product j made
+
+param OverTimeCost;	# cost per hour of overtime
+param MaxOverTime;
+var h >= 0;		# hours of overtime assembly	
+
+maximize Profit: sum {j in 1..n_Prod} (Value[j]-ProdRawMatl[j])*x[j] - OverTimeCost*h;
+
+subject to AssemblyCon: sum {j in 1..n_Prod} ProdAssembly[j]*x[j] <= AssemblyHours + h;
+subject to TestingCon:  sum {j in 1..n_Prod} ProdTesting[j]*x[j] <= TestingHours;
+subject to OTUpperBound: h <=  MaxOverTime;
+
+subject to NoOverTime: h = 0 ;
+# This constraint essentially removes the variable h from the model
+# To include the overtime option, we need to drop this constraint

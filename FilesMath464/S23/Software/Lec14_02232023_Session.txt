@@ -1,0 +1,185 @@
+%% Math 464 Linear Optimization (Spring 2023)
+%% Lecture 14, 02/23/2023
+
+%% Iterations of the simplex method
+
+>> format rat
+>> format compact
+
+%% Setting up the problem
+>> A = [1 1 -1 0 0; 3 1 0 -1 0; 3 2 0 0 1];
+>> b = [2 4 10]';
+>> c = [2 1 0 0 0]';
+>> [m,n]=size(A);
+
+%% Starting at B(10/3, 0)
+%% Iteration 1
+
+>> Bind = [1 3 4]; % for B(10/3, 0)
+>> B = A(:,Bind); Binv = inv(B);
+>> cB = c(Bind)
+cB =
+       2       
+       0       
+       0       
+>> cP = (c' - cB'*Binv*A)'
+cP =
+       0       
+      -1/3     
+       0       
+       0       
+      -2/3
+%% Reduced cost is NOT >= 0, so current bfs is not optimal
+
+%% We select j=2 (2nd basic direction)
+>> j=2; d = zeros(n,1); d(j)=1; dB = -Binv*A(:,j); d(Bind) = dB
+d =
+      -2/3     
+       1       
+       1/3     
+      -1       
+       0
+
+%$ Initializing the current bfs       
+>> x = zeros(n,1); xB = Binv*b; x(Bind) = xB
+x =
+      10/3     
+       0       
+       4/3     
+       6       
+       0       
+
+%% Notice that d(1) and d(4) are < 0, and hence
+%% candidates for the min-ratio test
+
+>> [theta, l] = min( [-x(1)/d(1)  -x(4)/d(4)] )
+theta =
+       5       
+l =
+       1       
+>> x_ptB = x;  % just saving a copy of the bfs
+>> x = x + theta*d
+x =
+       0       
+       5       
+       3       
+       1       
+       0       
+
+%% We're now at C(0,5)
+
+%% Iteration 2
+>> Bind = [2 3 4];
+>> B = A(:,Bind); Binv = inv(B);
+>> cB = c(Bind)
+cB =
+       1       
+       0       
+       0       
+>> cP = (c' - cB'*Binv*A)'
+cP =
+       1/2     
+       0       
+       0       
+       0       
+      -1/2     
+
+%% bfs not optimal; only option is to choose j=5 to proceed
+>> j=5; d = zeros(n,1); d(j)=1; dB = -Binv*A(:,j); d(Bind) = dB
+d =
+       0       
+      -1/2     
+      -1/2     
+      -1/2     
+       1
+       
+>> [theta, l] = min( [-x(2)/d(2)  -x(3)/d(3) -x(4)/d(4)] )
+theta =
+       2       
+l =
+       3       
+
+>> x = x + theta*d
+x =
+       0       
+       4       
+       2       
+       0       
+       2       
+%% We're now at D(0,4);
+
+%% Iteration 3
+>> Bind = [2 3 5];
+>> B = A(:,Bind); Binv = inv(B);
+>> cB = c(Bind)
+cB =
+       1       
+       0       
+       0       
+>> cP = (c' - cB'*Binv*A)'
+cP =
+      -1       
+       0       
+       0       
+       1       
+       0       
+
+%% bfs not optimal; only choice is j=1 to proceed
+>> j=1; d = zeros(n,1); d(j)=1; dB = -Binv*A(:,j); d(Bind) = dB
+d =
+       1       
+      -3       
+      -2       
+       0       
+       3       
+>> [theta, l] = min( [-x(2)/d(2)  -x(3)/d(3)] )
+theta =
+       1       
+l =
+       2       
+>> x = x + theta*d
+x =
+       1       
+       1       
+       0       
+       0       
+       5       
+
+%% We're now at E(1,1)
+       
+%% Iteration 4
+>> Bind = [2 1 5];
+%% Note that x(1) entered in place of x(3)
+
+>> B = A(:,Bind); Binv = inv(B);
+>> cB = c(Bind)
+cB =
+       1       
+       2       
+       0       
+>> cP = (c' - cB'*Binv*A)'
+cP =
+       0       
+       0       
+       1/2     
+       1/2     
+       0
+
+%% c' >= 0 ==> current bfs is optimal!
+>> x
+x =
+       1       
+       1       
+       0       
+       0       
+       5       
+
+%% z* = min (c^T x) is the optimal objective function
+>> zSt = c'*x
+zSt =
+       3       
+>> 
+
+
+
+

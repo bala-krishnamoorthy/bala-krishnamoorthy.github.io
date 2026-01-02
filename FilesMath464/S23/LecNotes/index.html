@@ -1,0 +1,560 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <script type="text/javascript"
+	    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    <meta name="generator" content="BKStyle" />
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link rel="stylesheet" href="../../../BKStyle.css" type="text/css" />
+    <title>Linear Optimization: Lecture Notes and videos</title>
+  </head>
+
+  <body>
+    <table summary="Table for page layout." id="tlayout">
+      <tr valign="top">
+	<td id="layout-menu">
+	  <div class="menu-item"><a href="../../../Math464.html"><big>Math464 Home</big></a></div>
+	  <div class="menu-item"><a href="index.html"><big>Lectures</big></a></div>
+	  <div class="menu-item"><a href="../Handouts/index.html"><big>Handouts</big></a></div>
+	  <div class="menu-item"><a href="../Homeworks/index.html"><big>Homework</big></a></div>
+	  <div class="menu-item"><a href="../Software/index.html"><big>Software</big></a></div>	  
+	  <div class="menu-category"><br /></div>
+	  <div class="menu-item"><a href="../../../index.html" class="current"><big>Bala's Home</big></a></div>
+	</td>
+
+	<td id="layout-content">
+
+	  <h1>Math 464: Lecture Notes and Videos on Linear Optimization</h1>
+
+	  <table border="0" width="50%" >
+	    <tr>
+	      <td align=left> 
+		<b>Copyright</b>: I (Bala Krishnamoorthy) hold the copyright
+		for all lecture scribes/notes, documents, and other
+		materials including videos posted on these course web
+		pages. These materials might not be used for commercial
+		purposes without my consent.
+	      </td>
+	    </tr>
+	  </table>
+
+	  <br>
+
+
+	  <a  href="AllLecsSoFar_Math464.pdf">Scribes from
+	    all lectures so far</a> (as a single <b>big</b> file)<br>
+	  <br>
+
+	  <table border="0" cellpadding=3 cellspacing=2>
+
+	    <font size=+1>
+	      <tr> 
+		<th>Lec </th>  <th align=center>Date</th> <th>Topic(s) </th> <th>Scribe</th> <th>Video</th> 
+	      </tr>
+	    </font>
+
+	    
+	    
+	    <tr> 
+	      <td align="center"> 1 </td> 
+	      <td> Jan 10 </td> 
+	      <td>
+		<a href="../SyllSched/Math464_Syllabus_S23.pdf">syllabus</a>,
+		optimization in calculus, solving \(A\mathbf{x} = \mathbf{b}\)
+		using EROs, linear program (LP) example: Dude's Thursday problem
+	      </td>
+	      <td align="center"> 
+		<a href="Lec1_Math464_01102023.pdf">Scb1</a>
+	      </td> 
+	      <td align="center">
+		<a href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=e2e386e2-00e4-426f-80f4-af86014b0bd7">Vid1</a>
+	      </td>
+	    </tr>
+
+	    <tr bgcolor="#EEDDCB"> 
+	      <td align="center"> 2 </td> 
+	      <td> Jan 12 </td> 
+	      <td>
+		general form of an LP, feasible and optimal solutions, standard
+		form, conversion to standard form, excess/slack variables
+	      </td>
+	      <td align="center">
+		<a href="Lec2_Math464_01122023.pdf">Scb2</a>
+	      </td> 
+	      <td align="center">
+		<a href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=aa949f92-26a7-404d-8011-af88014c89fa">Vid2</a>
+	      </td>
+	    </tr>
+
+	    <tr> 
+	      <td align="center"> 3 </td> 
+	      <td> Jan 17 </td> 
+	      <td>
+		LP formulations, diet problem, solution in AMPL, road lighting
+		problem, exceeding illumination limits, currency exchange (CE)
+	      </td>
+	      <td align="center"> 
+		<a href="Lec3_Math464_01172023.pdf">Scb3</a>
+	      </td> 
+	      <td align="center">
+		<a href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=3f0143f0-3c60-4220-ba86-af8d014af93a">Vid3</a>
+	      </td>
+	    </tr>
+
+	    <tr bgcolor="#EEDDCB"> 
+	      <td align="center"> 4 </td> 
+	      <td> Jan 19 </td> 
+	      <td>
+		CE LP, convex function, piecewise linear (PL) convex (PLC)
+		functions, max of convex functions is convex, PLC functions in
+		LP
+	      </td>
+	      <td align="center">
+		<a href="Lec4_Math464_01192023.pdf">Scb4</a>
+	      </td> 
+	      <td align="center">
+		<a href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=2f132eb3-2558-401c-9e35-af8f014b268a">Vid4</a>
+	      </td>
+	    </tr>
+
+	    <tr> 
+	      <td align="center"> 5 </td> 
+	      <td> Jan 24 </td> 
+	      <td>
+		intuition for min-max, absolute values in LP,
+		\(|x_i|\)\(\to\)\(x_i^+, x_i^-\) or \(z \geq x_i^{\pm}\),
+		lighting problem: get "close to" \(I_i^*\), inventory planning
+		LP
+	      </td>
+	      <td align="center"> 
+		<a href="Lec5_Math464_01242023.pdf">Scb5</a>
+	      </td> 
+	      <td align="center">
+		<a href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=3b4aa310-4e66-45a5-81a3-af94014b0abe">Vid5</a>
+	      </td>
+	    </tr>
+
+	    <tr bgcolor="#EEDDCB"> 
+	      <td align="center"> 6 </td> 
+	      <td> Jan 26 </td> 
+	      <td>
+		graphical solution in 2D, feasible region, slide z-line, cases
+		of LP: unique/alternative optimal solution(s),
+		unbounded/infeasible LP
+	      </td>
+	      <td align="center">
+		<a href="Lec6_Math464_01262023.pdf">Scb6</a>
+	      </td> 
+	      <td align="center">
+		<a href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=cc063eee-1ba8-4c68-b702-af96014b028a">Vid6</a>
+	      </td>
+	    </tr>
+
+	    <tr> 
+	      <td align="center"> 7 </td> 
+	      <td> Jan 31 </td> 
+	      <td>
+		subspace, affine spaces, polyhedron, polyhedron is a convex set,
+		bounded set, convex hull of points is convex, extreme point
+	      </td>
+	      <td align="center"> 
+		<a href="Lec7_Math464_01312023.pdf">Scb7</a>
+	      </td> 
+	      <td align="center">
+		<a href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=f12c0369-0038-4027-a5ca-af9b014b03c1">Vid7</a>
+	      </td>
+	    </tr>
+
+	    <tr bgcolor="#EEDDCB"> 
+	      <td align="center"> 8 </td> 
+	      <td> Feb &nbsp; 2 </td> 
+	      <td>
+		vertex, basic & basic feasible solution (bfs), basic solution
+		depends on presentation of \(P\), proof of vertex
+		\(\Rightarrow\) extreme point \(\Rightarrow\) bfs
+	      </td>
+	      <td align="center">
+		<a href="Lec8_Math464_02022023.pdf">Scb8</a>
+	      </td> 
+	      <td align="center">
+		<a href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=0663ec8f-3ed6-43e4-840e-af9d014b0e43">Vid8</a>
+	      </td>
+	    </tr>
+
+
+	    <tr> 
+	      <td align="center"> 9 </td> 
+	      <td> Feb &nbsp; 7 </td> 
+	      <td>
+		adjacent basic solutions and bfs's, polyhedron \(P\) in standard
+		form, basic solutions of \(P\), finding basic solutions & bfs's
+		in <a href="../Software/Lec9_02072023_Session.txt">Matlab</a>
+	      </td>
+	      <td align="center"> 
+		<a href="Lec9_Math464_02072023.pdf">Scb9</a>
+	      </td> 
+	      <td align="center">
+		<a href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=d8f7877e-3f09-4392-bb73-afa2014b05a5">Vid9</a>
+	      </td>
+	    </tr>
+	    
+	    <tr bgcolor="#EEDDCB"> 
+	      <td align="center"> 10 </td> 
+	      <td> Feb &nbsp; 9 </td> 
+	      <td>
+		correspondence of corner points and bfs's, degenerate basic
+		(feasible) solutions, degeneracy in standard
+		form, <a href="../Software/Lec10_02092023_Session.txt">Matlab session</a>
+	      </td>
+	      <td align="center">
+		<a href="Lec10_Math464_02092023.pdf">Scb10</a>
+	      </td> 
+	      <td align="center">
+		<a href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=7076a6c9-d420-4174-b46d-afa4014b05aa">Vid10</a>
+	      </td>
+	    </tr>
+
+	    <tr> 
+	      <td align="center"> 11 </td> 
+	      <td> Feb 14 </td> 
+	      <td>
+		\(P\) has no line\(\Leftrightarrow\)\(P\) has vertex, existence
+		of optimal vertex, change to standard form keeps "shape" of
+		\(P\), feasible direction at \(\mathbf{x}\)
+	      </td>
+	      <td align="center"> 
+		<a href="Lec11_Math464_02142023.pdf">Scb11</a>
+	      </td> 
+	      <td align="center">
+		<a href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=9ed0e863-a754-4c17-a43c-afa9014b508e">Vid11</a>
+	      </td>
+	    </tr>
+	    
+	    <tr bgcolor="#EEDDCB"> 
+	      <td align="center"> 12 </td> 
+	      <td> Feb 16 </td> 
+	      <td>
+		direction: \(\mathbf{x}+\theta\mathbf{d} \in P \mbox{ for }
+		\theta > 0, j\)th basic direction at \(\mathbf{x}\):
+		\(\mathbf{d}_B = B^{-1}A_{j}\), reduced cost \(\mathbf{c}'^T =
+		\mathbf{c}^T - \mathbf{c}_B B^{-1} A \),
+		<a href="../Software/Lec12_02162023_Session.txt">Matlab session</a>
+	      </td>
+	      <td align="center">
+		<a href="Lec12_Math464_02162023.pdf">Scb12</a>
+	      </td> 
+	      <td align="center">
+		<a href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=49e9f418-a87f-454d-9ba6-afab014bd759">Vid12</a>
+	      </td>
+	    </tr>
+
+	    <tr> 
+	      <td align="center"> 13 </td> 
+	      <td> Feb 21 </td> 
+	      <td>
+		LP optimality conditions: \(B^{-1}\mathbf{b} \geq
+		\mathbf{0}\), \(\mathbf{c} \geq \mathbf{0}\),
+		entering/leaving var, min-ratio test:
+		\(\theta^*\)\(=\)\(\min_{\{i \in \scr{B}|d_{B(i)} <
+		0\}} \,(-x_{B(i)}/d_{B(i)})
+		\), <a href="../Software/Lec13_02212023_Session.txt">Matlab</a>
+              </td>
+	      <td align="center"> 
+		<a href="Lec13_Math464_02212023.pdf">Scb13</a>
+	      </td> 
+	      <td align="center">
+		<a href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=d93401b3-073c-48d0-95ed-afb0014b08c8">Vid13</a>
+	      </td>
+	    </tr>
+
+	    <tr bgcolor="#EEDDCB"> 
+	      <td align="center"> 14 </td> 
+	      <td> Feb 23 </td> 
+	      <td>
+		<A href="https://www.opb.org/article/2023/02/23/portland-area-transportation-agencies-unprepared-historic-snow-storm/"><i>make-up
+		lecture</i></a>: an iteration of the simplex
+		method, <a href="../Software/Lec14_02232023_Session.txt">Matlab
+		session</a>, simplex method will terminate,
+		\(\mathbf{x}'\)<!--'-->\( = \mathbf{x} +
+		\theta\mathbf{d}\) is a bfs
+	      </td>
+	      <td align="center">
+		<a href="Lec14_Math464_02232023.pdf">Scb14</a>
+	      </td> 
+	      <td align="center">
+		<a href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=b35f9b68-4ed5-4f04-ba3d-afb4007a1757">Vid14</a>
+	      </td>
+	    </tr>
+
+	    <tr> 
+	      <td align="center"> 15 </td> 
+	      <td> Feb 28 </td> 
+	      <td>
+		options: checking \(c'_j\)<!--'--> one at a time,
+		naive simplex, revised simplex method, update
+		\(B^{-1}\) with EROs \(\begin{bmatrix} B^{-1}
+		\,|\,-\mathbf{d}_B \end{bmatrix} \rightarrow\)
+		\(\begin{bmatrix} B'^{-1} \,|\, \mathbf{e}_{\ell}
+		\end{bmatrix}\) <!--'-->
+	      </td>
+	      <td align="center"> 
+		<a href="Lec15_Math464_02282023.pdf">Scb15</a>
+	      </td> 
+	      <td align="center">
+		<a href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=517e6bad-641d-4931-bc2b-afb7014b01f6">Vid15</a>
+	      </td>
+	    </tr>
+
+	    <tr bgcolor="#EEDDCB"> 
+	      <td align="center"> 16 </td> 
+	      <td> Mar &nbsp; 2 </td> 
+	      <td>
+		Hints for problems 5 and 6
+		from <a href="../Homeworks/Hw6.pdf">Homework 6</a>,
+		full example of revised simplex, tableau
+		implementation of simplex method
+	      </td>
+	      <td align="center">
+		<a href="Lec16_Math464_03022023.pdf">Scb16</a>
+	      </td> 
+	      <td align="center">
+		<a href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=0f75859b-9566-4548-9077-afb9014b0026">Vid16</a>
+	      </td>
+	    </tr>
+
+	    <tr> 
+	      <td align="center"> 17 </td> 
+	      <td> Mar &nbsp; 7 </td> 
+	      <td>
+		hints for <a href="../Homeworks/Hw7.pdf">Homework
+		7</a>, full tableau simplex example, use of
+		\(-\mathbf{c}^T_B \mathbf{x}_B\) in \((0,0)\)-element,
+		tableau for popular LP instance
+		in <a href="../Software/Lec17_03072023_Session.txt">Matlab</a>
+	      </td>
+	      <td align="center"> 
+		<a href="Lec17_Math464_03072023.pdf">Scb17</a>
+	      </td> 
+	      <td align="center">
+		<a href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=ceb3cd0a-0583-42db-b5c1-afbe014c8f71">Vid17</a>
+	      </td>
+	    </tr>
+
+	    <tr bgcolor="#EEDDCB"> 
+	      <td align="center"> 18 </td> 
+	      <td> Mar &nbsp; 9 </td> 
+	      <td>
+		tableau simplex on popular LP instance (continued),
+		cycling in tableau
+		simplex, <a href="../Software/Lec18_03092023_Session.txt">Matlab
+		session</a>, lexicographic order
+	      </td>
+	      <td align="center">
+		<a href="Lec18_Math464_03092023.pdf">Scb18</a>
+	      </td> 
+	      <td align="center">
+		<a href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=d4b5c092-0367-4b0e-b309-afc0014b04ed">Vid18</a>
+	      </td>
+	    </tr>
+
+	    <tr> 
+	      <td align="center"> 19 </td> 
+	      <td> Mar 21 </td> 
+	      <td>
+		lex ordering, lexicographic pivoting to avoid cycling,
+		Bland&#39;s rule, big-M method, artifical variables, LP example,
+		<a href="../Software/Lec19_03212023_Session.txt">Matlab
+		session</a>
+	      </td>
+	      <td align="center"> 
+		<a href="Lec19_Math464_03212023.pdf">Scb19</a>
+	      </td> 
+	      <td align="center">
+		<a href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=1d983b95-2c31-4b95-a019-afcc013a8602">Vid19</a>
+	      </td>
+	    </tr>
+
+	    <tr bgcolor="#EEDDCB"> 
+	      <td align="center"> 20 </td> 
+	      <td> Mar 23 </td> 
+	      <td>
+		detect infeasibility using big-M, two-phase simplex, a
+		full example using big-M
+		(<a href="../Software/Lec20_03232023_Session.txt">Matlab</a>),
+		comparing revised and tableau simplex
+	      </td>
+	      <td align="center">
+		<a href="Lec20_Math464_03232023.pdf">Scb20</a>
+	      </td> 
+	      <td align="center">
+		<a href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=cf802336-e44b-493b-bbbf-afce013a834c">Vid20</a>
+	      </td>
+	    </tr>
+
+	    <tr> 
+	      <td align="center"> 21 </td> 
+	      <td> Mar 28 </td> 
+	      <td>
+		LP duality, Lagrangian, dual LP of a general form LP, table of
+		primal-dual relationships, normal variables and constraints
+	      </td>
+	      <td align="center"> 
+		<a href="Lec21_Math464_03282023.pdf">Scb21</a>
+	      </td> 
+	      <td align="center">
+		<a href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=28f56b70-ec3d-422b-9f42-afd3013a87e9">Vid21</a>
+	      </td>
+	    </tr>
+
+	    <tr bgcolor="#EEDDCB"> 
+	      <td align="center"> 22 </td> 
+	      <td> Mar 30 </td> 
+	      <td>
+		duality in matrix form, weak duality, (P) unbounded
+		\(\Rightarrow\) (D) infeasible, strong duality, (P)
+		and (D) both infeasible, hints
+		for <a href="../Homeworks/Hw9.pdf">Hw9</a>
+	      </td>
+	      <td align="center">
+		<a href="Lec22_Math464_03302023.pdf">Scb22</a>
+	      </td> 
+	      <td align="center">
+		<a href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=0e8465c0-4351-4591-a387-afd5013ad7e7">Vid22</a>
+	      </td>
+	    </tr>
+
+	    <tr> 
+	      <td align="center"> 23 </td> 
+	      <td> Apr &nbsp; 4 </td> 
+	      <td>
+		complementary slackness, constraint inactive\(\Rightarrow\)dual
+		var\(=0,\) mechanical analogy for duality, economic
+		interpretation of dual LP
+	      </td>
+	      <td align="center"> 
+		<a href="Lec23_Math464_04042023.pdf">Scb23</a>
+	      </td> 
+	      <td align="center">
+		<a href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=a1b66c42-8fae-44f7-afd3-afda013a8ac8">Vid23</a>
+	      </td>
+	    </tr>
+
+	    <tr bgcolor="#EEDDCB"> 
+	      <td align="center"> 24 </td> 
+	      <td> Apr &nbsp; 6 </td> 
+	      <td>
+		<A href="../Software/AMPL/Lec24_04062023_Session.txt">read
+		  command, displaying dual vars, and CSCs in AMPL</a>,
+		  dual variables as shadow prices, Farkas&apos; lemma,
+		  proof using duality
+	      </td>
+	      <td align="center">
+		<a href="Lec24_Math464_04062023.pdf">Scb24</a>
+	      </td> 
+	      <td align="center">
+		<a href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=a9d0826a-4d0e-4e97-8e8d-afdc013a90a7">Vid24</a>
+	      </td>
+	    </tr>
+
+	    <tr> 
+	      <td align="center"> 25 </td> 
+	      <td> Apr 11 </td> 
+	      <td>
+		illustration of Farkas&apos; lemma in 2D, alternative forms,
+		application in asset pricing and arbitrage, dual variables as
+		marginal costs
+	      </td>
+	      <td align="center"> 
+		<a href="Lec25_Math464_04112023.pdf">Scb25</a>
+	      </td> 
+	      <td align="center">
+		<a href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=d77ffbcf-3b1e-4caa-ad56-afe1013a8f78">Vid25</a>
+	      </td>
+	    </tr>
+
+	    <tr bgcolor="#EEDDCB"> 
+	      <td align="center"> 26 </td> 
+	      <td> Apr 13 </td> 
+	      <td>
+		dual simplex method, primal optimality(feasibility)
+		\(\equiv\) dual feasiblity(optimality), dual simplex
+		pivot, <a href="../Homeworks/Hw7.pdf">Homework 7</a>
+		proof problems
+	      </td>
+	      <td align="center">
+		<a href="Lec26_Math464_04132023.pdf">Scb26</a>
+	      </td> 
+	      <td align="center">
+		<a href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=c08a826f-d869-4669-bc5b-afe3013a982c">Vid26</a>
+	      </td>
+	    </tr>
+
+	    <tr> 
+	      <td align="center"> 27 </td> 
+	      <td> Apr 18 </td> 
+	      <td>
+		implementing Bland&#39;s rule in Matlab
+		(<A href="../Software/Lec27_04182023_Session.txt">session</a>),
+		extra problem from BT-ILO on simplex tableau, problems
+		from <a href="../Homeworks/Hw10.pdf">Homework 10</a>
+	      </td>
+	      <td align="center"> 
+		<a href="Lec27_Math464_04182023.pdf">Scb27</a>
+	      </td> 
+	      <td align="center">
+		<a href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=f443fb30-1714-4b22-9d6c-afe8013abe3b">Vid27</a>
+	      </td>
+	    </tr>
+
+
+	    <tr bgcolor="#EEDDCB"> 
+	      <td align="center"> 28 </td> 
+	      <td> Apr 20 </td> 
+	      <td>
+		details of
+		the <a href="../Homeworks/Project_Math464_S23.pdf">Project</a>,
+		form of functions, running time in Matlab, Jimbo LP
+		and its \(A \mathbf{x} \leq \mathbf{b}\)
+		form, <i>repmat, reshape</i> in Matlab
+	      </td>
+	      <td align="center">
+		<a href="Lec28_Math464_04202023.pdf">Scb28</a>
+	      </td> 
+	      <td align="center">
+		<a href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=12200080-c9e4-4af4-802b-afea013ab222">Vid28</a>
+	      </td>
+	    </tr>
+
+	    <tr> 
+	      <td align="center"> 29 </td> 
+	      <td> Apr 25 </td> 
+	      <td>
+		discussion on
+		the <a href="../Homeworks/Project_Math464_S23.pdf">project</a>,
+		interior point methods, bad instances for the simplex
+		method, spanning path visiting \(2^n\) vertices
+	      </td>
+	      <td align="center"> 
+		<a href="Lec29_Math464_04252023.pdf">Scb29</a>
+	      </td> 
+	      <td align="center">
+		<a href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=82a4c405-d288-4a9d-83cc-afef013ab27e">Vid29</a>
+	      </td>
+	    </tr>
+
+	  </table>
+
+	  <br>
+	  <hr>
+	    Last modified:  Wed Apr 26 14:20:17 PDT 2023
+
+	  
+	</td>
+      </tr>
+    </table>
+
+  </body>
+</html>	  
+	  

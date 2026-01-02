@@ -1,0 +1,20 @@
+# AMPL Output for oil refinery problem (Problem 1.16 from BT-ILO Pages 37-38)
+
+ampl: option solver cplex;
+ampl: reset; model OilRef.mod.txt; data OilRef.dat.txt; solve; display x;
+CPLEX 20.1.0.0: optimal solution; objective 3.39e+08
+3 dual simplex iterations (1 in phase I)
+x [*] :=
+1        0
+2    5e+05
+3  1500000
+;
+
+ampl: printf {i in 1..n_Proc} "%2d %8.0f\n",i,x[i];
+ 1        0
+ 2   500000
+ 3  1500000
+ 
+ampl: printf "Revenue = %8.0f\n", Revenue;
+Revenue = 339000000
+ampl:

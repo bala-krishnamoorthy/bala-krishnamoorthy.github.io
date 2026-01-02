@@ -1,0 +1,112 @@
+## Math 464 Lecture 24, 04/06/2023
+## AMPL Session
+
+ampl: reset; model ProdnBTILO1.15.mod.txt; data ProdnBTILO1.15.dat.txt;
+ampl: display ProdAssembly, ProdTesting;
+: ProdAssembly ProdTesting    :=
+1     0.25         0.125
+2     0.333        0.333
+;
+
+## We could read data that is presented in text files directly into
+## parameters declared in the model file, and whose sizes are set
+## (either in a data file or in the ampl: prompt directly).
+
+ampl: read {j in 1..n_Prod} ProdAssembly[j], ProdTesting[j], ProdRawMatl[j], Value[j] < DataMatrix.txt;
+
+j is not defined
+context:  read {j in 1..n_Prod} ProdAssembly[j],  >>> ProdTesting[j] <<< , ProdRawMatl[j], Value[j] < DataMatrix.txt;
+
+syntax error
+context:  read {j in 1..n_Prod} ProdAssembly[j], ProdTesting[j] >>> , <<<  ProdRawMatl[j], Value[j] < DataMatrix.txt;
+
+## Oops! This is not the correct way to read in a param.  You can read
+## in one parameter at a time - all dimensions of it, in fact. It all
+## depends on how the data is stored in the file from which we are
+## reading.
+
+
+ampl: read ProdAssembly[1] < DataMatrix.txt;
+ampl: read ProdTesting[1] < DataMatrix.txt;
+ampl: read ProdRawMatl[1] < DataMatrix.txt;
+ampl: read Value[1] < DataMatrix.txt;
+ampl: display Value;
+Value [*] :=
+1  9.2
+2  8
+;
+
+ampl: read ProdAssembly[2] < DataMatrix.txt;
+ampl: read ProdTesting[2] < DataMatrix.txt;
+ampl: read ProdRawMatl[2] < DataMatrix.txt;
+ampl: read Value[2] < DataMatrix.txt;
+ampl: close DataMatrix.txt;
+
+## After you're done reading from a file, you should close that
+## file. This is important if you want to read from another file next.
+
+ampl: display ProdAssembly, ProdTesting, ProdRawMatl, Value;
+: ProdAssembly ProdTesting ProdRawMatl Value    :=
+1     0.25         0.125        1.2      9.2
+2     0.333        0.333        3.9      8.4
+;
+
+## Notice that the changed values given in DataMatrix.txt have indeed
+## been read in.
+
+## Another way to assign parameter values directly at the ampl: prompt
+## is using the let command.
+
+ampl: let Value[1] := 10;
+ampl: display ProdAssembly, ProdTesting, ProdRawMatl, Value;
+: ProdAssembly ProdTesting ProdRawMatl  Value    :=
+1     0.25         0.125        1.2      10
+2     0.333        0.333        3.9       8.4
+;
+
+## The let command is the most convenient option to (re)assign one, or
+## a few, parameter values. One could assign the size of a matrix
+## parameter at the ampl: prompt using the let command, and then read
+## in the matrix values from a text file, for instance.
+
+## We go back to the original problem data by resetting only the data
+## file. A simple "reset;" will reset everything including the model.
+
+ampl: reset data;
+ampl: reset; model ProdnBTILO1.15.mod.txt; data ProdnBTILO1.15.dat.txt; solve;
+CPLEX 20.1.0.0: optimal solution; objective 2808
+1 dual simplex iterations (1 in phase I)
+
+## AMPL provides the optimal dual solution once the primal LP is
+## solved. We can directly read off the optimal dual variable values
+## by 'display'ing the corresponding constraint name in the primal LP.
+
+ampl: display AssemblyCon, TestingCon;
+AssemblyCon = 31.2
+TestingCon = 0
+
+## We can verify that complementary slackness conditions (CSCs) are
+## satisfied at optimality. Note above that the dual variable for the
+## TestingCon constraint is zero. We check that this zero value is
+## indeed forced by that constraint being non-binding.
+
+
+ampl: display x;
+x [*] :=
+1  360
+2    0
+;
+
+ampl: display sum {j in 1..n_Prod} ProdAssembly[j]*x[j];
+sum{j in 1 .. n_Prod} ProdAssembly[j]*x[j] = 90
+
+ampl: display sum {j in 1..n_Prod} ProdTesting[j]*x[j];
+sum{j in 1 .. n_Prod} ProdTesting[j]*x[j] = 45
+
+## Note that we are using only 45 out of the 80 hours of Testing
+## available. Hence the optimal dual variable for that constraint will
+## be zero (due to CSCs).
+
+## But we are using all of the 90 Assembly hours. Hence we could've
+## obtained the optimal dual solution value for AssemblyCon also as
+## 2808/90 = 31.2

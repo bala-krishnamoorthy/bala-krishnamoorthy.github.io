@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <script type="text/javascript"
+	    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    <meta name="generator" content="BKStyle" />
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link rel="stylesheet" href="BKStyle.css" type="text/css" />
+    <title>Linear Optimization (Math 464, CAPS)</title>
+  </head>
+
+  <body>
+    <table summary="Table for page layout." id="tlayout">
+      <tr valign="top">
+	<td id="layout-menu">
+	  <div class="menu-item"><a href="Math464.html"><big>Math464 Home</big></a></div>
+	  <div class="menu-item"><a href="FilesMath464/S23/LecNotes/index.html"><big>Lectures</big></a></div>
+	  <div class="menu-item"><a href="FilesMath464/S23/Handouts/index.html"><big>Handouts</big></a></div>
+	  <div class="menu-item"><a href="FilesMath464/S23/Homeworks/index.html"><big>Homework</big></a></div>
+	  <div class="menu-item"><a href="FilesMath464/S23/Exams/index.html"><big>Exams</big></a></div>
+	  <div class="menu-item"><a href="FilesMath464/S23/Software/index.html"><big>Software</big></a></div>	  
+	  <div class="menu-category"><br /></div>
+	  <div class="menu-item"><a href="index.html" class="current"><big>Bala's Home</big></a></div>
+	</td>
+
+	<td id="layout-content">
+
+	  <h1><b>Math 464: Linear Optimization</b></h1>
+
+	  <h2>Course Description</h2>
+
+	  <table border="0" width="75%" >
+	    <tr>
+	      <td align=left> 
+		<p>
+		  Welcome to Linear Optimization! The field of study of
+		  linear optimization (or linear programming, LP) is the
+		  fundamental branch of optimization, with applications
+		  to many areas including life sciences, computer
+		  science, defense, finance, telecommunications,
+		  transportation, etc. Other types of optimization
+		  typically use LP as the underlying model. This course
+		  will provide an integrated view of the theory,
+		  solution techniques, and applications of linear
+		  optimization. There will be a fair bit of emphasis on
+		  theorems and their proofs. The treatment of most
+		  topics will begin with a geometric point of view,
+		  followed by the development of the solution techniques
+		  (algorithms), which are described using linear
+		  algebra. A background in linear algebra and
+		  multivariate calculus is assumed. Topics covered
+		  include linear programming formulations, geometry of
+		  linear programming, the simplex method, duality,
+		  sensitivity analysis, interior point methods, and
+		  integer programming basics. Apart from problems
+		  involving proofs, the student will use Matlab (or
+		  another programming language, e.g., Python) for
+		  implementing some of the computations and
+		  algorithms. A state-of-the-art modeling software such
+		  as
+		  <a target="_blank" href="http://www.ampl.com">AMPL</a>
+		  will also be introduced for solving problems modeling
+		  real life situations.
+		</p>
+
+	      </td>
+	    </tr>
+	  </table>
+
+	  
+	  <p>
+	    <h2>
+	      <a href="FilesMath464/S23/SyllSched/Math464_Syllabus_S23.pdf">Syllabus
+		and Schedule</a>
+	      <!--&nbsp; <font color=green><b>(Updated)</b></font>-->
+	    </h2>
+	  </p>
+	  
+	  <h2>Announcements</h2>
+
+	  <table>
+
+	    <tr>
+	      <TD>
+		<b>Sun, Jan 8:</b> Class will meet in Spark 333 (Pullman) and VECS 125 (Vancouver).
+	      </td> 
+	      <td>
+	      </td>
+	    </tr>
+
+	    <tr>
+	      <TD>
+		<b>Thu, Jan 12:</b>
+		We now
+		have <del>both <a href="https://li.wsu.edu/buildings-and-spaces/general-university-classrooms/classroom-specs/spark-223/">Spark
+		223</a></del>
+		and <a href="https://li.wsu.edu/buildings-and-spaces/general-university-classrooms/classroom-specs/spark-333/">Spark
+		333</a> in Pullman! <del>Let's try everyone in Spark
+		223 today</del>.
+	      </td> 
+	      <td>
+	      </td>
+	    </tr>
+
+	    <tr>
+	      <TD>
+		<b>Mon, Jan 16:</b> We
+		have <del><b>both</b> <a href="https://li.wsu.edu/buildings-and-spaces/general-university-classrooms/classroom-specs/spark-233/">Spark
+		2<b>3</b>3</a>
+		and <a href="https://li.wsu.edu/buildings-and-spaces/general-university-classrooms/classroom-specs/spark-333/">Spark
+		333</a> in Pullman (sorry, Spark 2<b>2</b>3
+		will <b>not</b> work).  Choose either room.</del>
+	      </td> 
+	      <td>
+	      </td>
+	    </tr>
+
+	    <tr>
+	      <TD>
+		<b>Wed, Jan 18:</b> We have moved
+		to <a href="https://li.wsu.edu/buildings-and-spaces/general-university-classrooms/classroom-specs/spark-335/">Spark <b>335</b></a>
+		in Pullman (big room, all can sit)!
+	      </td> 
+	      <td>
+	      </td>
+	    </tr>
+
+	    <tr>
+	      <TD>
+		<b>Mon, Feb 13:</b> This week's lectures (Feb 14, 16) will
+		originate in Pullman.
+	      </td> 
+	      <td>
+	      </td>
+	    </tr>
+
+	    <tr>
+	      <TD>
+		<b>Mon, Mar 6:</b> There's a Check-in hour today
+		3&ndash;4 PM (instead of tomorrow).
+	      </td> 
+	      <td>
+	      </td>
+	    </tr>
+
+	    <tr>
+              <TD>
+		<b>Tue, Apr 18:</b> This week's lectures (Apr 18, 20)
+		will originate in Pullman.
+              </td>
+              <td>
+              </td>
+	    </tr>
+
+	  </table>
+
+	  <p>
+	    <br>
+          </p>
+	    
+	</td>
+      </tr>
+    </table>
+
+  </body>
+</html>	  

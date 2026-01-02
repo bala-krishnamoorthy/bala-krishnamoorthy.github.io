@@ -1,0 +1,75 @@
+%% Math 464 Linear Optimization (Spring 2023)
+%% Lecture 13, 02/21/2023
+
+%% Min-ratio test example
+
+>> format rat
+>> format compact
+
+%% Setting up the problem
+>> A = [1 1 -1 0 0; 3 1 0 -1 0; 3 2 0 0 1];
+>> b = [2 4 10]';
+>> Bind = [1 3 4]; % for B(10/3, 0)
+>> B = A(:,Bind);
+>> c = [2 1 0 0 0]';
+>> cB = c(Bind)
+cB =
+       2       
+       0       
+       0
+
+% reduced cost
+>> cP = c' - cB'*inv(B)*A
+cP =
+       0             -1/3            0              0             -2/3     
+>> cP = cP'
+cP =
+       0       
+      -1/3     
+       0       
+       0       
+      -2/3
+
+% consider the j=2 basic direction first
+>> j=2;
+>> [m,n]=size(A);
+>> d = zeros(n,1); d(j)=1;dB = -inv(B)*A(:,j);d(Bind) = dB
+d =
+      -2/3     
+       1       
+       1/3     
+      -1       
+       0       
+
+>> x = [10/3 0 4/3 6 0]'; % bfs == B(10/3, 0)
+>> x
+x =
+      10/3     
+       0       
+       4/3     
+       6       
+       0       
+
+>> theta = min( -x(1)/d(1), -x(4)/d(4) )
+theta =
+       5       
+
+>> xold = x;  % saving a copy of the original bfs
+
+% moving to the next bfs
+>> x = x + theta*d
+x =
+       0
+       5       
+       3       
+       1       
+       0
+% This corresponds to C(0,5)
+
+>> xold % corresponds to B(10/3, 0)
+xold =
+      10/3     
+       0       
+       4/3     
+       6       
+       0       

@@ -1,0 +1,16 @@
+# School assignment problem (BT-ILO exercise 1.9)
+
+param n_I;	    # No. of neighborhoods
+param n_J;	    # No. of schools
+param n_G;	    # No. of grades
+
+param Cap {1..n_J, 1..n_G};	# capacity of school j for grade g
+param Pop {1..n_I, 1..n_G};	# population in neighborhood i in grade g
+param Dist{1..n_I, 1..n_J};	# distance from neighborhood i to school j
+
+var x {1..n_I, 1..n_J, 1..n_G} >= 0;
+
+minimize total_distance: sum {i in 1..n_I, j in 1..n_J} Dist[i,j]*( sum {g in 1..n_G} x[i,j,g] );
+
+subject to Max_Cap {j in 1..n_J, g in 1..n_G}: sum{i in 1..n_I} x[i,j,g] <= Cap[j,g];
+subject to Assign_All {i in 1..n_I, g in 1..n_G}: sum{j in 1..n_J} x[i,j,g] = Pop[i,g];

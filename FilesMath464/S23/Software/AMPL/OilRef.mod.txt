@@ -1,0 +1,18 @@
+# Model file for oil refinery problem (Problem 1.16 from BT-ILO Pages 37-38)
+
+set Products;	# gas, heating oil
+set Crudes;	# Crudes A, B
+param n_Proc;   # No. of processes = 3
+
+param SellPrice {Products};
+param CrudeProcess {Crudes, 1..n_Proc};   # matrix of coefficients for crudes v/s processes
+param ProdProcess {Products, 1..n_Proc};  # matrix of coefficients for products v/s processes
+param Cost {1..n_Proc};			  # cost per process
+param CrudeReserves {Crudes};
+
+var x {1..n_Proc} >= 0; # x[i] = # times process i is run
+
+maximize Revenue: sum {i in Products} ( SellPrice[i]*(sum {j in 1..n_Proc} ProdProcess[i,j]*x[j]) ) 
+	 	   - sum {j in 1..n_Proc} Cost[j]*x[j];
+
+subject to MeetReservers {i in Crudes}: sum {j in 1..n_Proc} CrudeProcess[i,j]*x[j] <= CrudeReserves[i];

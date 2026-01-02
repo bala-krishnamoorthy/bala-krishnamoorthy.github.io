@@ -1,0 +1,9 @@
+# Dude Math Major's Thursday Problem
+# From Lecture 1 (01/10/2023)
+
+var x {1..2} >= 0;
+
+maximize TotalUtility: 2*x[1] + 3*x[2];
+
+subject to MaxTime: sum {j in 1..2} x[j] <= 5;
+subject to MaxCost: 8*x[1] + 16*x[2] <= 48; 
