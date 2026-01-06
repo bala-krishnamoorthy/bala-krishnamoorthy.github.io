@@ -1,0 +1,551 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <script type="text/javascript"
+	    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    <meta name="generator" content="BKStyle" />
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link rel="stylesheet" href="../../../BKStyle.css" type="text/css" />
+    <title>Network Optimization: Lecture Notes and videos</title>
+  </head>
+
+  <body>
+    <table summary="Table for page layout." id="tlayout">
+      <tr valign="top">
+	<td id="layout-menu">
+	  <div class="menu-item"><a href="../../../Math566.html"><big>Math566 Home</big></a></div>
+	  <div class="menu-item"><a href="index.html"><big>Lectures</big></a></div>
+	  <div class="menu-item"><a href="../Handouts/index.html"><big>Handouts</big></a></div>
+	  <div class="menu-item"><a href="../Homeworks/index.html"><big>Homework</big></a></div>
+	  <div class="menu-item"><a href="../Exams/index.html"><big>Exams</big></a></div>
+	  <div class="menu-item"><a href="../Software/index.html"><big>Software</big></a></div>	  
+	  <div class="menu-category"><br /></div>
+	  <div class="menu-item"><a href="../../../index.html" class="current"><big>Bala's Home</big></a></div>
+	</td>
+
+	<td id="layout-content">
+
+	  <h1>Math 466/566: Lecture Notes and Videos on Network Optimization</h1>
+
+	  <table border="0" width="50%" >
+	    <tr>
+	      <td align=left> 
+		<b>Copyright</b>: I (Bala Krishnamoorthy) hold the copyright
+		for all lecture scribes/notes, documents, and other
+		materials including videos posted on these course web
+		pages. These materials might not be used for commercial
+		purposes without my consent.
+	      </td>
+	    </tr>
+	  </table>
+
+	  <br>
+
+
+	  <a href="AllLecsSoFar_Math566.pdf">Scribes from
+	    all lectures so far</a> (as a single <b>big</b> file)<br>
+	  <br>
+
+	  <table border="0" cellpadding=3 cellspacing=2>
+
+	    <font size=+1>
+	      <tr> 
+		<th>Lec </th>  <th align=center>Date</th> <th>Topic(s) </th> <th>Scribe</th> <th>Video</th> 
+	      </tr>
+	    </font>
+	    
+	    <tr> 
+	      <td align="center"> 1 </td> 
+	      <td> Aug 20 </td> 
+	      <td>
+		<a href="../SyllSched/Syllabus_Math466566_F24.pdf">syllabus</a>,
+		the <a href="http://en.wikipedia.org/wiki/Seven_Bridges_of_K%C3%B6nigsberg">Konigsberg
+		  bridges problem</a>, eulerian tour, shortest path (SP), max
+		flow (MF), and min cost flow (MCF) problems
+	      </td>
+	      <td align="center"> 
+		<a href="Lec1_Math566_08202024.pdf">Scb1</a>
+	      </td> 
+	      <td align="center">
+		<a href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=9261eb53-92eb-4d30-9535-b1d201699a25">Vid1</a>
+	      </td>
+	    </tr>
+
+	    <tr bgcolor="#EEDDCB"> 
+	      <td align="center"> 2 </td> 
+	      <td> Aug 22 </td> 
+	      <td>
+		MCF as optimization model, SP as MCF, MF as MCF: \((t,s)\)
+		with \(c_{ts}=-1,u_{ts}=\infty\), transportation
+		problem, <a			    href="../Handouts/SeatSharing.pdf">seat-sharing problem</a>
+	      </td>
+	      <td align="center">
+		<a href="Lec2_Math566_08222024.pdf">Scb2</a>
+	      </td> 
+	      <td align="center">
+		<a href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=baa59a26-64b8-48c5-a7bd-b1d401690ae5">Vid2</a>
+	      </td>
+	    </tr>
+
+	    <tr> 
+	      <td align="center"> 3 </td> 
+	      <td> Aug 27 </td> 
+	      <td>
+		<a target=_blank href="../Handouts/SeatSharing.pdf">seat-sharing
+		  problem</a>, assignment problem, network definitions,
+		(in/out)degree, adjacency lists, induced and spanning subgraphs
+	      </td>
+	      <td align="center">
+		<a href="Lec3_Math566_08272024.pdf">Scb3</a>
+	      </td> 
+	      <td align="center">
+		<a
+		   href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=6fb1e530-a547-4daa-bfdb-b1d901691eb8">Vid3</a>
+	      </td>
+	    </tr>
+
+	    <tr bgcolor="#EEDDCB"> 
+	      <td align="center"> 4 </td> 
+	      <td> Aug 29 </td>
+	      <td>
+		walk, (directed) path, \(pred(i)\), (strongly) connected,
+		(spanning) tree, cuts, node-arc incidence matrix, node-node
+		adjacency matrix
+	      </td>
+	      <td align="center">
+		<a href="Lec4_Math566_08292024.pdf">Scb4</a>
+	      </td> 
+	      <td align="center">
+		<a
+		   href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=4db44c17-37b9-4c7b-90c0-b1db0180437a">Vid4</a>
+	      </td>
+	    </tr>
+
+	    <tr> 
+	      <td align="center"> 5 </td> 
+	      <td> Sep &nbsp; 3</td> 
+	      <td>
+		forward star representation, (r)point
+		vector, <a
+			   href="../Software/welcome.html#netdata">Matlab session and
+		  commands</a>, network transformations: removing lower bounds
+	      </td>
+	      <td align="center">
+		<a href="Lec5_Math566_09032024.pdf">Scb5</a>
+	      </td> 
+	      <td align="center">
+		<a
+		   href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=f11aa5c1-01b4-4443-8f4e-b1e1006375b5">Vid5</a>
+	      </td>
+	    </tr>
+
+	    <tr bgcolor="#EEDDCB"> 
+	      <td align="center"> 6 </td> 
+	      <td> Sep &nbsp; 5</td>
+	      <td>
+		arc reversal, removing finite upper bounds (gives bipartite
+		graph), node splitting, computational complexity: algorithm
+		running time
+	      </td>
+	      <td align="center">
+		<a href="Lec6_Math566_09052024.pdf">Scb6</a>
+	      </td> 
+	      <td align="center">
+		<a
+		   href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=a98164ed-c647-4611-99de-b1e201851487">Vid6</a>
+	      </td>
+	    </tr>
+
+	    <tr> 
+	      <td align="center"> 7 </td> 
+	      <td> Sep 10 </td> 
+	      <td>
+		\(O(f(n)), \Omega(f(n)), \Theta(f(n))\) for running time and
+		functions, problem size, polynomial & exponential time algos,
+		generic search
+	      </td>
+	      <td align="center">
+		<a href="Lec7_Math566_09102024.pdf">Scb7</a>
+	      </td> 
+	      <td align="center">
+		<a
+		   href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=f52f755d-0a5d-4fa0-a6c3-b1e7016942fa">Vid7</a>
+	      </td>
+	    </tr>
+
+	    <tr bgcolor="#EEDDCB"> 
+	      <td align="center"> 8 </td> 
+	      <td> Sep 12</td>
+	      <td>
+		breadth/dept-first search (BFS/DFS), complexity of search:
+		\(O(m)\) time, reverse search, strong connectivity,
+		topological order
+	      </td>
+	      <td align="center">
+		<a href="Lec8_Math566_09122024.pdf">Scb8</a>
+	      </td> 
+	      <td align="center">
+		<a
+		   href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=e3db9db6-97f3-4257-8a57-b1e901693b8d">Vid8</a>
+	      </td>
+	    </tr>
+
+
+	    <tr> 
+	      <td align="center"> 9 </td> 
+	      <td> Sep 17 </td> 
+	      <td>
+		topological order, \(O(m)\) algo for topological order, flows
+		along paths and cycles, <a
+					   href="../Handouts/FlowDecomp.pdf">flow decomposition</a> into
+		\(\leq m+n\) paths+cycles
+	      </td>
+	      <td align="center">
+		<a href="Lec9_Math566_09172024.pdf">Scb9</a>
+	      </td> 
+	      <td align="center">
+		<a
+		   href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=4bebd633-0127-4577-be2f-b1ef0048ac1b">Vid9</a>
+	      </td>
+	    </tr>
+
+	    <tr bgcolor="#EEDDCB"> 
+	      <td align="center"> 10 </td> 
+	      <td> Sep 19</td>
+	      <td>
+		shortest path (SP) problem: assumptions, bead-string analogy,
+		knapsack problem as SP, UPDATE\((i)\) step, Dijkstra's
+		algorithm
+	      </td>
+	      <td align="center">
+		<a href="Lec10_Math566_09192024.pdf">Scb10</a>
+	      </td> 
+	      <td align="center">
+		<a
+		   href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=352e555b-9b5d-447e-b417-b1f001693ed1">Vid10</a>
+	      </td>
+	    </tr>
+
+	    <tr> 
+	      <td align="center"> 11 </td> 
+	      <td> Sep 24 </td> 
+	      <td>
+		correctness of Dijkstra's algo, properties of shortest paths,
+		complexity of Dijkstra: \(O(n^2)\) time, reverse and
+		bidirectional Dijkstra
+	      </td>
+	      <td align="center">
+		<a href="Lec11_Math566_09242024.pdf">Scb11</a>
+	      </td> 
+	      <td align="center">
+		<a
+		   href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=b12b0f34-5a60-428f-86d1-b1f501692ce8">Vid11</a>
+	      </td>
+	    </tr>
+
+	    <tr bgcolor="#EEDDCB"> 
+	      <td align="center"> 12 </td> 
+	      <td> Sep 26</td>
+	      <td>
+		Dial's implementation of Dijkstra, buckets, SP optimality
+		conditions, generic label-correcting (LC) algo, finiteness,
+		modified LC algo
+	      </td>
+	      <td align="center">
+		<a href="Lec12_Math566_09262024.pdf">Scb12</a>
+	      </td> 
+	      <td align="center">
+		<a
+		   href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=8cc69492-ce34-4e8f-8b62-b1f70168d8e4">Vid12</a>
+	      </td>
+	    </tr>
+
+	    <tr>
+	      <td align="center"> 13 </td>
+	      <td> Oct &nbsp; 1</td>
+	      <td>
+		complexity of modified LC algo, FIFO implementation: \(O(mn)\)
+		time, detecting negative cycles, problems from
+		the <a
+		       href="../Exams/welcome.html#pracmt">practice midterm</a>
+	      </td>
+	      <td align="center">
+		<a href="Lec13_Math566_10012024.pdf">Scb13</a>
+	      </td>
+	      <td align="center">
+		<a href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=086619cb-003d-4654-ae8a-b1fc0169bc84">Vid13</a>
+	      </td>
+	    </tr>
+
+
+	    <tr bgcolor="#EEDDCB"> 
+	      <td align="center"> 14 </td> 
+	      <td> Oct &nbsp; 3</td>
+	      <td colspan="3">
+		<a href="../Exams/welcome.html#mt">Midterm exam</a>
+	      </td>
+	    </tr>
+
+	    <tr>
+	      <td align="center"> 15 </td>
+	      <td> Oct &nbsp; 8</td>
+	      <td>
+		all pairs SP (APSP), reduced costs, \(c_{ij}^{\mathbf{d}} =
+		c_{ij} + d(i) -d(j)\), APSP optimality conditions, maximum
+		flow (MF), feasible flow as MF
+	      </td>
+	      <td align="center">
+		<a href="Lec15_Math566_10082024.pdf">Scb15</a>
+	      </td>
+	      <td align="center">
+		<a href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=fa348987-4213-4f49-8832-b2030169bb35">Vid15</a>
+	      </td>
+	    </tr>
+
+	    <tr bgcolor="#EEDDCB"> 
+	      <td align="center"> 16 </td> 
+	      <td> Oct 10</td>
+	      <td>
+		matrix rounding problem as MF; residual network
+		\(G(\mathbf{x})\), \(r_{ij} = u_{ij} - x_{ij}+x_{ji}\),
+		augmenting path (AP), generic AP algorithm
+	      </td>
+	      <td align="center">
+		<a href="Lec16_Math566_10102024.pdf">Scb16</a>
+	      </td> 
+	      <td align="center">
+		<a
+		   href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=585bfeb1-4eb6-415c-9ef0-b205016971f3">Vid16</a>
+	      </td>
+	    </tr>
+	    
+	    <tr>
+	      <td align="center"> 17 </td>
+	      <td> Oct 15 </td>
+	      <td>
+		finiteness of AP algo, \(s\)-\(t\) cut \([S,\bar{S}]\), flow
+		across & capacity of cut, \(F_{\mathbf{x}}[S,\bar{S}] \leq
+		U[S,\bar{S}]\), max-flow min-cut (MFMC) theorem, proof
+	      </td>
+	      <td align="center">
+		<a href="Lec17_Math566_10152024.pdf">Scb17</a>
+	      </td>
+	      <td align="center">
+		<a href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=57433eb6-4c2c-4fee-a55f-b20a01691505">Vid17</a>
+	      </td>
+	    </tr>
+
+	    <tr bgcolor="#EEDDCB"> 
+	      <td align="center"> 18 </td> 
+	      <td> Oct 17</td>
+	      <td>
+		MFMC and network reliability, pathological instance of generic
+		AP algo, shortest augmenting path (SAP) algo: distance labels
+		\(d(i)\)
+	      </td>
+	      <td align="center">
+		<a href="Lec18_Math566_10172024.pdf">Scb18</a>
+	      </td> 
+	      <td align="center">
+		<a
+		   href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=991e6cf3-a25b-40b2-96b0-b20c0169482d">Vid18</a>
+	      </td>
+	    </tr>
+
+	    <tr>
+	      <td align="center"> 19 </td>
+	      <td> Oct 22 </td>
+	      <td>
+		exact \(d(i)\)'s, \(d(i)\) as height of \(i\) above ground, SAP
+		algo, illustration, proof of correctness: \(d(i)\)'s remain
+		valid after augmentation	
+	      </td>
+	      <td align="center">
+		<a href="Lec19_Math566_10222024.pdf">Scb19</a>
+	      </td>
+	      <td align="center">
+		<a href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=46688b16-5fb5-4cf5-9cf1-b21101693a95">Vid19</a>
+	      </td>
+	    </tr>
+
+	    <tr bgcolor="#EEDDCB"> 
+	      <td align="center"> 20 </td> 
+	      <td> Oct 24</td>
+	      <td>
+		\(d(i)\) valid after relabel, complexity of SAP: \(O(n^2m)\),
+		time for relabels: \(O(nm)\), capacity scaling algo,
+		\(G(\mathbf{x},\Delta)\), \(\Delta\)-maximal flow
+	      </td>
+	      <td align="center">
+		<a href="Lec20_Math566_10242024.pdf">Scb20</a>
+	      </td> 
+	      <td align="center">
+		<a
+		   href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=af48b67f-d411-4336-8ee0-b213016972e0">Vid20</a>
+	      </td>
+	    </tr>
+
+	    <tr>
+	      <td align="center"> 21 </td>
+	      <td> Oct 29  </td>
+	      <td>
+		complexity of capacity scaling: \(O(m^2 \log U)\), preflow,
+		excess \(e(i)\), active node: \(e(i) > 0\), generic
+		preflow-push algo, example
+	      </td>
+	      <td align="center">
+		<a href="Lec21_Math566_10292024.pdf">Scb21</a>
+	      </td>
+	      <td align="center">
+		<a href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=fd004328-4b13-4117-b7f0-b218016953ef">Vid21</a>
+	      </td>
+	    </tr>
+
+	    <tr bgcolor="#EEDDCB"> 
+	      <td align="center"> 22 </td> 
+	      <td> Oct 31 </td>
+	      <td>
+		tips for implementing SAP: arc predecessor, FIFO preflow-push
+		algo, run time \(O(n^3)\), pushing flow back to \(s\), excess
+		scaling algo
+	      </td>
+	      <td align="center">
+		<a href="Lec22_Math566_10312024.pdf">Scb22</a>
+	      </td> 
+	      <td align="center">
+		<a
+		   href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=2b1e4ba3-b909-440f-97a9-b21a016a3286">Vid22</a>
+	      </td>
+	    </tr>
+
+	    <tr>
+	      <td align="center"> 23 </td>
+	      <td> Nov &nbsp;5  </td>
+	      <td>
+		Min-cost flow (MCF) assumptions, residual network for MCF,
+		negative cycle optimality conditions, negative cycle canceling
+		algo
+	      </td>
+	      <td align="center">
+		<a href="Lec23_Math566_11052024.pdf">Scb23</a>
+	      </td>
+	      <td align="center">
+		<a href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=bb1b5efe-b281-47d0-89e5-b21f0179b7ac">Vid23</a>
+	      </td>
+	    </tr>
+
+	    <tr bgcolor="#EEDDCB"> 
+	      <td align="center"> 24 </td> 
+	      <td> Nov &nbsp;7 </td>
+	      <td>
+		reduced cost optimality cdtns, complementary slackness cdtns,
+		successive shortest path (SSP) algo, pseudoflow,
+		\(\mathbf{\pi}'=\mathbf{\pi}-\mathbf{d}\)
+	      </td>
+	      <td align="center">
+		<a href="Lec24_Math566_11072024.pdf">Scb24</a>
+	      </td> 
+	      <td align="center">
+		<a
+		   href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=a1145031-0921-41b3-a57c-b221017bf714">Vid24</a>
+	      </td>
+	    </tr>
+
+	    <tr>
+	      <td align="center"> 25 </td>
+	      <td> Nov 12  </td>
+	      <td>
+		SSP algo steps, example, minimum spanning trees (MSTs), tree
+		and non-tree arcs, cut and path optimality condidions for MST
+	      </td>
+	      <td align="center">
+		<a href="Lec25_Math566_11122024.pdf">Scb25</a>
+	      </td>
+	      <td align="center">
+		<a href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=e6a0bb9a-9309-48a8-b4f7-b2260179eeac">Vid25</a>
+	      </td>
+	    </tr>
+
+	    <tr bgcolor="#EEDDCB"> 
+	      <td align="center"> 26 </td> 
+	      <td> Nov 14 </td>
+	      <td>
+		Kruskal's &amp; Prim's algos for MST, <a
+							 href="https://en.wikipedia.org/wiki/Disjoint-set_data_structure">UNION-FIND</a>,
+		bipartite cardinality matching, simple networks,
+		assignment,SSP for assignment
+	      </td>
+	      <td align="center">
+		<a href="Lec26_Math566_11142024.pdf">Scb26</a>
+	      </td> 
+	      <td align="center">
+		<a
+		   href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=70a32b07-6489-4f4f-ab91-b2280179e140">Vid26</a>
+	      </td>
+	    </tr>
+
+	    <tr>
+	      <td align="center"> 27 </td>
+	      <td> Nov 19  </td>
+	      <td>
+		<i>video</i>: stable marriage, unstable pair, propose and
+		reject algorithm, group 1-optimal matching, non-bipartite
+		cardinality matching
+	      </td>
+	      <td align="center">
+		<a href="Lec27_Math566_11192024.pdf">Scb27</a>
+	      </td>
+	      <td align="center">
+		<a href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=a072045c-4e4e-4581-9143-b22900a2223b">Vid27</a>
+	      </td>
+	    </tr>
+
+	    <tr bgcolor="#EEDDCB"> 
+	      <td align="center"> 28 </td> 
+	      <td> Nov 21 </td>
+	      <td>
+		<i>video</i>: alternating/augmenting paths, augmentation \(M
+		\oplus P\), \(G'=(N,M \oplus M^*)\) components, unmatched node
+		in max matching
+	      </td>
+	      <td align="center">
+		<a href="Lec28_Math566_11212024.pdf">Scb28</a>
+	      </td> 
+	      <td align="center">
+		<a
+		   href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=25679395-a7dc-4c35-80fd-b22900a2220d">Vid28</a>
+	      </td>
+	    </tr>
+
+	    <tr>
+	      <td align="center"> 29 </td>
+	      <td> Dec &nbsp; 3  </td>
+	      <td>
+		relabel bottleneck case in SAP algo, a method to generate
+		random networks in layers (for <a
+						  href="../Homeworks/Project/Projects_MFAlgos_MaxMinFlow.pdf">project</a>)
+	      </td>
+	      <td align="center">
+		<a href="Lec29_Math566_12032024.pdf">Scb29</a>
+	      </td>
+	      <td align="center">
+		<a href="https://wsu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=20d81e52-a8a5-4483-a1aa-b23b017a61e5">Vid29</a>
+	      </td>
+	    </tr>
+
+	  </table>
+
+	  <br>
+	  <hr>
+	    Last modified: Sun Dec 08 23:48:27 PST 2024
+
+	  
+	</td>
+      </tr>
+    </table>
+
+  </body>
+</html>	  
+	  

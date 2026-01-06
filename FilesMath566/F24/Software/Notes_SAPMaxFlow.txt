@@ -1,0 +1,58 @@
+Implementing the SAP Algorithm
+------------------------------
+
+Here are some notes on implementing the shortest augmenting path (SAP)
+algorithm for solving the max flow problem.
+
+ * How to handle r_ij's, the residual capacities
+
+   One good option might be to work with the original network itself,
+   along with the flow vector (or the x_ij's), rather than maintaining
+   and updating the residual network as the algorithm proceeds. You
+   could use both the A{} and AI{} lists (out- and in-arc lists,
+   initialized by running netdata on the forward star
+   representation). For instance, the r_ij's and r_ji's associate with
+   node i at an intermediate step of the algorithm could be identified as
+   follows:
+
+      jj = A{i}; 
+      admjj = jj(find( X(jj)<UB(jj) ));
+
+      ii = AI{i};
+      admii = ii(find( X(ii)>0 ));
+
+   Here X is the m-vector of flows, and UB is the m-vector of upper
+   bounds (u_ij). Notice that we collect two sets of candidate arcs
+   from among the outarcs and inarcs with relevant residual
+   capacities. We then have to check for admissibility.
+
+   You could handle these two sets of arcs in a unified fashion by
+   switching the signs of the backward arcs. So, after checking for
+   admissibility, you could store
+
+      admit = [ jj, -ii];
+
+
+ * Maintain arc predecessors
+
+   Along with the usual pred indices, it will be helpful to maintain
+   arc predecessor indices. These indices would make the augmentation
+   steps much easier to implement. For instance, if you advance path P
+   from node i using arc k, then you can say
+
+        j = H(k);        
+        PREDA(j)= k;
+	P = [P k];
+	i = j;		% advancing move
+	...
+
+   when you reach t, you can then augment directly using P:
+
+   	X(P) = X(P) + delta
+
+
+
+   
+
+
+
