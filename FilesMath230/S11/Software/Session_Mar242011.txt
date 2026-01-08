@@ -1,0 +1,492 @@
+%% MATLAB session from Lecture 20 on Thursday, March 24, 2011.
+%% -----------------------------------------------------------
+
+>> n=10;a = ones(n,1)	% The function ones() creates a matrix of all 1's, of the given size
+a =
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+>> b = (1:n)'		% The ' takes the transpose
+b =
+     1
+     2
+     3
+     4
+     5
+     6
+     7
+     8
+     9
+    10
+>> c=a+b		% adding two vectors
+c =
+     2
+     3
+     4
+     5
+     6
+     7
+     8
+     9
+    10
+    11
+
+%% To do the addition ourselves, we write the  FOR  loop
+
+>> for i=1:n		  % 1:n is the vector of numbers 1,2,...,n	 			 
+     d(i) = a(i) + b(i);  % the semi-colon suppresses printing the whole vector after each step
+   end
+
+>> d
+d =
+     2     3     4     5     6     7     8     9    10    11
+
+% Notice that d is set as a row vector here by default
+
+>> d = d'
+d =
+     2
+     3
+     4
+     5
+     6
+     7
+     8
+     9
+    10
+    11
+
+%% Another example, this time involving a matrix
+>> m=4;n=7;
+>> A = [ ones(4,2) -2*ones(4,1) eye(4)]	% eye(n) gives the n x n identity matrix
+A =
+     1     1    -2     1     0     0     0
+     1     1    -2     0     1     0     0
+     1     1    -2     0     0     1     0
+     1     1    -2     0     0     0     1
+>> A1 =A;  % saving a copy just in case
+
+>> for i=1:m
+      for j=1:n
+         A(i,j) = A(i,j)^2 % or A(i,j)*A(i,j)
+end
+end
+% Notice that the white spaces are immaterial - they are added here just for readability
+
+A =
+     1     1    -2     1     0     0     0
+     1     1    -2     0     1     0     0
+     1     1    -2     0     0     1     0
+     1     1    -2     0     0     0     1
+A =
+     1     1    -2     1     0     0     0
+     1     1    -2     0     1     0     0
+     1     1    -2     0     0     1     0
+     1     1    -2     0     0     0     1
+A =
+     1     1     4     1     0     0     0
+     1     1    -2     0     1     0     0
+     1     1    -2     0     0     1     0
+     1     1    -2     0     0     0     1
+A =
+     1     1     4     1     0     0     0
+     1     1    -2     0     1     0     0
+     1     1    -2     0     0     1     0
+     1     1    -2     0     0     0     1
+A =
+     1     1     4     1     0     0     0
+     1     1    -2     0     1     0     0
+     1     1    -2     0     0     1     0
+     1     1    -2     0     0     0     1
+A =
+     1     1     4     1     0     0     0
+     1     1    -2     0     1     0     0
+     1     1    -2     0     0     1     0
+     1     1    -2     0     0     0     1
+A =
+     1     1     4     1     0     0     0
+     1     1    -2     0     1     0     0
+     1     1    -2     0     0     1     0
+     1     1    -2     0     0     0     1
+A =
+     1     1     4     1     0     0     0
+     1     1    -2     0     1     0     0
+     1     1    -2     0     0     1     0
+     1     1    -2     0     0     0     1
+A =
+     1     1     4     1     0     0     0
+     1     1    -2     0     1     0     0
+     1     1    -2     0     0     1     0
+     1     1    -2     0     0     0     1
+A =
+     1     1     4     1     0     0     0
+     1     1     4     0     1     0     0
+     1     1    -2     0     0     1     0
+     1     1    -2     0     0     0     1
+A =
+     1     1     4     1     0     0     0
+     1     1     4     0     1     0     0
+     1     1    -2     0     0     1     0
+     1     1    -2     0     0     0     1
+A =
+     1     1     4     1     0     0     0
+     1     1     4     0     1     0     0
+     1     1    -2     0     0     1     0
+     1     1    -2     0     0     0     1
+A =
+     1     1     4     1     0     0     0
+     1     1     4     0     1     0     0
+     1     1    -2     0     0     1     0
+     1     1    -2     0     0     0     1
+A =
+     1     1     4     1     0     0     0
+     1     1     4     0     1     0     0
+     1     1    -2     0     0     1     0
+     1     1    -2     0     0     0     1
+A =
+     1     1     4     1     0     0     0
+     1     1     4     0     1     0     0
+     1     1    -2     0     0     1     0
+     1     1    -2     0     0     0     1
+A =
+     1     1     4     1     0     0     0
+     1     1     4     0     1     0     0
+     1     1    -2     0     0     1     0
+     1     1    -2     0     0     0     1
+A =
+     1     1     4     1     0     0     0
+     1     1     4     0     1     0     0
+     1     1     4     0     0     1     0
+     1     1    -2     0     0     0     1
+A =
+     1     1     4     1     0     0     0
+     1     1     4     0     1     0     0
+     1     1     4     0     0     1     0
+     1     1    -2     0     0     0     1
+A =
+     1     1     4     1     0     0     0
+     1     1     4     0     1     0     0
+     1     1     4     0     0     1     0
+     1     1    -2     0     0     0     1
+A =
+     1     1     4     1     0     0     0
+     1     1     4     0     1     0     0
+     1     1     4     0     0     1     0
+     1     1    -2     0     0     0     1
+A =
+     1     1     4     1     0     0     0
+     1     1     4     0     1     0     0
+     1     1     4     0     0     1     0
+     1     1    -2     0     0     0     1
+A =
+     1     1     4     1     0     0     0
+     1     1     4     0     1     0     0
+     1     1     4     0     0     1     0
+     1     1    -2     0     0     0     1
+A =
+     1     1     4     1     0     0     0
+     1     1     4     0     1     0     0
+     1     1     4     0     0     1     0
+     1     1    -2     0     0     0     1
+A =
+     1     1     4     1     0     0     0
+     1     1     4     0     1     0     0
+     1     1     4     0     0     1     0
+     1     1     4     0     0     0     1
+A =
+     1     1     4     1     0     0     0
+     1     1     4     0     1     0     0
+     1     1     4     0     0     1     0
+     1     1     4     0     0     0     1
+A =
+     1     1     4     1     0     0     0
+     1     1     4     0     1     0     0
+     1     1     4     0     0     1     0
+     1     1     4     0     0     0     1
+A =
+     1     1     4     1     0     0     0
+     1     1     4     0     1     0     0
+     1     1     4     0     0     1     0
+     1     1     4     0     0     0     1
+A =
+     1     1     4     1     0     0     0
+     1     1     4     0     1     0     0
+     1     1     4     0     0     1     0
+     1     1     4     0     0     0     1
+>> 
+>> A = [ ones(4,2) -2*ones(4,1) 3*ones(4)]
+A =
+     1     1    -2     3     3     3     3
+     1     1    -2     3     3     3     3
+     1     1    -2     3     3     3     3
+     1     1    -2     3     3     3     3
+>> A.^2	   % .^2 squares each entry in the matrix A
+ans =
+     1     1     4     9     9     9     9
+     1     1     4     9     9     9     9
+     1     1     4     9     9     9     9
+     1     1     4     9     9     9     9
+>> A=A.^2
+A =
+     1     1     4     9     9     9     9
+     1     1     4     9     9     9     9
+     1     1     4     9     9     9     9
+     1     1     4     9     9     9     9
+
+>> % We can do any operation on all entries in similar fashion - squaring is just for illustration
+>> % For instance, let's cube each entry and subtract 15 from the cube.
+>> % And let us do it column-wise
+
+>> for j=1:n
+      for i=1:m
+         A(i,j) = A(i,j)^3 -15;	% The ";" suppresses printing each step
+      end
+   end
+
+>> A
+A =
+   -14   -14    49   714   714   714   714
+   -14   -14    49   714   714   714   714
+   -14   -14    49   714   714   714   714
+   -14   -14    49   714   714   714   714
+
+%% Illustration of iteration entry-wise on vector operations
+%% Let a,b be 4-vectors. Find c such that c(j) = -a(j) + 5*b(j)^2 for each j.
+
+>> a = [3 1 2 5]'
+a =
+     3
+     1
+     2
+     5
+>> b = [-2 5 0 1]'
+b =
+    -2
+     5
+     0
+     1
+
+>> c = zeros(4,1)
+c =
+     0
+     0
+     0
+     0
+>> % This way, the size of c  is initialized to be the same as that of a and b.
+
+>> for i=1:4
+c(i) = -a(i) + 5*b(i)^2
+end
+
+c =
+    17
+     0
+     0
+     0
+c =
+    17
+   124
+     0
+     0
+c =
+    17
+   124
+    -2
+     0
+c =
+    17
+   124
+    -2
+     0
+
+%% You can ask for "help" on any command CMD by typing   help CMD
+>> help for
+
+ FOR    Repeat statements a specific number of times.
+    The general form of a FOR statement is:
+  
+       FOR variable = expr, statement, ..., statement END
+  
+    The columns of the expression are stored one at a time in
+    the variable and then the following statements, up to the
+    END, are executed. The expression is often of the form X:Y,
+    in which case its columns are simply scalars. Some examples
+    (assume N has already been assigned a value).
+  
+         for R = 1:N
+             for C = 1:N
+                 A(R,C) = 1/(R+C-1);
+             end
+         end
+  
+    Step S with increments of -0.1
+         for S = 1.0: -0.1: 0.0, do_some_task(S), end
+ 
+    Set E to the unit N-vectors
+         for E = eye(N), do_some_task(E), end
+ 
+    Long loops are more memory efficient when the colon expression appears
+    in the FOR statement since the index vector is never created.
+ 
+    The BREAK statement can be used to terminate the loop prematurely.
+ 
+    See also parfor, if, while, switch, break, continue, end, colon.
+
+    Reference page in Help browser
+       doc for
+
+
+%%  Use of function Sum.m
+%%  ---------------------
+
+%%  Check the file Sum.m
+%% recall a and b:
+> a
+a =
+     3
+     1
+     2
+     5
+> b
+b =
+    -2
+     5
+     0
+     1
+
+
+> Sum(a,b)
+ans =
+     1
+     6
+     2
+     6
+> f = Sum(a,b)	% save the sum in to the vector f
+f =
+     1
+     6
+     2
+     6
+
+> pwd	% tells your Present Working Directory (PWD), i.e., which directory you are currently in
+
+ans =
+/usr1/bkrishna/Teaching/HonLinAlg_Math230/S11/MATLAB
+
+> ls	% lists all the files in the PWD
+MATLAB-Laydata Toolbox	MATLAB-Laydata Toolbox.zip  Sum.m  Test.doc
+
+> c1 = rand(9,1)	% random 9-vector
+c1 =
+    0.8147
+    0.9058
+    0.1270
+    0.9134
+    0.6324
+    0.0975
+    0.2785
+    0.5469
+    0.9575
+> c2 = -2*rand(9,1)	% another random 9-vector
+c2 =
+   -1.9298
+   -0.3152
+   -1.9412
+   -1.9143
+   -0.9708
+   -1.6006
+   -0.2838
+   -0.8435
+   -1.8315
+
+> Sum(c1,c2)
+ans =
+   -1.1151
+    0.5906
+   -1.8142
+   -1.0010
+   -0.3384
+   -1.5030
+   -0.0053
+   -0.2966
+   -0.8740
+
+% The command sum (with a small 's') is sn inbuilt MATLAB function
+
+> help sum
+ SUM Sum of elements.
+    S = SUM(X) is the sum of the elements of the vector X. If
+    X is a matrix, S is a row vector with the sum over each
+    column. For N-D arrays, SUM(X) operates along the first
+    non-singleton dimension.
+    If X is floating point, that is double or single, S is
+    accumulated natively, that is in the same class as X,
+    and S has the same class as X. If X is not floating point,
+    S is accumulated in double and S has class double.
+ 
+    S = SUM(X,DIM) sums along the dimension DIM. 
+ 
+    S = SUM(X,'double') and S = SUM(X,DIM,'double') accumulate
+    S in double and S has class double, even if X is single.
+ 
+    S = SUM(X,'native') and S = SUM(X,DIM,'native') accumulate
+    S natively and S has the same class as X.
+ 
+    Examples:
+    If   X = [0 1 2
+              3 4 5]
+ 
+    then sum(X,1) is [3 5 7] and sum(X,2) is [ 3
+                                              12];
+ 
+    If X = int8(1:20) then sum(X) accumulates in double and the
+    result is double(210) while sum(X,'native') accumulates in
+    int8, but overflows and saturates to int8(127).
+ 
+    See also prod, cumsum, diff, accumarray, isfloat.
+
+    Overloaded methods:
+       timeseries/sum
+       sym/sum
+
+    Reference page in Help browser
+       doc sum
+
+% If you were to call your function sum as well, it creates a conflict
+
+> sum(c1,c2)
+
+Warning: Function
+/usr1/bkrishna/Teaching/HonLinAlg_Math230/S11/MATLAB/sum.m has the
+same name as a MATLAB builtin. We suggest you rename the function to
+avoid a potential name conflict.  ??? Error using ==> sum Dimension
+argument must be a positive integer scalar within indexing range.
+
+
+%% The function Sum.m right now does not check the dimension 
+%% compatibility before adding the vectors. See what happens when 
+%% you try to add a 4x1 vector and an 1x3 vector:
+
+> a
+a =
+     3
+     1
+     2
+     5
+> c = [2 1 3]
+c =
+     2     1     3
+
+> Sum(a,c)
+
+??? Attempted to access b(4); index out of bounds because numel(b)=3.
+
+Error in ==> Sum at 12
+    c(i) = a(i) + b(i);

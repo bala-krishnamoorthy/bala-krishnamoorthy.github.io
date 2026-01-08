@@ -1,0 +1,50 @@
+% Hw4 Prob 6 and 7 MATLAB commands
+
+% if you want all output to be printed as rational numbers, you can do so
+% by the following command
+format rational
+
+fprintf(1,'Problem 6... \n\n');
+
+A = [1 2 3 4 5
+11 8 12 10 13
+15 14 13 12 11
+-2 -3 -4 -5 -6]
+
+% saving a copy of A
+A1=A; 
+
+% replacement EROs to zero out lower entries in column 1 using the first
+% entry
+A(2,:) = A(2,:)-11*A(1,:);
+A(3,:) = A(3,:)-15*A(1,:);
+A(4,:) = A(4,:)+ 2*A(1,:)
+
+% Swap R4 and R2, and then zero out other entries in column 2 using the
+% second entry
+A = A([1 4 3 2],:)
+A(1,:) = A(1,:) -  2*A(2,:);
+A(3,:) = A(3,:) + 16*A(2,:);
+A(4,:) = A(4,:) + 14*A(2,:)
+
+% Swap R3 and R4, and then scale the new R3 by (1/7)
+A = A([1 2 4 3],:);
+A(3,:) = A(3,:)*(1/7)
+
+% zero out top two entries in column 3 using the pivot in 3rd row using
+% replacement EROs
+A(1,:)=A(1,:)+  A(3,:);
+A(2,:)=A(2,:)-2*A(3,:)
+
+% A total of 11 EROs were performed on A
+
+% verify result using rref
+Arref = rref(A1)
+
+fprintf(1,'\nProblem 7... \n\n');
+
+% Changing to the directory that has files from DL-LAA MATLAB toolbox
+cd ../MATLAB/'MATLAB-Laydata Toolbox'/
+c1s6
+% Choose Exercise number 12; else, type in the augmented matrix
+rref(A)

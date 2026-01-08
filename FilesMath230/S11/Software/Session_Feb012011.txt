@@ -1,0 +1,75 @@
+%% Math 230 - Honors Introductory Linear Algebra 
+%% MATLAB commands typed in Class on Tuesday, Feb 1, 2011
+
+%% Lines that start with a '%' are comments - MATLAB ignores them
+%% (i.e., does not "execute" or "run" them as commands).
+
+% Exchange matrix for Prob 4, Page 63
+A = [.65 .3 .3 .2
+.1 .1 .15 .1
+.25 .35 .15 .3
+0 .25 .4 .4]
+
+size(A)
+
+A(1,2)
+% gives the entry in the first row and second column
+% In general, to access (i,j)-th element, we give A(i,j)
+
+A(1,:)
+% gives the first row, i.e., all elements in the first row
+
+A(:,3)
+% gives the 3rd column
+
+A(1,1)-1
+% subtract 1 from the (1,1) entry of A, and just print the result out
+% without updating A(1,1)
+
+A(1,1)=A(1,1)-1
+% subtract 1 from the (1,1) entry of A, updating A(1,1) to the new value
+
+A(1,1)=A(1,1)+1
+% just going back to the original A(1,1) entry
+
+Acopy = A;
+% Creating a copy of A for future reference.
+% semicolon at end suppresses printing of the output
+
+% We need to do A(i,i) = A(i,i)-1 for i=1,2,3,4
+
+1:4
+% gives the numbers 1,2,3,4
+
+% We use a "for" loop to do these repeated calculations
+for i=1:4
+ A(i,i) = A(i,i) - 1;
+end
+
+A
+
+Arref = rref(A)
+% reduced row echelon form of A
+
+
+% But let's do some of the EROs ourselves
+%
+% Scale R1 by (1/-0.35) so that A(1,1) becomes 1
+
+A(1,:)*(1/-0.35)
+A(1,:) = A(1,:)*(1/-0.35)
+% The second command above reassigns A(1,:).
+
+% The replacement ERO R2-0.1xR1 (to zero out the entry in the (2,1)-position)
+A(2,:) = A(2,:) - 0.1*A(1,:)
+
+% swap R2 and R3
+% we need to copy one of them to a temporary variable, and then effect the swap
+
+r = A(2,:)
+% second row is stored in r
+
+A(2,:) = A(3,:);
+A(3,:) = r
+
+% Now R2 and R3 are swapped

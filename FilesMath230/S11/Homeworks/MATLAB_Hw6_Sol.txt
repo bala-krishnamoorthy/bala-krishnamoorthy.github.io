@@ -1,0 +1,37 @@
+%% Problem 12 from Section 1.10 (Problem 7 in Homework 6)
+
+%% Could load the M matrix and initial car numbers vector directly
+%% Or, you could just type in these entries.
+>> c1s10
+Exercise number (1-14)? 12
+M =
+    0.9700    0.0500    0.1000
+         0    0.9000    0.0500
+    0.0300    0.0500    0.8500
+x0 =
+   304
+    48
+    98
+
+%% x0 is the # cars on Monday. 
+
+>> x1 = M*x0
+x1 =
+  307.0800
+   48.1000
+   94.8200
+>> x1 = round(x1)
+x1 =
+   307
+    48
+    95
+% The rounded x1 gives the # cars on Tuesday
+
+>> x2 = round(M*x1)
+x2 =
+   310
+    48
+    92
+
+% Notice how the two commands (round and M*x1) are combined here. The
+% rounded x2 gives the # cars on Wednesday.
